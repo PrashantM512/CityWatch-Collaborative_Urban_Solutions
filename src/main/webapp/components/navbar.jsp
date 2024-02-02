@@ -17,7 +17,7 @@
 			</form>
 		</div>
 		<div class="col-md-3">
-			<a href=""><img alt="Small Image" style="width: 25px; height: 25px;" class="img img-fluid notification" src="img/notification2.png"></a>
+			<a href="notifications.jsp"><img alt="Small Image" style="width: 25px; height: 25px;" class="img img-fluid notification" src="img/notification2.png"></a>
 				
 				<a href="login.jsp" class="btn btn-success">Login</a>
 				<a href="register.jsp" class="btn btn-primary">Register</a>

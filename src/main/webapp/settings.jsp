@@ -13,8 +13,8 @@
 <%@include file="components/navbar.jsp"%>
 
 <div class="container" style="margin-bottom: 90px;">
-<h3 class="text-center"><img alt="" src="img/Settings.png" class="pagetitle"></h3>
-		<div class="row p-5">
+<h3 class="text-center" style="margin-top: -25px;margin-bottom: -13px;"><img alt="" src="img/Settings.png" class="pagetitle"><img alt="" class="pagetitle-img" src="img/settings2.png"></h3>
+		<div class="row p-5" style="">
 			<div class="col-md-4 decor">
 				<a href="" style="text-decoration: none;">
 					<div class="card h-100 setbg">
@@ -56,8 +56,7 @@
 			</div>
 		</div>
 
-		<div class="row">
-
+		<div class="row p-5" style=" margin-top: -55px; ">
 			<div class="col-md-6">
 				<a href="" style="text-decoration: none;">
 					<div class="card h-100 setbg">
@@ -84,6 +83,7 @@
 					</div>
 				</a>
 			</div>
+		
 		</div>
 </div>
 

@@ -28,7 +28,7 @@
 							<i class="fa-solid fa-circle-user fa-sm" style="color: #f5f9ff;"></i>&nbsp;Register
 						</div>
 						<div class="card-body" style="line-height: 1 !important;">
-							<form action="RegisterServlet" method="POST">
+							<form action="" method="POST">
 								<div class="mb-3">
 									<label for="user_name class="form-label">Full Name</label> <input
 										name="user_name" type="text" class="form-control" id="name"
@@ -49,10 +49,8 @@
 								<div class="mb-3">
 									<label for="user_name class="form-label">Aadhar No</label> <input
 										name="aadhar" type="text" class="form-control" name="aadhar"
-										id="aadhar_number" aria-describedby="aadharHelp"
-										maxlength="14" pattern="[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}"
-										title="Please enter a valid 12-digit Aadhar number"
-										placeholder="Enter Aadhar Card Number" required
+										aria-describedby="aadharHelp" maxlength="14"
+										pattern="[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}" required
 										oninput="formatAadhar(this);"> <small id="aadharHelp"
 										class="form-text text-muted">Please enter a valid
 										12-digit Aadhar number.</small>
