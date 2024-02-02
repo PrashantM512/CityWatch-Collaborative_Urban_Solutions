@@ -155,4 +155,11 @@
 .decor{
 	text-decoration: none;
 }
+.settingimg{
+	height: 50px;
+	margin-bottom: 7px;
+}
+.setbg{
+    background-color: #f7f7f7;
+}
 

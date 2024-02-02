@@ -17,10 +17,10 @@
 		<div class="row p-5">
 			<div class="col-md-4 decor">
 				<a href="" style="text-decoration: none;">
-					<div class="card h-100">
+					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">
-								<i class="fas fa-edit fa-3x"></i>
+								<img alt="" class="settingimg img img-fluid" src="img/profile.png">
 							</div>
 							<h4>Login & Security (Edit Profile)</h4>
 						</div>
@@ -29,10 +29,10 @@
 			</div>
 			<div class="col-md-4">
 				<a href="" style="text-decoration: none;">
-					<div class="card mt-10 h-100">
+					<div class="card mt-10 h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">
-								<i class="fas fa-book-open fa-3x"></i>
+								<img alt="" class="settingimg img img-fluid" src="img/payments.png">
 							</div>
 							<h4>Your Payments</h4>
 							<br>
@@ -42,10 +42,10 @@
 			</div>
 			<div class="col-md-4">
 				<a href="" style="text-decoration: none;">
-					<div class="card mt-10 h-100">
+					<div class="card mt-10 h-100 setbg">
 						<div class="card-body text-center text-dark text-dark">
 							<div class="text-primary">
-								<i class="fas fa-book-open fa-3x"></i>
+								<img alt="" class="settingimg img img-fluid" src="img/issue2.png">
 							</div>
 							<h4>Your Issues</h4>
 							<br>
@@ -60,10 +60,10 @@
 
 			<div class="col-md-6">
 				<a href="" style="text-decoration: none;">
-					<div class="card h-100">
+					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-danger">
-								<i class="fas fa-box-open fa-3x"></i>
+								<img alt="" class="settingimg img img-fluid" src="img/suggestions-img.png">
 							</div>
 							<h4>Your Suggestions</h4>
 							
@@ -73,10 +73,10 @@
 			</div>
 			<div class="col-md-6">
 				<a href="" style="text-decoration: none;">
-					<div class="card h-100">
+					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">
-								<i class="fas fa-user-circle fa-3x"></i>
+								<img alt="" class="settingimg img img-fluid" src="img/help.png">
 							</div>
 							<h4>Help Center</h4>
 							<p>24*7 Service</p>

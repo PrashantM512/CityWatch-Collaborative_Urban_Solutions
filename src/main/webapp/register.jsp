@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +10,17 @@
 <title>Register</title>
 </head>
 <style>
-.footer{
- margin-top: -54px;
+.footer {
+	margin-top: -54px;
 }
 </style>
 <body>
-<%@include file="components/navbar.jsp"%>
+	<%@include file="components/navbar.jsp"%>
 
-<div class="jumbotron primary-colour text-white banner-background"
+	<div class="jumbotron primary-colour text-white banner-background"
 		style="background-image: linear-gradient(45deg, black, transparent); padding-top: 2%;">
 		<main>
-			<div class="container" style="color: black;margin-bottom: 52px;">
+			<div class="container" style="color: black; margin-bottom: 100px;">
 				<div class="col-md-4 offset-md-4">
 					<div class="card" style="width: 120%;">
 						<div class="card-header h4  text-white primary-colour"
@@ -31,21 +31,22 @@
 							<form action="RegisterServlet" method="POST">
 								<div class="mb-3">
 									<label for="user_name class="form-label">Full Name</label> <input
-										name="user_name" type="text" class="form-control"
-										id="name" aria-describedby="">
+										name="user_name" type="text" class="form-control" id="name"
+										aria-describedby="">
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputEmail1" class="form-label">Email
-										address</label> <input name="email" type="email"
-										class="form-control" id="exampleInputEmail1"
-										aria-describedby="emailHelp">
+										address</label> <input name="email" type="email" class="form-control"
+										id="exampleInputEmail1" aria-describedby="emailHelp">
 								</div>
 								<div class="mb-3">
 									<label for="user_name class="form-label">Mobile</label> <input
 										name="mobile" type="number" class="form-control"
-										id="user_name" aria-describedby="">
+										id="user_name" aria-describedby="" maxlength="10"
+										oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+
 								</div>
-                                <div class="mb-3">
+								<div class="mb-3">
 									<label for="user_name class="form-label">Aadhar No</label> <input
 										name="aadhar" type="number" class="form-control"
 										id="user_name" aria-describedby="">
@@ -76,6 +77,6 @@
 		</main>
 	</div>
 
-<%@include file="components/footer.jsp"%>
+	<%@include file="components/footer.jsp"%>
 </body>
 </html>
