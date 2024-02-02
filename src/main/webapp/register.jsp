@@ -48,8 +48,14 @@
 								</div>
 								<div class="mb-3">
 									<label for="user_name class="form-label">Aadhar No</label> <input
-										name="aadhar" type="number" class="form-control"
-										id="user_name" aria-describedby="">
+										name="aadhar" type="text" class="form-control" name="aadhar"
+										id="aadhar_number" aria-describedby="aadharHelp"
+										maxlength="14" pattern="[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}"
+										title="Please enter a valid 12-digit Aadhar number"
+										placeholder="Enter Aadhar Card Number" required
+										oninput="formatAadhar(this);"> <small id="aadharHelp"
+										class="form-text text-muted">Please enter a valid
+										12-digit Aadhar number.</small>
 								</div>
 								<div class="mb-3">
 									<label for="gender" class="for-gender">Gender</label><br>
