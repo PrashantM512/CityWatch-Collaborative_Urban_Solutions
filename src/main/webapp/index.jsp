@@ -38,7 +38,7 @@
 						</p>
 						<a href=""
 							class="btn btn-outline-light btn-lg">Let's
-						Start</a> <a href=""
+						Start</a> <a href="login.jsp"
 							class="btn btn-outline-light btn-lg">Login</a>
 				</div>
 			</div>

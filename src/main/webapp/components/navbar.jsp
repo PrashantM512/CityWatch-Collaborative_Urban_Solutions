@@ -19,8 +19,8 @@
 		<div class="col-md-3">
 			<a href=""><img alt="Small Image" style="width: 25px; height: 25px;" class="img img-fluid notification" src="img/notification2.png"></a>
 				
-				<a href="" class="btn btn-success">Login</a>
-				<a href="" class="btn btn-primary">Register</a>
+				<a href="login.jsp" class="btn btn-success">Login</a>
+				<a href="register.jsp" class="btn btn-primary">Register</a>
 		</div>
 	</div>
 </div>
