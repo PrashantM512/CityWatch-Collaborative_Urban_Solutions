@@ -21,6 +21,10 @@
 	height: 47px;
     margin-left: -25px;
 }
+.pagetitle{
+	height: 68px;
+    margin-bottom: -38px;
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
@@ -147,5 +151,8 @@
   100% {
     background-positon-x: 0px;
   }
+}
+.decor{
+	text-decoration: none;
 }
 

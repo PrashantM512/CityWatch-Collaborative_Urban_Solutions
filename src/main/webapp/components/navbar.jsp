@@ -55,7 +55,7 @@
 
 			<a href="" class="btn btn-light my-2 my-sm-0 "
 				type="submit"><i class="fa-solid fa-user"></i> Admin</a>
-				<a href="" class="btn btn-light my-2 my-sm-0 ml-1"
+				<a href="settings.jsp" class="btn btn-light my-2 my-sm-0 ml-1"
 				type="submit" ><i class="fa-solid fa-gear"></i> Settings</a>
 			
 		</form>
