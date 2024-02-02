@@ -40,12 +40,14 @@
 							class="btn btn-outline-light btn-lg">Let's
 						Start</a> <a href=""
 							class="btn btn-outline-light btn-lg">Login</a>
-				
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
+	<div style="height: 100px"></div>
+	
+<%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>
 </html>
