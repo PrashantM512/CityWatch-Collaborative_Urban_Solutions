@@ -34,7 +34,72 @@
 			<%@include file="components/navbar.jsp"%>
 			<!-- Navbar End -->
 			
-	
+			<div class="container-fluid pt-4 px-4">
+			 <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Public Issues</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead style="background-image: linear-gradient(3deg, black, #3807fd)!important;color: white;height: 42px;">
+                                        <tr>
+                                            <th scope="col">Sr.No.</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">User Mobile</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Street Light</td>
+                                            <td>9035482483</td>
+                                            <td>Major</td>
+                                            <td>12/1/2024</td>
+                                            <td>10:12 PM</td>
+                                            <td>
+                                            <a href="issue_details.jsp" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
+                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Street Light</td>
+                                            <td>9035482483</td>
+                                            <td>Major</td>
+                                            <td>12/1/2024</td>
+                                            <td>10:12 PM</td>
+                                            <td>
+                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
+                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Street Light</td>
+                                            <td>9035482483</td>
+                                            <td>Major</td>
+                                            <td>12/1/2024</td>
+                                            <td>10:12 PM</td>
+                                            <td>
+                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
+                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	</div>
 			
 			<!-- Footer Start -->
 			<%@include file="components/footer.jsp"%>
