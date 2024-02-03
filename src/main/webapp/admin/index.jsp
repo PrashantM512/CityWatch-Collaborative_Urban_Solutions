@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Admin:Dashboard</title>
+<title>Admin: Dashboard</title>
 <%@include file="components/header_links.jsp"%>
 </head>
 <body>
@@ -33,8 +33,55 @@
 			<!-- Navbar Start -->
 			<%@include file="components/navbar.jsp"%>
 			<!-- Navbar End -->
-			
-			
+			<div class="container-fluid pt-4 px-4">
+				<div class="row g-4">
+					<div class="col-sm-6 col-xl-3">
+						<div
+							class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+							<i class="fa fa-exclamation-triangle fa-3x text-warning"></i>
+
+							<div class="ms-3">
+								<p class="mb-2">Total Issues</p>
+								<h6 class="mb-0">256</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xl-3">
+						<div
+							class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+							<i class="fa fa-heart fa-3x text-danger"></i>
+
+							<div class="ms-3">
+								<p class="mb-2">Total Donations</p>
+								<h6 class="mb-0">34</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xl-3">
+						<div
+							class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+							<i class="fa fa-building fa-3x text-dark"></i>
+
+							<div class="ms-3">
+								<p class="mb-2">Ongoing Projects</p>
+								<h6 class="mb-0">4</h6>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-xl-3">
+						<div
+							class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+							<i class="fa fa-credit-card fa-3x text-info"></i>
+
+							<div class="ms-3">
+								<p class="mb-2">Total Tax Payments</p>
+								<h6 class="mb-0">18</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Footer Start -->
 			<%@include file="components/footer.jsp"%>
 			<!-- Footer End -->

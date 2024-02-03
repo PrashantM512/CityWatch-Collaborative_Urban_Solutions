@@ -19,13 +19,13 @@
                 <div class="navbar-nav w-100">
                     <a href="index.jsp" class="nav-item nav-link ${currentPage eq 'dashboard' ? 'active' : ''}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="issues.jsp" class="nav-item nav-link ${currentPage eq 'issues' ? 'active' : ''}"><i class="fa fa-th me-2"></i>Issues</a>
-                    <a href="notifications.jsp" class="nav-item nav-link ${currentPage eq 'notifications' ? 'active' : ''} "><i class="fa fa-keyboard me-2"></i>Notifications</a>
-                    <a href="users.jsp" class="nav-item nav-link ${currentPage eq 'users' ? 'active' : ''} "><i class="fa fa-table me-2"></i>Users</a>
-                   <a href="donations.jsp" class="nav-item nav-link ${currentPage eq 'donations' ? 'active' : ''}"><i class="fa fa-th me-2"></i>Donations</a>
-                    <a href="tax_payments.jsp" class="nav-item nav-link ${currentPage eq 'tax_payments' ? 'active' : ''} "><i class="fa fa-keyboard me-2"></i>Tax Payments</a>
-                    <a href="suggestions.jsp" class="nav-item nav-link ${currentPage eq 'suggestions' ? 'active' : ''} "><i class="fa fa-table me-2"></i>Suggestions</a>
-                   <a href="developments.jsp" class="nav-item nav-link ${currentPage eq 'developments' ? 'active' : ''}"><i class="fa fa-th me-2"></i>Developments</a>
-                    <a href="rating_feedbacks.jsp" class="nav-item nav-link ${currentPage eq 'feedbacks' ? 'active' : ''} "><i class="fa fa-keyboard me-2"></i>Feedbacks</a>
+                    <a href="notifications.jsp" class="nav-item nav-link ${currentPage eq 'notifications' ? 'active' : ''} "><i class="fa fa-bell me-2"></i>Notifications</a>
+                    <a href="users.jsp" class="nav-item nav-link ${currentPage eq 'users' ? 'active' : ''} "><i class="fa fa-user me-2"></i>Users</a>
+                   <a href="donations.jsp" class="nav-item nav-link ${currentPage eq 'donations' ? 'active' : ''}"><i class="fa fa-credit-card me-2"></i>Donations</a>
+                    <a href="suggestions.jsp" class="nav-item nav-link ${currentPage eq 'suggestions' ? 'active' : ''} "><i class="fa fa-comment me-2"></i>Suggestions</a>
+                   <a href="developments.jsp" class="nav-item nav-link ${currentPage eq 'developments' ? 'active' : ''}"><i class="fa fa-wrench me-2"></i>Developments</a>
+                    <a href="tax_payments.jsp" class="nav-item nav-link ${currentPage eq 'tax_payments' ? 'active' : ''} "><i class="fa fa-credit-card me-2"></i>Tax Payments</a>
+                    <a href="rating_feedbacks.jsp" class="nav-item nav-link ${currentPage eq 'feedbacks' ? 'active' : ''} "><i class="fa fa-comment me-2"></i>Feedbacks</a>
                
                 </div>
             </nav>
