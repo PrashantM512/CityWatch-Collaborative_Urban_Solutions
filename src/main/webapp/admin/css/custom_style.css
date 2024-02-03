@@ -1,0 +1,15 @@
+.bg-secondary{
+	background-color: white!important;
+}	
+.text-primary{
+	color: #2113ff!important;
+}
+.form-control {
+    background-color: #e7e7e7;
+    }
+ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: #0c0c0c;
+}
+a {
+    color: #2113ff;
+}

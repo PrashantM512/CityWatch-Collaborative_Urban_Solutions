@@ -53,7 +53,7 @@
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 
-			<a href="" class="btn btn-light my-2 my-sm-0 "
+			<a href="admin/index.jsp" class="btn btn-light my-2 my-sm-0 "
 				type="submit"><i class="fa-solid fa-user"></i> Admin</a>
 				<a href="settings.jsp" class="btn btn-light my-2 my-sm-0 ml-1"
 				type="submit" ><i class="fa-solid fa-gear"></i> Settings</a>
