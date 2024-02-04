@@ -89,32 +89,17 @@
 									</div>
 								</form>
 							</div>
-							
-							
 							<div class="d-flex align-items-center">
-								<!-- <div>1</div>
-								<div class="w-100 ms-3">
-									<div
-										class="d-flex w-100 align-items-center justify-content-between">
-										<span>Short task goes here...</span>
-										<button class="btn btn-sm">
-											<i class="fa fa-times"></i>
-										</button>
-									</div>
-								</div> -->
+								
 							</div>
-							
-							
 						</div>
-						
-						
 					</div>
 				</div>
 			</div>
 			<div class="container-fluid pt-4 px-4 mb-4">
 			 <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">All Notifications :</h6>
+                            <h6 class="mb-4">Manage Notifications :</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead style="background-image: linear-gradient(3deg, black, #3807fd)!important;color: white;height: 42px;">

@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Suggestions</title>
+<title>Manage Developments</title>
 <%@include file="components/header_links.jsp"%>
 </head>
 <body>
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<%
-		String currentPage = "suggestions";
+		String currentPage = "developments";
 		request.setAttribute("currentPage", currentPage);
 		%>
 		<!-- Sidebar Start -->
@@ -33,11 +33,11 @@
 			<!-- Navbar Start -->
 			<%@include file="components/navbar.jsp"%>
 			<!-- Navbar End -->
-			
-	<div class="container-fluid pt-4 px-4 mb-4">
+
+			<div class="container-fluid pt-4 px-4 mb-4">
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
-						<h6 class="mb-4">Suggestions :</h6>
+						<h6 class="mb-4">All Users :</h6>
 						<div class="table-responsive">
 							<table class="table">
 								<thead
@@ -46,8 +46,12 @@
 										<th scope="col">Sr.No.</th>
 										<th scope="col">Title</th>
 										<th scope="col">Description</th>
-										<th scope="col">Date</th>
-										<th scope="col">Actions</th>
+										<th scope="col">Photo</th>
+										<th scope="col">Address</th>
+										<th scope="col">Start Date</th>
+										<th scope="col">End Date</th>
+										<th scope="col">Need Donation</th>
+										<th scope="col">Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -55,15 +59,15 @@
 										<th scope="row">1</th>
 										<td>Street Light</td>
 										<td>9035482483</td>
-										
+										<td>Major</td>
 										<td>12/1/2024</td>
-										
+										<td>Major</td>
+										<td>9035482483</td>
+										<td>Major</td>
 										<td>
 											<button type="button" class="btn btn-danger">Delete</button>
 										</td>
 									</tr>
-
-
 								</tbody>
 							</table>
 						</div>
@@ -72,12 +76,9 @@
 			</div>
 		</div>
 	</div>
-	
-			
-			<!-- Footer Start -->
-			<%@include file="components/footer.jsp"%>
-			<!-- Footer End -->
-		</div>
+
+
+	</div>
 	</div>
 	<%@include file="components/allscripts.jsp"%>
 </body>
