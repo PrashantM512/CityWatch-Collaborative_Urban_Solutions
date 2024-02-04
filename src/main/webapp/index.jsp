@@ -10,7 +10,6 @@
 </head>
 <body>
 	<%@include file="components/navbar.jsp"%>
-
 	<div class="container-fluid p-0 m-0">
 		<div class="jumbotron primary-colour text-white banner-background"
 			style="background-image: linear-gradient(45deg, black, transparent);">

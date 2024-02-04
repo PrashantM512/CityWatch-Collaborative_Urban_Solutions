@@ -60,7 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  margin-top: 10px!important;
   flex-wrap: wrap;
 }
 
@@ -79,6 +79,10 @@
 .social-icon__link:hover {
   transform: translateY(-10px);
   text-decoration: none;
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .menu__link {
@@ -171,5 +175,11 @@
 	font-size: x-large;
     color: #07079b;
     margin-top: 23px;
+}
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
 }
 
