@@ -151,11 +151,6 @@
                 </div>
             </div>
 	</div>
-
-
-			
-		</div>
-	</div>
 	<%@include file="components/allscripts.jsp"%>
 </body>
 </html>
