@@ -46,7 +46,7 @@
  /*background-image: linear-gradient(#3586ff, #1d275b,#030615);*/
  background-color: #1938cf;
   min-height: 100px;
-  padding: 20px 50px;
+  padding: 10px 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  
   flex-wrap: wrap;
 }
 
@@ -98,7 +98,6 @@
 
 .footer p {
   color: #fff;
-  margin: 15px 0 10px 0;
   font-size: 1rem;
   font-weight: 300;
 }

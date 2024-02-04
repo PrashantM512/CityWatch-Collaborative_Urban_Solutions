@@ -11,10 +11,54 @@
 <body>
 	<%@include file="components/navbar.jsp"%>
 
+	<div class="conatiner">
+		<p class="text-center pgeheading">Our Developments</p>
+
+		<div class="container-fluid px-4" style="text-align: -webkit-center;">
+			<div class="col-12">
+				<div class="rounded h-100">
+					<h6 class="mb-4"></h6>
+					<div class="table-responsive">
+						<table class="table"
+							style="border-style: solid; border-color: #e5e5e5; width: 80%;">
+							<thead style="height: 42px; background-color: #e5e5e5;">
+								<tr>
+									<th scope="col">Sr.No.</th>
+									<th scope="col">Title</th>
+									<th scope="col">Date</th>
+									<th scope="col">Address</th>
+									<th scope="col">Need Of Donation</th>
+									<th scope="col">Status</th>
+									<th scope="col">Action</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Road redevelopment</td>
+									<td>12/1/2024</td>
+									<td>Mordewadi road ,left side of ganesh aqua</td>
+									<td>yes</td>
+									<td>ongoing</td>
+									<td class="btn-primary btn" scope="row"
+										style="height: 40px; padding-top: 6px; margin-top: 3px;"><a
+										class="text-white" href="development_fullscreen.jsp"
+										style="text-decoration: none;">View Details</a></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
 	<div style="height: 100px"></div>
-	
-<%@include file="components/footer.jsp" %>
-<%@include file="components/all_js.jsp"%>
+
+	<%@include file="components/footer.jsp"%>
+	<%@include file="components/all_js.jsp"%>
 </body>
 </html>

@@ -60,6 +60,15 @@
                                             <td>12/1/2024</td>
                                             <td class="btn-success btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Solved</td>
                                          </tr>
+                                         <tr>
+                                            <th scope="row">1</th>
+                                            <td>Street Light</td>
+                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
+                                            <td>9027462837</td>
+                                            <td>Major</td>
+                                            <td>12/1/2024</td>
+                                            <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Rejected</td>
+                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -68,11 +77,7 @@
                 </div>
             </div>
 	</div>
-
 </div>
-
-	
-	
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>
