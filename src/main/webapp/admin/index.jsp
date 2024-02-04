@@ -82,29 +82,21 @@
 				</div>
 			</div>
 
-
-	<div class="container-fluid pt-4 px-4">
+<div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-lg-12 col-xl-12">
             <div class="bg-secondary text-center rounded p-4" style="height: 330px;">
-               <%--  <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
                     <h6 class="mb-0"></h6>
                     <a href=""></a>
                 </div>
-                <div class="responsive-image">
-                    <div class="container"><img src="img/welcome.png" class="img-fluid" style="max-width: 50%;margin-top: -32px;" alt="Responsive Image">
-                   </div>
-                 </div>
-                <canvas id="worldwide-sales"></canvas> --%>
-            </div> 
+               
+               <div></div>
+            </div>
         </div>
     </div>
 </div>
 
-
-			<!-- Footer Start -->
-			<%@include file="components/footer.jsp"%>
-			<!-- Footer End -->
 		</div>
 	</div>
 	<%@include file="components/allscripts.jsp"%>

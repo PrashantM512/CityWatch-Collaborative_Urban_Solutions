@@ -115,9 +115,6 @@
 				</div>
 			</div>
 
-			<!-- Footer Start -->
-			<%@include file="components/footer.jsp"%>
-			<!-- Footer End -->
 		</div>
 	</div>
 	<%@include file="components/allscripts.jsp"%>

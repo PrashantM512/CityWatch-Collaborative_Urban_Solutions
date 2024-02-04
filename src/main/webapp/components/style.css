@@ -43,7 +43,8 @@
 .footer {
   position: relative;
   width: 100%;
- background-image: linear-gradient(#3586ff, #1d275b,#030615);
+ /*background-image: linear-gradient(#3586ff, #1d275b,#030615);*/
+ background-color: #1938cf;
   min-height: 100px;
   padding: 20px 50px;
   display: flex;

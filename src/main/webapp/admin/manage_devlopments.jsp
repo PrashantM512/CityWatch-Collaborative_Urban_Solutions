@@ -65,6 +65,8 @@
 										<td>9035482483</td>
 										<td>Major</td>
 										<td>
+										   <button type="button" class="btn " style="background-color:#007bff;color:white">Update</button>
+                                           
 											<button type="button" class="btn btn-danger">Delete</button>
 										</td>
 									</tr>
@@ -78,8 +80,6 @@
 	</div>
 
 
-	</div>
-	</div>
 	<%@include file="components/allscripts.jsp"%>
 </body>
 </html>
