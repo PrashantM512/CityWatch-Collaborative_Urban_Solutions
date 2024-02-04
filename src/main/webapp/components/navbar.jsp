@@ -42,13 +42,15 @@
 			</a></li>
 			
 			<li class="nav-item active"><a class="nav-link"
-				href="">Issues</a></li>
+				href="issues.jsp">Issues</a></li>
 			<li class="nav-item active"><a class="nav-link"
-				href="">Developments</a></li>
+				href="developments.jsp">Developments</a></li>
 				<li class="nav-item active"><a class="nav-link"
-				href="">Pay Tax</a></li>
+				href="pay_tax.jsp">Pay Tax</a></li>
 			<li class="nav-item active"><a class="nav-link"
-				href="">Donate</a></li>
+				href="donate.jsp">Donate</a></li>
+				<li class="nav-item active"><a class="nav-link"
+				href="suggestions.jsp">Suggest Us</a></li>
 
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
