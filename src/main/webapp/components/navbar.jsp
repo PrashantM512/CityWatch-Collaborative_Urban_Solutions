@@ -52,6 +52,8 @@
 				href="donate.jsp">Donate</a></li>
 				<li class="nav-item active"><a class="nav-link"
 				href="suggestions.jsp">Suggest Us</a></li>
+				<li class="nav-item active"><a class="nav-link"
+				href="pins.jsp">Pins</a></li>
 
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
