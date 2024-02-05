@@ -20,6 +20,7 @@
                     <a href="index.jsp" class="nav-item nav-link ${currentPage eq 'dashboard' ? 'active' : ''}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="issues.jsp" class="nav-item nav-link ${currentPage eq 'issues' ? 'active' : ''}"><i class="fa fa-th me-2"></i>Issues</a>
                     <a href="notifications.jsp" class="nav-item nav-link ${currentPage eq 'notifications' ? 'active' : ''} "><i class="fa fa-bell me-2"></i>Notifications</a>
+                    <a href="add_pins.jsp" class="nav-item nav-link ${currentPage eq 'pins' ? 'active' : ''} "><i class="fa fa-user me-2"></i>Add Pins</a>
                     <a href="users.jsp" class="nav-item nav-link ${currentPage eq 'users' ? 'active' : ''} "><i class="fa fa-user me-2"></i>Users</a>
                    <a href="donations.jsp" class="nav-item nav-link ${currentPage eq 'donations' ? 'active' : ''}"><i class="fa fa-credit-card me-2"></i>Donations</a>
                     <a href="suggestions.jsp" class="nav-item nav-link ${currentPage eq 'suggestions' ? 'active' : ''} "><i class="fa fa-comment me-2"></i>Suggestions</a>
