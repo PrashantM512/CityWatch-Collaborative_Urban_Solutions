@@ -31,7 +31,7 @@
 
 	<div class="container">
 		<div class="page">
-			<div class="notification2 -active">
+			<div class="notification2 -active" style=" z-index: 0; ">
 				<div class="notification__content">
 					<h2 class="notification__title">This is a notification!</h2>
 					<p class="notification__message">There's a new move in your
@@ -43,7 +43,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="notification2 -active">
+			<div class="notification2 -active" style=" z-index: 0; ">
 				<div class="notification__content">
 					<h2 class="notification__title">This is a notification!</h2>
 					<p class="notification__message">There's a new move in your
@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="notification2 -active">
+			<div class="notification2 -active" style=" z-index: 0; ">
 				<div class="notification__content">
 					<h2 class="notification__title">This is a notification!</h2>
 					<p class="notification__message">There's a new move in your
