@@ -42,7 +42,7 @@ th, td {
 					<h6 class="mb-4"></h6>
 					<div class="d-flex align-items-start">
 						<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
-							style="background-color: #e5e5e5; padding: 6px 5px 7px 5px; border-radius: 6px;"
+							style="background-color: #e5e5e5; padding: 6px 5px 7px 5px; border-radius: 6px; width: 160px"
 							role="tablist" aria-orientation="vertical">
 							<button class="nav-link active" id="v-pills-home-tab"
 								data-bs-toggle="pill" data-bs-target="#v-pills-Hospitals"
@@ -64,14 +64,19 @@ th, td {
 								data-bs-toggle="pill" data-bs-target="#v-pills-Temples"
 								type="button" role="tab" aria-controls="v-pills-Temples"
 								aria-selected="false">Temples</button>
+							<button class="nav-link" id="v-pills-Petrol-tab"
+								data-bs-toggle="pill" data-bs-target="#v-pills-Petrol"
+								type="button" role="tab" aria-controls="v-pills-Petrol"
+								aria-selected="false">Petrol Pumps</button>
+							<button class="nav-link" id="v-pills-School-tab"
+								data-bs-toggle="pill" data-bs-target="#v-pills-School"
+								type="button" role="tab" aria-controls="v-pills-School"
+								aria-selected="false">Schools</button>
 						</div>
 						<div class="tab-content" id="v-pills-tabContent"
 							style="width: 100%;">
 							<div class="tab-pane fade show active" id="v-pills-Hospitals"
 								role="tabpanel" aria-labelledby="v-pills-Hospitals-tab">
-
-
-
 								<div class="container-fluid">
 									<div class="col-12">
 										<div class="rounded h-100">
@@ -95,10 +100,9 @@ th, td {
 															<td>Hospital</td>
 															<td>Near samadhan hotel, pune nashik highway,
 																Mordewadi</td>
-															<td >
-															<a class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;" href="map.jsp">View Map</a>
-															</td>
+															<td><a class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;"
+																href="map.jsp">View Map</a></td>
 														</tr>
 														<tr>
 															<th scope="row">1</th>
@@ -106,10 +110,9 @@ th, td {
 															<td>Hospital</td>
 															<td>Near samadhan hotel, pune nashik highway,
 																Mordewadi</td>
-															<td >
-															<a class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;" href="map.jsp">View Map</a>
-															</td>
+															<td><a class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;"
+																href="map.jsp">View Map</a></td>
 														</tr>
 													</tbody>
 												</table>
@@ -164,11 +167,11 @@ th, td {
 										</div>
 									</div>
 								</div>
-								</div>
+							</div>
 							<div class="tab-pane fade" id="v-pills-Restaurants"
 								role="tabpanel" aria-labelledby="v-pills-Restaurants-tab">
 
-                              <div class="container-fluid">
+								<div class="container-fluid">
 									<div class="col-12">
 										<div class="rounded h-100">
 											<h6 class=""></h6>
@@ -258,7 +261,7 @@ th, td {
 										</div>
 									</div>
 								</div>
-								</div>
+							</div>
 							<div class="tab-pane fade" id="v-pills-Temples" role="tabpanel"
 								aria-labelledby="v-pills-Temples-tab">
 								<div class="container-fluid">
@@ -304,46 +307,106 @@ th, td {
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<div class="tab-pane fade" id="v-pills-Petrol" role="tabpanel"
+								aria-labelledby="v-pills-Petrol-tab">
+								<div class="container-fluid">
+									<div class="col-12">
+										<div class="rounded h-100">
+											<h6 class=""></h6>
+											<div class="table-responsive">
+												<table class="table"
+													style="border-style: solid; border-color: #e5e5e5;">
+													<thead style="height: 42px; background-color: #e5e5e5;">
+														<tr>
+															<th scope="col">Sr.No.</th>
+															<th scope="col">Name</th>
+															<th scope="col">Category</th>
+															<th scope="col">Location</th>
+															<th scope="col">action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">1</th>
+															<td>Ram Hospital</td>
+															<td>Hospital</td>
+															<td>Near samadhan hotel, pune nashik highway,
+																Mordewadi</td>
+															<td class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
+																Map</td>
+														</tr>
+														<tr>
+															<th scope="row">1</th>
+															<td>Ram Hospital</td>
+															<td>Hospital</td>
+															<td>Near samadhan hotel, pune nashik highway,
+																Mordewadi</td>
+															<td class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
+																Map</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
 								</div>
+							</div>
+							<div class="tab-pane fade" id="v-pills-School" role="tabpanel"
+								aria-labelledby="v-pills-School-tab">
+								<div class="container-fluid">
+									<div class="col-12">
+										<div class="rounded h-100">
+											<h6 class=""></h6>
+											<div class="table-responsive">
+												<table class="table"
+													style="border-style: solid; border-color: #e5e5e5;">
+													<thead style="height: 42px; background-color: #e5e5e5;">
+														<tr>
+															<th scope="col">Sr.No.</th>
+															<th scope="col">Name</th>
+															<th scope="col">Category</th>
+															<th scope="col">Location</th>
+															<th scope="col">action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">1</th>
+															<td>Ram Hospital</td>
+															<td>Hospital</td>
+															<td>Near samadhan hotel, pune nashik highway,
+																Mordewadi</td>
+															<td class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
+																Map</td>
+														</tr>
+														<tr>
+															<th scope="row">1</th>
+															<td>Ram Hospital</td>
+															<td>Hospital</td>
+															<td>Near samadhan hotel, pune nashik highway,
+																Mordewadi</td>
+															<td class="btn" scope="row"
+																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
+																Map</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<!-- 
-<div class="container-fluid px-4">
-			 <div class="col-12">
-                        <div class="rounded h-100">
-                            <h6 class="mb-4"></h6>
-                            <div class="table-responsive">
-                                <table class="table" style="border-style: solid; border-color: #e5e5e5;">
-                                    <thead style="height: 42px;background-color: #e5e5e5;">
-                                        <tr>
-                                            <th scope="col">Sr.No.</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Location</th>
-                                            <th scope="col">action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Ram Hospital</td>
-                                            <td>Hospital</td>
-                                            <td>Near samadhan hotel, pune nashik highway, Mordewadi</td>
-                                            
-                                            <td class="btn-primary btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">View Map</td>
-                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
 	</div>
 	<%@include file="components/footer.jsp"%>
 	<%@include file="components/all_js.jsp"%>
