@@ -14,7 +14,7 @@
 		<h3 class="text-center mb-3"
 			style="margin-top: -25px; margin-bottom: -13px;">
 			<img alt="" src="img\UpdateProfile.png" class="pagetitle"><img
-				alt="" class="pagetitle-img" src="img/update.png">
+				alt="" class="pagetitle-img" src="img/update.png" style=" margin-left: -28px; ">
 		</h3>
 		<div class="container-fluid pt-4 px-4">
 			<div class="row justify-content-center">
