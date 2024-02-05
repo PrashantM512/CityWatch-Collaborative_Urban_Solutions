@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
+<div class="navgroup">
 <div class="container-fluid p-3 uppernav" style="background-color: white;">
 	<div class="row">
 		<div class="col-md-3 text-success">
@@ -89,4 +90,5 @@
 			<div class="modal-footer"></div>
 		</div>
 	</div>
+</div>
 </div>

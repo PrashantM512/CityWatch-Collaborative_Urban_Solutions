@@ -16,7 +16,7 @@
 <h3 class="text-center" style="margin-top: -25px;margin-bottom: -13px;"><img alt="" src="img/Settings.png" class="pagetitle"><img alt="" class="pagetitle-img" src="img/settings2.png"></h3>
 		<div class="row p-5" style="">
 			<div class="col-md-4 decor">
-				<a href="" style="text-decoration: none;">
+				<a href="update_profile.jsp" style="text-decoration: none;">
 					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">
@@ -28,7 +28,7 @@
 				</a>
 			</div>
 			<div class="col-md-4">
-				<a href="" style="text-decoration: none;">
+				<a href="user_payments.jsp" style="text-decoration: none;">
 					<div class="card mt-10 h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">
@@ -41,7 +41,7 @@
 				</a>
 			</div>
 			<div class="col-md-4">
-				<a href="" style="text-decoration: none;">
+				<a href="user_issues.jsp" style="text-decoration: none;">
 					<div class="card mt-10 h-100 setbg">
 						<div class="card-body text-center text-dark text-dark">
 							<div class="text-primary">
@@ -58,7 +58,7 @@
 
 		<div class="row p-5" style=" margin-top: -55px; ">
 			<div class="col-md-6">
-				<a href="" style="text-decoration: none;">
+				<a href="user_suggestions.jsp" style="text-decoration: none;">
 					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-danger">
@@ -71,7 +71,7 @@
 				</a>
 			</div>
 			<div class="col-md-6">
-				<a href="" style="text-decoration: none;">
+				<a href="help.jsp" style="text-decoration: none;">
 					<div class="card h-100 setbg">
 						<div class="card-body text-center text-dark">
 							<div class="text-primary">

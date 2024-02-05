@@ -46,6 +46,7 @@
 	
 	<div style="height: 100px"></div>
 	
+	
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>

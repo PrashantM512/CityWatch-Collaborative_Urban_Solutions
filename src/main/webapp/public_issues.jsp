@@ -8,6 +8,11 @@
 <%@include file="components/header_links.jsp"%>
 <title>Issues</title>
 </head>
+<style>
+th,td{
+   border-right: solid 2px #e5e5e5;
+}
+</style>
 <body>
 	<%@include file="components/navbar.jsp"%>
 
@@ -76,8 +81,7 @@
                     </div>
                 </div>
             </div>
-	</div>
-</div>
+	
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>

@@ -27,7 +27,7 @@
 }
 .pagetitle-img{
    height: 33px;
-    margin-left: -15px;
+    margin-left:-28px;
     margin-top: 44px;
   }
 
@@ -182,4 +182,5 @@ html, body {
     transition: opacity .5s ease-out, visibility 0s linear .5s;
     z-index: 99999;
 }
+
 

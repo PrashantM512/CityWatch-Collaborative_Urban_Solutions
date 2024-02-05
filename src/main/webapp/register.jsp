@@ -44,7 +44,6 @@
 										name="mobile" type="number" class="form-control"
 										id="user_name" aria-describedby="" maxlength="10"
 										oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-
 								</div>
 								<div class="mb-3">
 									<label for="user_name class="form-label">Aadhar No</label> <input
@@ -55,12 +54,25 @@
 										class="form-text text-muted">Please enter a valid
 										12-digit Aadhar number.</small>
 								</div>
+								<div class="form-row">
+								<div class="form-group col-md-5">
 								<div class="mb-3">
 									<label for="gender" class="for-gender">Gender</label><br>
 									<input type="radio" id="gender" name="gender" value="male">&nbsp;Male&nbsp;&nbsp;
 									<input type="radio" id="gender" name="gender" value="female">&nbsp;Female
-
+                                </div>
 								</div>
+								<div class="form-group col-md-7">
+								<label for="inputState">Zone</label> <select id="inputState"
+										class="form-control">
+										<option selected>Choose...</option>
+										<option>East</option>
+										<option>West</option>
+										<option>South</option>
+										<option>North</option>
+									</select>
+									</div>
+									</div>
 
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Password</label>
@@ -80,7 +92,7 @@
 			</div>
 		</main>
 	</div>
-
+<div style="height: 100px"></div>
 	<%@include file="components/footer.jsp"%>
 </body>
 </html>
