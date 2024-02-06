@@ -40,34 +40,34 @@
 								<a href=""></a>
 							</div>
 							<div class="">
-								<form>
+								<form action="../AddPinsServlet" method="post">
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputEmail4">Name</label> <input type="text"
-											class="form-control" id="inputEmail4" placeholder="">
+											class="form-control" name="name" id="inputEmail4" placeholder="" required>
 									</div>
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputPassword4">Location</label> <input
-											type="text" class="form-control" id="inputPassword4">
+											type="text" class="form-control" name="location" id="inputPassword4" required>
 									</div>
 									<div class="form-row" style="display: flex;">
 										<div class="form-group col-md-12"
 											style="margin-right: 18px;">
 											<label for="inputState">Category</label> <select id="inputState"
-												class="form-control">
-												<option selected>Choose...</option>
-												<option>Hospital</option>
-												<option>ATM</option>
-												<option>Restaurants</option>
-												<option>Temples</option>
-												<option>Petrol Pump</option>
-												<option>Cafe</option>
-												<option>School</option>
+												class="form-control" name="category" required>
+												<option value="" selected >Choose...</option>
+												<option value="Hospital">Hospital</option>
+												<option value="ATM">ATM</option>
+												<option value="Restaurant">Restaurants</option>
+												<option value="Temple">Temples</option>
+												<option value="Petrol_Pump">Petrol Pump</option>
+												<option value="Cafe">Cafe</option>
+												<option value="School">School</option>
 											</select>
 										</div>
 										</div>
 										<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputPassword4">Link</label> <input
-											type="text" class="form-control" id="inputPassword4">
+											type="text" class="form-control" name="link" id="inputPassword4" required>
 									</div>
 									<div class="form-group col-md-6">
 										<button type="submit" class="btn"

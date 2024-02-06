@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AddPinsServlet</servlet-name>
+  	<display-name>AddPinsServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.AddPinsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddPinsServlet</servlet-name>
+  	<url-pattern>/AddPinsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
