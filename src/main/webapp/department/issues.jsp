@@ -61,7 +61,7 @@
                                             <td>10:12 PM</td>
                                             <td>
                                             <a href="issue_details.jsp" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
-                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <button type="button" class="btn btn-success">Solved ?</button>
                                             <button type="button" class="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>
@@ -74,7 +74,7 @@
                                             <td>10:12 PM</td>
                                             <td>
                                             <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <button type="button" class="btn btn-success">Solved ?</button>
                                             <button type="button" class="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>
@@ -87,7 +87,7 @@
                                             <td>10:12 PM</td>
                                             <td>
                                             <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                            <button type="button" class="btn btn-success">Approve</button>
+                                           <button type="button" class="btn btn-success">Solved ?</button>
                                             <button type="button" class="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>
