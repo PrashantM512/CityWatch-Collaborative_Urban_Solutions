@@ -74,7 +74,7 @@
 										</div>
 										<div class="form-group col-md-6"
 											style="margin-right: 18px; width: 49%;">
-											<label for="inputState">From</label> <select id="inputState"
+											<label for="inputState">From</label> <select
 												class="form-control">
 												<option selected>Choose...</option>
 												<option>Nagarpanchayt</option>

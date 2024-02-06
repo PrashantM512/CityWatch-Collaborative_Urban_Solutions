@@ -1,11 +1,11 @@
 .bg-secondary{
-	background-color: white!important;
+	background-color: #191C24 !important;
 }	
 .text-primary{
 	color: #2113ff!important;
 }
 .form-control {
-    background-color: rgb(233 236 239);
+    background-color: rgb(0 0 0);
     }
  .form-control::after {
     background-color: rgb(233 236 239);
@@ -14,8 +14,20 @@
     background-color: rgb(233 236 239);
     }
  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: #0c0c0c;
+    color: #ffffff;
 }
 a {
-    color: #2113ff;
+        color: #c5c5c5;
+}
+.table{
+	    color: #e1e1e1;
+    vertical-align: top;
+    border-color: #fff;
+}
+.bg-ternary{
+	background-color: #232323;
+}
+.form-control:disabled, .form-control:read-only {
+    background-color: #000000;
+    opacity: 1;
 }

@@ -1,8 +1,11 @@
 :root {
-	--primary: #2113ff;
-	--secondary: #ffffff;
-	--light: #000000;
-	--dark: #d3d3d3;
+	    --primary: #2113ff;
+    --secondary: #414141;
+    --light: #000000;
+	
+}
+body{
+	    color: lightgrey;
 }
 
 .back-to-top {
@@ -70,7 +73,7 @@
 	width: 250px;
 	height: 100vh;
 	overflow-y: auto;
-	background: var(--secondary);
+	background:#191c24;;
 	transition: 0.5s;
 	z-index: 999;
 }
@@ -120,7 +123,7 @@
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
 	padding: 7px 20px;
-	color: var(--light);
+	color: #b5b5b5;
 	font-weight: 500;
 	border-left: 3px solid var(--secondary);
 	border-radius: 0 30px 30px 0;
@@ -130,7 +133,7 @@
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
 	color: #2113ff !important;
-	background: #d3d3d3 !important;
+	background: #000000 !important;
 	border-color: #2113ff !important;
 }
 
@@ -178,7 +181,7 @@
 .content .navbar .navbar-nav .nav-link {
 	margin-left: 25px;
 	padding: 12px 0;
-	color: var(--light);
+	color: #ffffff;
 	outline: none;
 }
 
