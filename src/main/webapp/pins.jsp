@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <%@include file="admin/components/header_links.jsp"%>
 <link href="admin/css/bootstrap.min.css" rel="stylesheet">
 <%@include file="components/header_links.jsp"%>
@@ -15,14 +14,22 @@
 th, td {
 	border-right: solid 2px #e5e5e5;
 }
-
 .nav-link {
 	color: #373737;
 }
-
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	color: #fff;
 	background-color: #0067d5;
+}
+.table thead th {
+    border-bottom:none;
+}
+.view-map-btn {
+	background-color: #0bc140;
+	color: white;
+	padding: 8px 26px;
+	border-radius: 4px;
+	margin-left: 23px;
 }
 </style>
 <body>
@@ -73,10 +80,11 @@ th, td {
 								type="button" role="tab" aria-controls="v-pills-School"
 								aria-selected="false">Schools</button>
 						</div>
-						<div class="tab-content" id="v-pills-tabContent"
+						 <div class="tab-content" id="v-pills-tabContent"
 							style="width: 100%;">
-							<div class="tab-pane fade show active" id="v-pills-Hospitals"
-								role="tabpanel" aria-labelledby="v-pills-Hospitals-tab">
+						
+							<div class="tab-pane fade show active" id="v-pills-Hospitals" role="tabpanel"
+								aria-labelledby="v-pills-Hospitals-tab">
 								<div class="container-fluid">
 									<div class="col-12">
 										<div class="rounded h-100">
@@ -100,9 +108,7 @@ th, td {
 															<td>Hospital</td>
 															<td>Near samadhan hotel, pune nashik highway,
 																Mordewadi</td>
-															<td><a class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;"
-																href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
 														<tr>
 															<th scope="row">1</th>
@@ -110,9 +116,7 @@ th, td {
 															<td>Hospital</td>
 															<td>Near samadhan hotel, pune nashik highway,
 																Mordewadi</td>
-															<td><a class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;"
-																href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
 													</tbody>
 												</table>
@@ -120,8 +124,8 @@ th, td {
 										</div>
 									</div>
 								</div>
-
 							</div>
+							
 							<div class="tab-pane fade" id="v-pills-ATM" role="tabpanel"
 								aria-labelledby="v-pills-ATM-tab">
 								<div class="container-fluid">
