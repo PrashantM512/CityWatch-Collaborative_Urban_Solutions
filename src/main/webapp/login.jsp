@@ -18,6 +18,7 @@
 <%@include file="components/navbar.jsp"%>
 	<div class="jumbotron primary-colour text-white banner-background"
 		style="background-image: linear-gradient(45deg, black, transparent);">
+		
 		<main class="align-items-center login-form login-bg"
 			style="height: 70vh">
 
@@ -58,16 +59,6 @@
 
 		</main>
 	</div>
-	<c:if test="${not empty registered }">
-			<script>
-			swal({
-				  title: "Congratulations!",
-				  text: "Your Your Account Successfully Created!",
-				  icon: "success",
-				});
-			</script>
-			<c:remove var="registered" scope="session"/>
-			</c:if>
 
 <%@include file="components/footer.jsp"%>
 </body>

@@ -38,7 +38,8 @@ public class RegisterServlet extends HttpServlet {
          String check=request.getParameter("check");
          
         if(check==null) {
-        	  session.setAttribute("check_error","Please Accept Terms & Conditions...");
+        	  session.setAttribute("alertMessage","Please Accept Terms & Conditions...");
+        	  session.setAttribute("alertClass","alert-warning");
         	  response.sendRedirect("register.jsp");
         }else {
         	
@@ -46,18 +47,21 @@ public class RegisterServlet extends HttpServlet {
         		UserDaoImpl dao=new UserDaoImpl(ConnectionProvider.getConnection());
             	boolean f=dao.checkUserWithEmail(email);
         		if(f) {
-        			session.setAttribute("exist","Email already exist... Please try another...");
-                	response.sendRedirect("register.jsp");
+        			session.setAttribute("alertMessage","Email already exist... Please try another...");
+        			 session.setAttribute("alertClass","alert-danger");
+        			response.sendRedirect("register.jsp");
         		}else {
         			User user=new User(name,email,mobile,gender,aadhar,zone,password);
                 	dao.registerUser(user);
-                	session.setAttribute("registered","Successfully Registerd...");
+                	session.setAttribute("alertMessage","Successfully Registerd...");
+                	 session.setAttribute("alertClass","alert-success");
                 	response.sendRedirect("login.jsp");
         		}
         		
 			} catch (Exception e) {
 				e.printStackTrace();
-				session.setAttribute("failed","Something Went Wrong...");
+				session.setAttribute("alertMessage","Something Went Wrong...");
+				 session.setAttribute("alertClass","alert-danger");
             	response.sendRedirect("register.jsp");
 			}
         	

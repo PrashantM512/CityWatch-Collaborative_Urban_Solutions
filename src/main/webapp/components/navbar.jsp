@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark primary-colour">
+<nav class="navbar navbar-expand-lg navbar-dark primary-colour" style="z-index:1">
 	<a class="navbar-brand" href="index.jsp"><i
 		class="fa-solid fa-house"></i></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -66,6 +66,7 @@
 		</form>
 	</div>
 </nav>
+<%@include file="alert.jsp" %>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
