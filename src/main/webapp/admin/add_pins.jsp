@@ -83,6 +83,28 @@
 				</div>
 			</div>
 			
+			<c:if test="${not empty success }">
+			<script>
+			swal({
+				  title: "Congratulations!",
+				  text: "Your Pin Succesfully Added!",
+				  icon: "success",
+				});
+			</script>
+			<c:remove var="success" scope="session"/>
+			</c:if>
+			<c:if test="${not empty error }">
+			<script>
+			swal({
+				  title: "Error!",
+				  text: "Something Went Wrong!",
+				  icon: "error",
+				});
+			</script>
+			<c:remove var="error" scope="session"/>
+			</c:if>
+			
+			
 			<!-- Footer Start -->
 			<%@include file="components/footer.jsp"%>
 			<!-- Footer End -->
