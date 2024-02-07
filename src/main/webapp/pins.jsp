@@ -2,6 +2,11 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.city.watch.dao.PinsDaoImpl" %>
+<%@ page import="com.city.watch.db.*" %>
+<%@ page import="com.city.watch.entity.Pins" %>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,22 +107,26 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+													
+													<%
+													PinsDaoImpl dao=new PinsDaoImpl(ConnectionProvider.getConnection());
+													List<Pins> list=new ArrayList<Pins>();
+													list=dao.getPinByCategory("Hospital");
+													int i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
 															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
-														</tr>
+															<%
+													i++;
+													}
+													%>
+														
 													</tbody>
 												</table>
 											</div>
@@ -145,26 +154,22 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+													<%
+													list=dao.getPinByCategory("ATM");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
+													<%
+													i++;
+													}
+													%>
 													</tbody>
 												</table>
 											</div>
@@ -192,26 +197,22 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+														<%
+													list=dao.getPinByCategory("Restaurant");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
+													<%
+													i++;
+													}
+													%>
 													</tbody>
 												</table>
 											</div>
@@ -239,26 +240,22 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+															<%
+													list=dao.getPinByCategory("Cafe");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
+													<%
+													i++;
+													}
+													%>
 													</tbody>
 												</table>
 											</div>
@@ -285,26 +282,22 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+															<%
+													list=dao.getPinByCategory("Temple");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
+													<%
+													i++;
+													}
+													%>
 													</tbody>
 												</table>
 											</div>
@@ -332,26 +325,22 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+															<%
+													list=dao.getPinByCategory("Petrol_Pump");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
+													<%
+													i++;
+													}
+													%>
 													</tbody>
 												</table>
 											</div>
@@ -378,26 +367,23 @@ th, td {
 														</tr>
 													</thead>
 													<tbody>
+															<%
+													list=dao.getPinByCategory("School");
+													i=1;
+													for(Pins pn:list){
+														%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
+															<th scope="row"><%=i %></th>
+															<td><%=pn.getName() %></td>
+															<td><%=pn.getCategory() %></td>
+															<td><%=pn.getLocation() %></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
 														</tr>
+													<%
+													i++;
+													}
+													%>
 														<tr>
-															<th scope="row">1</th>
-															<td>Ram Hospital</td>
-															<td>Hospital</td>
-															<td>Near samadhan hotel, pune nashik highway,
-																Mordewadi</td>
-															<td class="btn" scope="row"
-																style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%; background-color: #0bc140; color: white; margin-left: 12px;">View
-																Map</td>
-														</tr>
 													</tbody>
 												</table>
 											</div>
