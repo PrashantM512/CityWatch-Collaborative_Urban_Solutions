@@ -10,9 +10,9 @@
 			</h3>
 		</div>
 		<div class="col-md-6">
-			<form class="form-inline my-2 my-lg-0" action=""
+			<form class="form-inline my-2 my-lg-0" action="SearchPinServlet"
 				method="post">
-				<input class="form-control mr-sm-2" type="search" name="search"
+				<input class="form-control mr-sm-2" type="search" name="key"
 					placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>

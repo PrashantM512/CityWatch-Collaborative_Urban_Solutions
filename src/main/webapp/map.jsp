@@ -43,16 +43,17 @@
 	<%@include file="components/navbar.jsp"%>
 	<%
 	String location = request.getParameter("location");
+	String name=request.getParameter("name");
 	%>
 	<div class="container">
 
-		<p class="text-center pgeheading">FIND YOUR LOCATION HERE</p>
+		<p class="text-center pgeheading"><%=name%></p>
 		<div class="container-fluid pt-4 px-4" style="margin-top: -21px;">
 			<div class="row justify-content-center">
 				<div class="map-container"
 					style="box-shadow: rgba(0, 5, 0, 1.35) 0px 0px 25px;">
 					<iframe src="<%=location %>" frameborder="0" allowfullscreen="true"
-						aria-hidden="false" tabindex="0"></iframe>
+						aria-hidden="false" tabindex="0" style=" border: 0;"></iframe>
 				</div>
 
 			</div>

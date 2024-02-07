@@ -61,6 +61,31 @@ public class PinsDaoImpl implements PinsDao {
 		}
 		return list;
 	}
+
+	@Override
+	public List<Pins> getSearchedPins(String key) {
+		List<Pins> list=new ArrayList<Pins>();
+		Pins pin=null;
+		try {
+			String query = "SELECT * FROM pins WHERE name LIKE ? OR category LIKE ?";
+            PreparedStatement stmt=conn.prepareStatement(query);
+            stmt.setString(1, "%" + key + "%");
+            stmt.setString(2, "%" + key + "%");
+            ResultSet rs= stmt.executeQuery();
+            while(rs.next()) {
+            	pin=new Pins();
+            	pin.setId(rs.getInt(1));
+            	pin.setName(rs.getString(2));
+            	pin.setCategory(rs.getString(3));
+            	pin.setLocation(rs.getString(4));
+            	pin.setLink(rs.getString(5));
+            	list.add(pin);
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
     
 	
 	
