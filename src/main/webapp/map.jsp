@@ -41,7 +41,9 @@
 </style>
 <body>
 	<%@include file="components/navbar.jsp"%>
-
+	<%
+	String location = request.getParameter("location");
+	%>
 	<div class="container">
 
 		<p class="text-center pgeheading">FIND YOUR LOCATION HERE</p>
@@ -49,10 +51,8 @@
 			<div class="row justify-content-center">
 				<div class="map-container"
 					style="box-shadow: rgba(0, 5, 0, 1.35) 0px 0px 25px;">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.774044900283!2d73.94508878551532!3d19.002154670875296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd3085d417857b%3A0x59b22615c59d1297!2s19.002154670875296%2C%2073.94508878551532!5e0!3m2!1sen!2sin!4v1646478200187!5m2!1sen!2sin"
-						frameborder="0" allowfullscreen="true" aria-hidden="false"
-						tabindex="0"></iframe>
+					<iframe src="<%=location %>" frameborder="0" allowfullscreen="true"
+						aria-hidden="false" tabindex="0"></iframe>
 				</div>
 
 			</div>

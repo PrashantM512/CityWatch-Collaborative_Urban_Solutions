@@ -30,11 +30,17 @@ th, td {
     border-bottom:none;
 }
 .view-map-btn {
-	background-color: #0bc140;
-	color: white;
-	padding: 8px 26px;
-	border-radius: 4px;
-	margin-left: 23px;
+    background-color: #0bc140;
+    color: white;
+    padding: 8px 27px;
+    border-radius: 4px;
+    display: ruby;
+    margin-right: 11px;
+}
+.view-map-btn:hover {
+    text-decoration:none;
+    color:white;
+    background-color: #ebb207;
 }
 </style>
 <body>
@@ -120,7 +126,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>">View Map</a></td>
 														</tr>
 															<%
 													i++;
@@ -164,7 +170,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
@@ -207,7 +213,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
@@ -250,7 +256,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
@@ -292,7 +298,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
@@ -335,7 +341,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
@@ -377,7 +383,7 @@ th, td {
 															<td><%=pn.getName() %></td>
 															<td><%=pn.getCategory() %></td>
 															<td><%=pn.getLocation() %></td>
-															<td><a class="view-map-btn" scope="row" href="map.jsp">View Map</a></td>
+															<td><a class="view-map-btn" scope="row" href="map.jsp?location=<%=pn.getLink() %>"">View Map</a></td>
 														</tr>
 													<%
 													i++;
