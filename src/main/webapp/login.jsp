@@ -58,6 +58,16 @@
 
 		</main>
 	</div>
+	<c:if test="${not empty registered }">
+			<script>
+			swal({
+				  title: "Congratulations!",
+				  text: "Your Your Account Successfully Created!",
+				  icon: "success",
+				});
+			</script>
+			<c:remove var="registered" scope="session"/>
+			</c:if>
 
 <%@include file="components/footer.jsp"%>
 </body>

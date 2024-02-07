@@ -28,21 +28,21 @@
 							<i class="fa-solid fa-circle-user fa-sm" style="color: #f5f9ff;"></i>&nbsp;Register
 						</div>
 						<div class="card-body" style="line-height: 1 !important;">
-							<form action="" method="POST">
+							<form action="RegisterServlet" method="POST">
 								<div class="mb-3">
 									<label for="user_name class="form-label">Full Name</label> <input
-										name="user_name" type="text" class="form-control" id="name"
-										aria-describedby="">
+										name="name" type="text" class="form-control" id="name"
+										aria-describedby="" required>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputEmail1" class="form-label">Email
 										address</label> <input name="email" type="email" class="form-control"
-										id="exampleInputEmail1" aria-describedby="emailHelp">
+										id="exampleInputEmail1" aria-describedby="emailHelp" required>
 								</div>
 								<div class="mb-3">
 									<label for="user_name class="form-label">Mobile</label> <input
 										name="mobile" type="number" class="form-control"
-										id="user_name" aria-describedby="" maxlength="10"
+										id="user_name" required aria-describedby="" maxlength="10"
 										oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="mb-3">
@@ -58,26 +58,26 @@
 								<div class="form-group col-md-5">
 								<div class="mb-3">
 									<label for="gender" class="for-gender">Gender</label><br>
-									<input type="radio" id="gender" name="gender" value="male">&nbsp;Male&nbsp;&nbsp;
-									<input type="radio" id="gender" name="gender" value="female">&nbsp;Female
+									<input type="radio" id="gender" name="gender" value="male" required>&nbsp;Male&nbsp;&nbsp;
+									<input type="radio" id="gender" name="gender" value="female" required>&nbsp;Female
                                 </div>
 								</div>
 								<div class="form-group col-md-7">
 								<label for="inputState">Zone</label> <select id="inputState"
-										class="form-control">
-										<option selected>Choose...</option>
-										<option>East</option>
-										<option>West</option>
-										<option>South</option>
-										<option>North</option>
+										class="form-control" name="zone" required>
+										<option value="" selected>Choose...</option>
+										<option value="East">East</option>
+										<option value="West">West</option>
+										<option value="South">South</option>
+										<option value="North">North</option>
 									</select>
 									</div>
 									</div>
 
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Password</label>
-									<input name="user_password" type="password"
-										class="form-control" id="exampleInputPassword1">
+									<input name="password" type="password"
+										class="form-control" id="exampleInputPassword1" required>
 								</div>
 								<div class="mb-3 form-check">
 									<input name="check" type="checkbox" class="form-check-input"
@@ -92,7 +92,29 @@
 			</div>
 		</main>
 	</div>
+	
+			<c:if test="${not empty check_error }">
+			<script>
+			swal({
+				  title: "Error!",
+				  text: "Please Accept Terms & Conditions!",
+				  icon: "info",
+				});
+			</script>
+			<c:remove var="check_error" scope="session"/>
+			</c:if>
+			<c:if test="${not empty failed }">
+			<script>
+			swal({
+				  title: "Error!",
+				  text: "Something Went Wrong!",
+				  icon: "error",
+				});
+			</script>
+			<c:remove var="failed" scope="session"/>
+			</c:if>
 <div style="height: 100px"></div>
+
 	<%@include file="components/footer.jsp"%>
 </body>
 </html>

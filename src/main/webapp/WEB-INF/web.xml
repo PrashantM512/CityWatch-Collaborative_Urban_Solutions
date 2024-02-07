@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.SearchPinServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<display-name>RegisterServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.RegisterServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -23,5 +29,9 @@
   <servlet-mapping>
   	<servlet-name>SearchPinServlet</servlet-name>
   	<url-pattern>/SearchPinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
 </web-app>
