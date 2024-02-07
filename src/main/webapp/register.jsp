@@ -113,6 +113,16 @@
 			</script>
 			<c:remove var="failed" scope="session"/>
 			</c:if>
+			<c:if test="${not empty exist }">
+			<script>
+			swal({
+				  title: "Error!",
+				  text:'${exist}',
+				  icon: "error",
+				});
+			</script>
+			<c:remove var="exist" scope="session"/>
+			</c:if>
 <div style="height: 100px"></div>
 
 	<%@include file="components/footer.jsp"%>

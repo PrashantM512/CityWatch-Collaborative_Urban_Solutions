@@ -2,6 +2,7 @@ package com.city.watch.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.city.watch.entity.User;
 
@@ -36,6 +37,22 @@ public class UserDaoImpl implements UserDao{
 		return f;
 	}
 
-	
+	@Override
+	public boolean checkUserWithEmail(String email) {
+		boolean f=false;
+		try {
+			String query="SELECT * FROM users WHERE email=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,email);
+			ResultSet rs=stmt.executeQuery();
+			if (rs.next()) {
+	            f = true;
+	        }
+			
+		} catch (Exception e) {
+		  e.printStackTrace();
+		}
+		return f;
+	}
 
 }

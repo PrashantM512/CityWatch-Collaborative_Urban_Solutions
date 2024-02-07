@@ -36,7 +36,6 @@ public class RegisterServlet extends HttpServlet {
          String zone=request.getParameter("zone");
          String password=request.getParameter("password");
          String check=request.getParameter("check");
-         System.out.println(check);
          
         if(check==null) {
         	  session.setAttribute("check_error","Please Accept Terms & Conditions...");
@@ -45,10 +44,17 @@ public class RegisterServlet extends HttpServlet {
         	
         	try {
         		UserDaoImpl dao=new UserDaoImpl(ConnectionProvider.getConnection());
-            	User user=new User(name,email,mobile,gender,aadhar,zone,password);
-            	dao.registerUser(user);
-            	session.setAttribute("registered","Successfully Registerd...");
-            	response.sendRedirect("login.jsp");
+            	boolean f=dao.checkUserWithEmail(email);
+        		if(f) {
+        			session.setAttribute("exist","Email already exist... Please try another...");
+                	response.sendRedirect("register.jsp");
+        		}else {
+        			User user=new User(name,email,mobile,gender,aadhar,zone,password);
+                	dao.registerUser(user);
+                	session.setAttribute("registered","Successfully Registerd...");
+                	response.sendRedirect("login.jsp");
+        		}
+        		
 			} catch (Exception e) {
 				e.printStackTrace();
 				session.setAttribute("failed","Something Went Wrong...");
