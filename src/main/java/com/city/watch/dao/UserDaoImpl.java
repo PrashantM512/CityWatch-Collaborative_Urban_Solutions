@@ -231,5 +231,22 @@ public class UserDaoImpl implements UserDao{
 		return list;
 	}
 
+	@Override
+	public boolean updateUserByEmail(String Email, String usertype) {
+		boolean f=false;
+		try {
+			String query="UPDATE users SET usertype=? WHERE email=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1, usertype);
+			stmt.setString(2, Email);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
 
 }

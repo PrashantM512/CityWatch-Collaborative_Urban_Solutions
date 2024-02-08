@@ -14,4 +14,5 @@ public interface UserDao {
 	public List<User> getAllUsers();
 	public boolean deleteUserById(int uid);
 	public List<User> getAllAdmins();
+	public boolean updateUserByEmail(String Email,String usertype);
 }

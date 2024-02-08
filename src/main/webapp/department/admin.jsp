@@ -47,24 +47,25 @@
 					<div class="col-12">
 						<!-- Third card -->
 						<div class="h-100 bg-secondary rounded p-4">
+						<%@include file="components/alert.jsp" %>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Manage Admins :</h6>
 								<a href=""></a>
 							</div>
 							<div class="">
-								<form>
+								<form action="../ManageAdminsServlet" method="post">
 									<div class="form-group col-md-12">
 										<label for="inputEmail4">User Email ID</label> <input
 											type="email" class="form-control" id="inputEmail4"
-											placeholder="">
+											placeholder="" name="email">
 									</div>
 									<div class="form-group col-md-12">
 										<label for="inputState">Action</label> <select id="inputState"
-											class="form-control">
+											class="form-control" name="action">
 											<option selected>Choose...</option>
-											<option>Make Admin</option>
-											<option>Remove From Admin</option>
+											<option value="Admin">Make Admin</option>
+											<option value="Normal">Remove From Admin</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
