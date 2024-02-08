@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="com.city.watch.entity.User"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,7 @@
 		String currentPage = "dashboard";
 		request.setAttribute("currentPage", currentPage);
 		%>
-		<!-- Sidebar Start -->
 		<%@include file="components/sidebar.jsp"%>
-		<!-- Sidebar End -->
 		<%
 		request.removeAttribute("currentPage");
 		%>
@@ -82,20 +81,22 @@
 				</div>
 			</div>
 
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-lg-12 col-xl-12">
-            <div class="bg-secondary text-center rounded p-4" style="height: 330px;">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0"></h6>
-                    <a href=""></a>
-                </div>
-               
-               <div></div>
-            </div>
-        </div>
-    </div>
-</div>
+			<div class="container-fluid pt-4 px-4">
+				<div class="row g-4">
+					<div class="col-lg-12 col-xl-12">
+						<div class="bg-secondary text-center rounded p-4"
+							style="height: 330px;">
+							<div
+								class="d-flex align-items-center justify-content-between mb-4">
+								<h6 class="mb-0"></h6>
+								<a href=""></a>
+							</div>
+
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</div>
