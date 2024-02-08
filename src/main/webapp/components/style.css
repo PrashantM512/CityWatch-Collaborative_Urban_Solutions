@@ -191,3 +191,6 @@ z-index: 1;
 body{
 	padding-top: 125px;
 }
+.modal-backdrop {
+	z-index:0!important;
+	}

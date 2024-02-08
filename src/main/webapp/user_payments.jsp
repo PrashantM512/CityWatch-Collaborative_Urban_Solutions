@@ -9,6 +9,7 @@
 <title></title>
 </head>
 <body>
+     <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
 
 	<div style="height: 100px"></div>

@@ -19,6 +19,7 @@
 }
 </style>
 <body>
+     <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
 
 	<div class="container" style="margin-bottom: 16px;">

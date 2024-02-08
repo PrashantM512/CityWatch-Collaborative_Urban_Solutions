@@ -20,8 +20,18 @@
 		<div class="col-md-3">
 			<a href="notifications.jsp"><img alt="Small Image" style="width: 25px; height: 25px;" class="img img-fluid notification" src="img/notification2.png"></a>
 				
+				<c:if test="${not empty user }">
+				<a class="btn btn-primary text-white"><i class="fas fa-user"></i>
+					${user.name}</a>
+				<a href="LogoutServlet" class="btn btn-danger" data-toggle="modal"
+					data-target="#exampleModal"><i class="fas fa-sign-out-alt"></i>
+					Logout</a>
+			</c:if>
+
+			<c:if test="${empty user }">
 				<a href="login.jsp" class="btn btn-success">Login</a>
 				<a href="register.jsp" class="btn btn-primary">Register</a>
+			</c:if>
 		</div>
 	</div>
 </div>
@@ -85,7 +95,7 @@
 				<div class="text-center pt-2">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<a href="" class="text-white">
+					<a href="LogoutServlet" class="text-white">
 						<button type="button" class="btn btn-primary">Logout</button>
 					</a>
 				</div>

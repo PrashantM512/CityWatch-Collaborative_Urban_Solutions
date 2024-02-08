@@ -9,10 +9,9 @@
 <title>Donate</title>
 </head>
 <body>
+     <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
-
-
-           
+         
 <p class="text-center pgeheading">DONATE US</p>
 
 <div class="container">

@@ -9,6 +9,7 @@
 <title>Suggest Us</title>
 </head>
 <body>
+    <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
    <div class="conatiner">
 <p class="text-center pgeheading">SUGGEST US YOUR IDEAS FOR BETTER TOMMAROW</p>
