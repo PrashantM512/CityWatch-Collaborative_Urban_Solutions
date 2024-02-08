@@ -182,5 +182,21 @@ public class UserDaoImpl implements UserDao{
 		return list;
 	}
 
+	@Override
+	public boolean deleteUserById(int uid) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM users WHERE uid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, uid);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
+
 
 }
