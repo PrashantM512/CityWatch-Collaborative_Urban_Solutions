@@ -1,3 +1,5 @@
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
    <%@include file="check_session.jsp" %>
    <%@include file="check_usertype.jsp" %>
    <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
@@ -22,7 +24,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/userimg.jpg" alt="" style="width: 40px; height: 42px;">
-                            <span class="d-none d-lg-inline-flex">Ram Suryavanshi</span>
+                          <c:if test="${not empty us }">
+                            <span class="d-none d-lg-inline-flex"><%=us.getName() %></span>
+                          </c:if>
                         </a>
                        
                     </div>

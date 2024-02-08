@@ -1,4 +1,10 @@
- <div class="sidebar pe-4 pb-3">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
+ <%@page import="com.city.watch.entity.User"%>
+ 	<%
+ 	User usr=(User)session.getAttribute("user");
+	%>
+<div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.jsp" class="navbar-brand mx-4 mb-3">
                   <h3 class="title-font">
@@ -12,7 +18,9 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Ram Suryawanshi</h6>
+                        <c:if test="${not empty usr }">
+                        <h6 class="mb-0"><%=usr.getName() %></h6>
+                        </c:if>
                         <span>Admin</span>
                     </div>
                 </div>

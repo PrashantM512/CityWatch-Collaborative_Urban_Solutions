@@ -54,7 +54,7 @@
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>
 									<p class="text-center mt-2 mb-0">
-										Normal user or Admin? <a href="department/signin.jsp">&nbsp;
+										Governmental Department? <a href="department/index.jsp">&nbsp;
 											Click Here</a>
 									</p>
 								</form>
