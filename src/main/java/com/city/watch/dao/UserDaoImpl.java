@@ -198,5 +198,38 @@ public class UserDaoImpl implements UserDao{
 		return f;
 	}
 
+	@Override
+	public List<User> getAllAdmins() {
+		List<User> list=new ArrayList<User>();
+		User user=null;
+		try {
+			String query="SELECT * FROM users WHERE usertype=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,"Admin");
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				user=new User();
+				user.setUid(rs.getInt(1));
+				user.setName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setMobile(rs.getString(4));
+				user.setGender(rs.getString(5));
+				user.setAddress(rs.getString(6));
+				user.setAadhar(rs.getString(7));
+				user.setZone(rs.getString(8));
+				user.setPassword(rs.getString(9));
+				user.setUsertype(rs.getString(10));
+				user.setHouse_id(rs.getString(11));
+				user.setWard_no(rs.getString(12));
+				user.setProperty_id(rs.getString(13));
+				list.add(user);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 }

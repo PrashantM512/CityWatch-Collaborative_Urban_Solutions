@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.UserDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -91,12 +95,23 @@
 									</tr>
 								</thead>
 								<tbody>
+								<%
+								UserDaoImpl dao=new UserDaoImpl(ConnectionProvider.getConnection());
+								List<User> list=dao.getAllAdmins();
+								int i=1;
+								for(User u:list){
+									%>
 									<tr>
-										<th scope="row">1</th>
-										<td>Ram Suryawanshi</td>
-										<td>ram@gmail.com</td>
-										<td>9035482483</td>
+										<th scope="row"><%=i %></th>
+										<td><%=u.getName() %></td>
+										<td><%=u.getEmail() %></td>
+										<td><%=u.getMobile() %></td>
 									</tr>
+									<%
+							    i++;
+								   }
+								%>
+									
 								</tbody>
 							</table>
 						</div>
