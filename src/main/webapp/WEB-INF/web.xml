@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.DepartmentLogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateUserServlet</servlet-name>
+  	<display-name>UpdateUserServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.UpdateUserServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>DepartmentLogoutServlet</servlet-name>
   	<url-pattern>/DepartmentLogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserServlet</servlet-name>
+  	<url-pattern>/UpdateUserServlet</url-pattern>
   </servlet-mapping>
 </web-app>

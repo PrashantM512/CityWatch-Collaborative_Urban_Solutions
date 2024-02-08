@@ -23,7 +23,7 @@
 				<c:if test="${not empty user }">
 				<a class="btn btn-primary text-white"><i class="fas fa-user"></i>
 					${user.name}</a>
-				<a href="LogoutServlet" class="btn btn-danger" data-toggle="modal"
+				<a href="LogoutServlet" class="btn btn-success" data-toggle="modal"
 					data-target="#exampleModal"><i class="fas fa-sign-out-alt"></i>
 					Logout</a>
 			</c:if>
@@ -67,12 +67,12 @@
 
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
-
+            <c:if test="${not empty user }">
 			<a href="admin/index.jsp" class="btn btn-light my-2 my-sm-0 "
 				type="submit"><i class="fa-solid fa-user"></i> Admin</a>
 				<a href="settings.jsp" class="btn btn-light my-2 my-sm-0 ml-1"
 				type="submit" ><i class="fa-solid fa-gear"></i> Settings</a>
-			
+			</c:if>
 		</form>
 	</div>
 </nav>

@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.UserDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -51,18 +54,28 @@
 									</tr>
 								</thead>
 								<tbody>
+									<%
+									UserDaoImpl dao=new UserDaoImpl(ConnectionProvider.getConnection());
+									List<User> list=dao.getAllUsers();
+									int i=1;
+									for(User usrList:list){
+										%>
 									<tr>
-										<th scope="row">1</th>
-										<td>Street Light</td>
-										<td>9035482483</td>
-										<td>Major</td>
-										<td>12/1/2024</td>
-										<td>Major</td>
+										<th scope="row"><%=i %></th>
+										<td><%=usrList.getName() %></td>
+										<td><%=usrList.getEmail() %></td>
+										<td><%=usrList.getMobile() %></td>
+										<td><%=usrList.getZone() %></td>
+										<td><%=usrList.getAadhar() %></td>
 										<td>
 											<button type="button" class="btn btn-danger">Delete
 												User</button>
 										</td>
 									</tr>
+									<%
+									i++;
+									}
+									%>
 
 
 								</tbody>

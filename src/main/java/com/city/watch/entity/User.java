@@ -51,6 +51,20 @@ public class User {
 		this.ward_no = ward_no;
 		this.property_id = property_id;
 	}
+	public User(String name, String email, String mobile, String gender, String address, String aadhar, String zone,
+			  String house_id, String ward_no, String property_id) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.mobile = mobile;
+		this.gender = gender;
+		this.address = address;
+		this.aadhar = aadhar;
+		this.zone = zone;
+		this.house_id = house_id;
+		this.ward_no = ward_no;
+		this.property_id = property_id;
+	}
 	public User(String name, String email, String mobile, String gender, String aadhar, String zone, String password) {
 		super();
 		this.name = name;

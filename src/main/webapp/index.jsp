@@ -10,7 +10,6 @@
 <title>Home</title>
 </head>
 <body>
-    <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
 	<div class="container-fluid p-0 m-0">
 		<div class="jumbotron primary-colour text-white banner-background"
@@ -39,8 +38,10 @@
 						</p>
 						<a href=""
 							class="btn btn-outline-light btn-lg">Let's
-						Start</a> <a href="login.jsp"
-							class="btn btn-outline-light btn-lg">Login</a>
+						Start</a> 
+						 <c:if test="${empty user }">
+						<a href="login.jsp" class="btn btn-outline-light btn-lg">Login</a>
+						</c:if>
 				</div>
 			</div>
 		</div>

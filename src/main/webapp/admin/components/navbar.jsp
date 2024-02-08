@@ -24,11 +24,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/userimg.jpg" alt="" style="width: 40px; height: 42px;">
-                          <c:if test="${not empty us }">
-                            <span class="d-none d-lg-inline-flex"><%=us.getName() %></span>
-                          </c:if>
+                         
+                            <span class="d-none d-lg-inline-flex"><b><%=us.getName() %></b></span>
                         </a>
-                       
                     </div>
                 </div>
             </nav>
