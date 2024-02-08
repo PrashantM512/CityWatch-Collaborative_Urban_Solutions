@@ -28,21 +28,21 @@
 							<i class="fa-solid fa-circle-user fa-sm" style="color: #f5f9ff;"></i>&nbsp;Register
 						</div>
 						<div class="card-body" style="line-height: 1 !important;">
-							<form action="RegisterServlet" method="POST">
+							<form id="forms" action="RegisterServlet" id="myForm" method="POST">
 								<div class="mb-3">
 									<label for="user_name class="form-label">Full Name</label> <input
-										name="name" type="text" class="form-control" id="name"
+										name="name" type="text" class="form-control" id="registerName"
 										aria-describedby="" required>
 								</div>
 								<div class="mb-3">
 									<label for="exampleInputEmail1" class="form-label">Email
 										address</label> <input name="email" type="email" class="form-control"
-										id="exampleInputEmail1" aria-describedby="emailHelp" required>
+										id="registerEmail" aria-describedby="emailHelp" required>
 								</div>
 								<div class="mb-3">
 									<label for="user_name class="form-label">Mobile</label> <input
 										name="mobile" type="number" class="form-control"
-										id="user_name" required aria-describedby="" maxlength="10"
+										id="registerMobile" required aria-describedby="" maxlength="10"
 										oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 								</div>
 								<div class="mb-3">
@@ -50,7 +50,7 @@
 										name="aadhar" type="text" class="form-control" name="aadhar"
 										aria-describedby="aadharHelp" maxlength="14"
 										pattern="[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}" required
-										oninput="formatAadhar(this);"> <small id="aadharHelp"
+										oninput="formatAadhar(this);"> <small id="registerAadhar"
 										class="form-text text-muted">Please enter a valid
 										12-digit Aadhar number.</small>
 								</div>
@@ -60,11 +60,11 @@
 											<label for="gender" class="for-gender">Gender</label><br>
 											<input type="radio" id="gender" name="gender" value="male"
 												required>&nbsp;Male&nbsp;&nbsp; <input type="radio"
-												id="gender" name="gender" value="female" required>&nbsp;Female
+												id="registerGender" name="gender" value="female" required>&nbsp;Female
 										</div>
 									</div>
 									<div class="form-group col-md-7">
-										<label for="inputState">Zone</label> <select id="inputState"
+										<label for="inputState">Zone</label> <select id="registerZone"
 											class="form-control" name="zone" required>
 											<option value="" selected>Choose...</option>
 											<option value="East">East</option>
@@ -78,7 +78,7 @@
 								<div class="mb-3">
 									<label for="exampleInputPassword1" class="form-label">Password</label>
 									<input name="password" type="password" class="form-control"
-										id="exampleInputPassword1" required>
+										id="registerPassword" required>
 								</div>
 								<div class="mb-3 form-check">
 									<input name="check" type="checkbox" class="form-check-input"
@@ -93,10 +93,9 @@
 			</div>
 		</main>
 	</div>
-
-
 	<div style="height: 100px"></div>
 
 	<%@include file="components/footer.jsp"%>
+	<%@include file="components/all_js.jsp"%>
 </body>
 </html>

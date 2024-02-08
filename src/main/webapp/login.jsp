@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,15 @@
 <title>Login</title>
 </head>
 <style>
-.footer{
- margin-top: -95px;
+.footer {
+	margin-top: -95px;
 }
 </style>
 <body>
-<%@include file="components/navbar.jsp"%>
+	<%@include file="components/navbar.jsp"%>
 	<div class="jumbotron primary-colour text-white banner-background"
 		style="background-image: linear-gradient(45deg, black, transparent);">
-		
+
 		<main class="align-items-center login-form login-bg"
 			style="height: 70vh">
 
@@ -26,12 +26,16 @@
 				<div class="row">
 					<div class="col-md-4 offset-md-4">
 						<div class="card">
-							<div class="card-header h4  text-white primary-colour" style="background-image: linear-gradient(45deg, black, transparent)!important;">
-								<p><i class="fa-solid fa-right-to-bracket fa-sm" style="color: #ffffff;"></i>&nbsp; Login</p>
+							<div class="card-header h4  text-white primary-colour"
+								style="background-image: linear-gradient(45deg, black, transparent) !important;">
+								<p>
+									<i class="fa-solid fa-right-to-bracket fa-sm"
+										style="color: #ffffff;"></i>&nbsp; Login
+								</p>
 
 							</div>
 							<div class="card-body">
-								<form action="LoginServlet" method="post">
+								<form id="myForm" action="LoginServlet" method="post">
 									<div class="mb-3">
 										<label for="exampleInputEmail1" class="form-label">Email
 											address</label> <input name="email" required type="email"
@@ -49,7 +53,10 @@
 											for="exampleCheck1">I am not Robot</label>
 									</div>
 									<button type="submit" class="btn btn-primary">Submit</button>
-									 <p class="text-center mt-2 mb-0">Normal user or Admin? <a href="department/signin.jsp">&nbsp; Click Here</a></p>
+									<p class="text-center mt-2 mb-0">
+										Normal user or Admin? <a href="department/signin.jsp">&nbsp;
+											Click Here</a>
+									</p>
 								</form>
 							</div>
 						</div>
@@ -59,7 +66,8 @@
 
 		</main>
 	</div>
-
-<%@include file="components/footer.jsp"%>
+	
+	<%@include file="components/footer.jsp"%>
+	<%@include file="components/all_js.jsp"%>
 </body>
 </html>

@@ -55,6 +55,7 @@ public class RegisterServlet extends HttpServlet {
                 	dao.registerUser(user);
                 	session.setAttribute("alertMessage","Successfully Registerd...");
                 	 session.setAttribute("alertClass","alert-success");
+                	 session.setAttribute("registerSuccess","true");
                 	response.sendRedirect("login.jsp");
         		}
         		
