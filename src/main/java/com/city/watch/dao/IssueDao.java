@@ -10,5 +10,6 @@ public interface IssueDao {
 	public boolean addIssue(Issue issue);
 	public List<Map<String, Object>> getPublicIssues();
 	public List<Issue> getIssuesByUserId(int userId);
+	public boolean deleteIssueByIdandUserId(int id, int userId);
 	
 }

@@ -104,4 +104,21 @@ public class IssueDaoImpl implements IssueDao{
 		
 		return list;
 	}
+
+	@Override
+	public boolean deleteIssueByIdandUserId(int id, int userId) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM issues WHERE id=? AND userId=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.setInt(2, userId);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+		 e.printStackTrace();
+		}
+		return f;
+	}
 }

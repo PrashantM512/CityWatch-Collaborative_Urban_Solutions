@@ -88,6 +88,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.SubmitIssueServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteIssueServlet</servlet-name>
+  	<display-name>DeleteIssueServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.DeleteIssueServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -143,5 +149,9 @@
   <servlet-mapping>
   	<servlet-name>SubmitIssueServlet</servlet-name>
   	<url-pattern>/SubmitIssueServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteIssueServlet</servlet-name>
+  	<url-pattern>/DeleteIssueServlet</url-pattern>
   </servlet-mapping>
 </web-app>

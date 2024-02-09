@@ -65,33 +65,7 @@
                                             <button type="button" class="btn btn-danger">Delete</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
-                                            <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                            <button type="button" class="btn btn-success">Approve</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
-                                            <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                            <button type="button" class="btn btn-success">Approve</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                        
+                                       
                                     </tbody>
                                 </table>
                             </div>
