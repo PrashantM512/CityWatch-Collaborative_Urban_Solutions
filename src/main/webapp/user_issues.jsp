@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Issue"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -39,44 +43,33 @@ th,td{
                                             <th scope="col">Date</th>
                                             <th scope="col">Progress</th>
                                             <th scope="col">Action</th>
-                                           
                                         </tr>
                                     </thead>
                                     <tbody>
+                                       <%
+                                       IssueDaoImpl dao=new IssueDaoImpl(ConnectionProvider.getConnection());
+                                       int userId=user.getUid();
+                                       int i=1;
+                                       List<Issue> list=dao.getIssuesByUserId(userId);
+                                       for(Issue is:list){
+                                    	   %>
+                                    
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td><img alt="" src="img/streetlight.jpg" style="height:70px;width:80px;"></td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                             <td>In process</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=is.getTitle() %></td>
+                                            <td><img alt="" src="issues_img/<%=is.getPhoto() %>" style="height:70px;width:80px;"></td>
+                                            <td><%=is.getDescription() %></td>
+                                            <td><%=is.getType() %></td>
+                                            <td><%=is.getDate() %></td>
+                                             <td><%=is.getStatus() %></td>
                                             <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete
                                             </td>
                                          </tr>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td><img alt="" src="img/streetlight.jpg" style="height:70px;width:80px;"></td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                             <td>In process</td>
-                                            <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete
-                                            </td>
-                                         </tr>
-                                          <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td><img alt="" src="img/streetlight.jpg" style="height:70px;width:80px;"></td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                             <td>In process</td>
-                                            <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete
-                                            </td>
-                                         </tr>
-                                        
+                                            <%
+                                       i++;
+                                       }
+                                       %>
+                                          
                                     </tbody>
                                 </table>
                             </div>

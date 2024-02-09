@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.city.watch.entity.Issue;
-import com.city.watch.entity.Suggestion;
 import com.city.watch.entity.User;
 
 public class IssueDaoImpl implements IssueDao{
@@ -75,5 +74,34 @@ public class IssueDaoImpl implements IssueDao{
 		    }
 		    return list;
 
-}
+         }
+
+	@Override
+	public List<Issue> getIssuesByUserId(int userId) {
+		List<Issue> list=new ArrayList<Issue>();
+		Issue is=null;
+	    try {
+			String query="SELECT * FROM issues WHERE userId=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, userId);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+			  is=new Issue();
+				 is.setId(rs.getInt(1));
+		         is.setTitle(rs.getString(2));
+		         is.setDescription(rs.getString(3));
+		         is.setPhoto(rs.getString(4));
+		         is.setType(rs.getString(5));
+		         is.setDate(rs.getTimestamp(6));
+	             is.setStatus(rs.getString(7));
+	             is.setUserId(rs.getInt(8));
+				list.add(is);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }
