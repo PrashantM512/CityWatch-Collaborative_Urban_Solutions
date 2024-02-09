@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Suggestion"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.SuggestionDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,35 +24,49 @@ th,td{
 <div class="conatiner">
 <h3 class="text-center mb-3"
 			style="margin-top: -25px; margin-bottom: -13px;">
-			<img alt="" src="img/YourIssues.png" class="pagetitle"><img
+			<img alt="" src="img\YourSuggestions.png" class="pagetitle"><img
 				alt="" class="pagetitle-img" src="img/suggestion.png">
 		</h3>
-<div class="container-fluid px-4">
+<div class="container-fluid px-4 col-md-10">
 			 <div class="col-12">
                         <div class="rounded h-100">
                             <h6 class="mb-4"></h6>
                             <div class="table-responsive">
-                                <table class="table" style="border-style: solid; border-color: #e5e5e5;">
+                                <table class="table mt-2" style="border-style: solid; border-color: #e5e5e5;">
                                     <thead style="height: 42px;background-color: #e5e5e5;">
                                         <tr>
                                             <th scope="col">Sr.No.</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">Description</th>
-                                            <th scope="col">Mobile</th>
                                             <th scope="col">Date</th>
+                                            <th scope="col">Age</th>
+                                            <th scope="col">Education</th>
                                             <th scope="col">Action</th>
                                            
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <%
+                                    SuggestionDaoImpl dao=new SuggestionDaoImpl(ConnectionProvider.getConnection());
+                                    int uid=user.getUid();
+                                    int i=1;
+                                    List<Suggestion> list=dao.getSuggestionsById(uid);
+                                    for(Suggestion s:list){
+                                       %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>9027462837</td>
-                                            <td>12/1/2024</td>
-                                            <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=s.getTitle() %></td>
+                                            <td><%=s.getDescription() %></td>
+                                            <td><%=s.getDate() %></td>
+                                            <td><%=s.getAge() %></td>
+                                            <td><%=s.getEducation() %></td>
+                                            <td><a class="btn-danger btn text-white" href="DeleteSuggestionServlet?id=<%=s.getId()%>&uid=<%=user.getUid() %>" scope="row" style="padding-top: 4px;margin-top: -8px;width: 100%;">Delete</a></td>
                                          </tr>
+                                         <%	
+                                    i++;
+                                    }
+                                    %>
+                                         
                                     </tbody>
                                 </table>
                             </div>
