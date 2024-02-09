@@ -64,6 +64,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.ManageAdminsServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SubmitSuggestionsServlet</servlet-name>
+  	<display-name>SubmitSuggestionsServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.SubmitSuggestionsServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -103,5 +109,9 @@
   <servlet-mapping>
   	<servlet-name>ManageAdminsServlet</servlet-name>
   	<url-pattern>/ManageAdminsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SubmitSuggestionsServlet</servlet-name>
+  	<url-pattern>/SubmitSuggestionsServlet</url-pattern>
   </servlet-mapping>
 </web-app>
