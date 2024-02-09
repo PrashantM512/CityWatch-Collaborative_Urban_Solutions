@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.city.watch.entity.Suggestion;
+import com.city.watch.entity.User;
 
 public class SuggestionDaoImpl implements SuggestionDao{
  
@@ -85,5 +88,41 @@ public class SuggestionDaoImpl implements SuggestionDao{
 		}
 		return f;
 	}
+
+
+	@Override
+	public List<Map<String, Object>> getAllSuggestionsWithUserDetails() {
+	    List<Map<String, Object>> list = new ArrayList<>();
+	    String query = "SELECT s.*, u.name, u.mobile " +
+	                   "FROM suggestions s " +
+	                   "INNER JOIN users u ON s.uid = u.uid";
+	    try (PreparedStatement stmt = conn.prepareStatement(query)) {
+	        ResultSet rs = stmt.executeQuery();
+	        while (rs.next()) {
+	            Suggestion suggestion = new Suggestion();
+	            suggestion.setId(rs.getInt("id"));
+	            suggestion.setUid(rs.getInt("uid"));
+	            suggestion.setTitle(rs.getString("title"));
+	            suggestion.setDescription(rs.getString("description"));
+	            suggestion.setDate(rs.getTimestamp("date"));
+	            suggestion.setAge(rs.getInt("age"));
+	            suggestion.setEducation(rs.getString("education"));
+
+	            User user = new User();
+	            user.setName(rs.getString("name"));
+	            user.setMobile(rs.getString("mobile"));
+
+	            Map<String, Object> suggestionWithUser = new HashMap<>();
+	            suggestionWithUser.put("suggestion", suggestion);
+	            suggestionWithUser.put("user", user);
+
+	            list.add(suggestionWithUser);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
+
 
 }

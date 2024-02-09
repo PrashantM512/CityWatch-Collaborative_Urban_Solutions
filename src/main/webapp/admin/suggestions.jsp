@@ -1,3 +1,8 @@
+<%@page import="com.city.watch.entity.Suggestion"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.SuggestionDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -47,22 +52,40 @@
 										<th scope="col">Title</th>
 										<th scope="col">Description</th>
 										<th scope="col">Date</th>
+										<th scope="col">User Name</th>
+										<th scope="col">Mobile</th>
+										<th scope="col">Age</th>
+										<th scope="col">Education</th>
 										<th scope="col">Actions</th>
 									</tr>
 								</thead>
 								<tbody>
+								<%
+								SuggestionDaoImpl dao = new SuggestionDaoImpl(ConnectionProvider.getConnection());
+								List<Map<String, Object>> list = dao.getAllSuggestionsWithUserDetails();
+								int i = 1;
+								for (Map<String, Object> suggestionWithUser : list) {
+								    Suggestion s = (Suggestion) suggestionWithUser.get("suggestion");
+								    User u = (User) suggestionWithUser.get("user");
+									
+								    %>
 									<tr>
-										<th scope="row">1</th>
-										<td>Street Light</td>
-										<td>9035482483</td>
-										
-										<td>12/1/2024</td>
-										
+										<th scope="row"><%=i %></th>
+										<td><%=s.getTitle() %></td>
+										<td><%=s.getDescription() %></td>
+										<td><%=s.getDate() %></td>
+										<td><%=u.getName() %></td>
+										<td><%=u.getMobile() %></td>
+										<td><%=s.getAge() %></td>
+										<td><%=s.getEducation() %></td>
 										<td>
 											<button type="button" class="btn btn-danger">Delete</button>
 										</td>
 									</tr>
-
+                                   <%
+								i++; 
+								}
+								%>
 
 								</tbody>
 							</table>
