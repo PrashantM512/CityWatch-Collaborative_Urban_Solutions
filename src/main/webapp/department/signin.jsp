@@ -51,11 +51,11 @@
 						<form action="../DepartmentLoginServlet" method="post">
 							<div class="form-floating mb-3">
 								<input type="text" class="form-control" id="floatingInput"
-									name="dept_id" placeholder="name@example.com"> <label
+									name="dept_id" placeholder="name@example.com" style=" background: black; "> <label
 									for="floatingInput">Department ID</label>
 							</div>
 							<div class="form-floating mb-4">
-								<input type="password" class="form-control"
+								<input type="password" class="form-control" style=" background: black; "
 									id="floatingPassword" name="password" placeholder="Password">
 								<label for="floatingPassword">Password</label>
 							</div>

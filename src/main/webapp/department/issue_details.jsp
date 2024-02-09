@@ -1,3 +1,6 @@
+<%@page import="com.city.watch.entity.Issue"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,11 +40,18 @@
     <div class="row g-4">
         <div class="col-xl-6">
             <div class="h-100 bg-secondary rounded p-4">
+                <%
+            int id=Integer.parseInt(request.getParameter("id"));
+            String username=request.getParameter("by");
+            String mobile=request.getParameter("mb");
+            IssueDaoImpl dao=new IssueDaoImpl(ConnectionProvider.getConnection());
+            Issue is=dao.getIssueById(id);
+            %>
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <h6 class="mb-0">Image :</h6>
                     <a href=""></a>
                 </div>
-                <img src="img/street.jpg" class="img-fluid curved-image" style=" border-radius: 10px; " alt="Responsive Image">
+                <img src="../issues_img/<%=is.getPhoto() %>" class="img-fluid curved-image" style=" border-radius: 10px;    width: -webkit-fill-available; " alt="Responsive Image">
             </div>
         </div>
         <div class="col-xl-6">
@@ -51,13 +61,14 @@
                     <a href=""></a>
                 </div>
                  <div class="mt-4">
-                    <p>Title: </p>
-                    <p>Sent By:</p>
-                     <p>Status:</p>
-                      <p>Date:</p>
-                      <p>Time:</p>
-                         <p>Description:</p>
-                    <!-- Add more details as needed -->
+                     <p><b class="text-white">Title:&nbsp; </b><%=is.getTitle() %> </p>
+                     <p><b class="text-white">Sent By:&nbsp; </b><%=username %></p>
+                     <p><b class="text-white">Mobile No:&nbsp; </b><%=mobile %></p>
+                     <p><b class="text-white">Type:&nbsp; </b><%=is.getType() %></p>
+                     <p><b class="text-white">Status:&nbsp; </b><%=is.getStatus() %></p>
+                     <p><b class="text-white">Date:&nbsp; </b><%=is.getDate() %></p>
+                     <p><b class="text-white">Description:&nbsp; </b><%=is.getDescription() %></p>
+                   
                 </div>
             </div>
         </div>

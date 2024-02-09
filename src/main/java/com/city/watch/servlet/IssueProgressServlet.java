@@ -23,27 +23,40 @@ public class IssueProgressServlet extends HttpServlet {
         HttpSession session=request.getSession();
        int id=Integer.parseInt(request.getParameter("id"));
        String progress=request.getParameter("prg");
+       String redirect=request.getParameter("rd");
         
         try {
 			IssueDaoImpl dao=new IssueDaoImpl(ConnectionProvider.getConnection());
 			boolean f=dao.updateIssueProgrss(id, progress);
 			
 			if(f) {
-				session.setAttribute("alertMessage","Issue Appoved Successfully...");
+				session.setAttribute("alertMessage","Operation Successful...");
 				session.setAttribute("alertClass","alert-success");
-				response.sendRedirect("admin/issues.jsp");
+				if(redirect.equals("dept")) {
+					response.sendRedirect("department\\issues.jsp");
+				}else {
+					response.sendRedirect("admin/issues.jsp");
+				}
+			
 			}else {
 				session.setAttribute("alertMessage","Operation Failed... Please Try Again!!!");
 				session.setAttribute("alertClass","alert-danger");
-				response.sendRedirect("admin/issues.jsp");
+				if(redirect.equals("dept")) {
+					response.sendRedirect("department/issues.jsp");
+				}else {
+					response.sendRedirect("admin/issues.jsp");
+				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass","alert-danger");
-			response.sendRedirect("admin/issues.jsp");
-		}
+			if(redirect.equals("dept")) {
+				response.sendRedirect("department/issues.jsp");
+			}else {
+				response.sendRedirect("admin/issues.jsp");
+			}		}
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

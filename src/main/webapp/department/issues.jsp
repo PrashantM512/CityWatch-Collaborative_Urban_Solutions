@@ -1,3 +1,9 @@
+<%@page import="com.city.watch.entity.User"%>
+<%@page import="com.city.watch.entity.Issue"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,60 +43,55 @@
 			<div class="container-fluid pt-4 px-4">
 			 <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
+                        <%@include file="components/alert.jsp" %>
                             <h6 class="mb-4">Public Issues</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead style="background-image: linear-gradient(3deg, black, #3807fd)!important;color: white;height: 42px;">
-                                        <tr>
+                                       <tr>
                                             <th scope="col">Sr.No.</th>
                                             <th scope="col">Title</th>
-                                            <th scope="col">User Mobile</th>
+                                            <th scope="col">User Name</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date</th>
-                                            <th scope="col">Time</th>
                                             <th scope="col">Action</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <%
+								IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+								List<Map<String, Object>> list = dao.getPublicIssues();
+								int i = 1;
+								for (Map<String, Object> getPublicIssues : list) {
+								    Issue is  = (Issue) getPublicIssues.get("issue");
+								    User u = (User) getPublicIssues.get("user");
+								    if(is.getStatus().equals("In_Progress") || is.getStatus().equals("Solved")){
+									    
+								    %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=is.getTitle() %></td>
+                                            <td><%=u.getName() %></td>
+                                            <td><%=is.getType() %></td>
+                                            <td><%=is.getDate() %></td>
                                             <td>
-                                            <a href="issue_details.jsp" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
-                                            <button type="button" class="btn btn-success">Solved ?</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <a href="issue_details.jsp?id=<%=is.getId()%>&by=<%=u.getName()%>&mb=<%=u.getMobile() %>" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
+                                            
+                                          <% if(is.getStatus().equals("In_Progress")){ %> 	
+                                           <a href="../IssueProgressServlet?id=<%=is.getId() %>&prg=Solved&rd=dept" type="button" class="btn btn-warning">Solved ?</a>
+                                          <%} %>
+                                           <% if(is.getStatus().equals("Solved")){ %> 	
+                                           <button type="button" class="btn btn-success">Issue Solved <i class="fas fa-check-circle"></i></button>
+                                          <%} %>
+                                            
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
-                                            <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                            <button type="button" class="btn btn-success">Solved ?</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
-                                            <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">View Details</button>
-                                           <button type="button" class="btn btn-success">Solved ?</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
+                                       <%
+                                       i++;
+								      }
+								    }
+                                       %>
                                     </tbody>
                                 </table>
                             </div>
@@ -100,11 +101,7 @@
             </div>
 	</div>
 			
-			<!-- Footer Start -->
-			<%@include file="components/footer.jsp"%>
-			<!-- Footer End -->
-		</div>
-	</div>
+	
 	<%@include file="components/allscripts.jsp"%>
 </body>
 </html>
