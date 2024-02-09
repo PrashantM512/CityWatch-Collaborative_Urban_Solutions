@@ -23,6 +23,8 @@ public class DeleteIssueServlet extends HttpServlet {
         HttpSession session=request.getSession();
         int id=Integer.parseInt(request.getParameter("id"));
         int userId=Integer.parseInt(request.getParameter("userId"));
+        String redirect=request.getParameter("rd");
+        System.out.println(id+" "+userId+" "+redirect);
         
         try {
 			IssueDaoImpl dao=new IssueDaoImpl(ConnectionProvider.getConnection());
@@ -31,19 +33,34 @@ public class DeleteIssueServlet extends HttpServlet {
 			if(f) {
 				session.setAttribute("alertMessage","Your Issue Deleted Successfully...");
 				session.setAttribute("alertClass","alert-success");
-				response.sendRedirect("user_issues.jsp");
+				
+				if(redirect.equals("user")) {
+					response.sendRedirect("user_issues.jsp");
+				}else {
+					response.sendRedirect("admin/issues.jsp");
+				}
 				
 			}else {
 				session.setAttribute("alertMessage","Operation Failed... Please Try Again!!!");
 				session.setAttribute("alertClass","alert-danger");
-				response.sendRedirect("user_issues.jsp");
+				
+				if(redirect.equals("user")) {
+					response.sendRedirect("user_issues.jsp");
+				}else {
+					response.sendRedirect("admin/issues.jsp");
+				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass","alert-danger");
-			response.sendRedirect("user_issues.jsp");
+
+			if(redirect.equals("user")) {
+				response.sendRedirect("user_issues.jsp");
+			}else {
+				response.sendRedirect("admin/issues.jsp");
+			}
 		}
 
 		

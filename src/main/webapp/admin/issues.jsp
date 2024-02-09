@@ -1,3 +1,8 @@
+<%@page import="com.city.watch.entity.Issue"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,6 +42,7 @@
 			<div class="container-fluid pt-4 px-4">
 			 <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
+                        <%@include file="components/alert.jsp" %>
                             <h6 class="mb-4">Public Issues</h6>
                             <div class="table-responsive">
                                 <table class="table">
@@ -44,28 +50,38 @@
                                         <tr>
                                             <th scope="col">Sr.No.</th>
                                             <th scope="col">Title</th>
-                                            <th scope="col">User Mobile</th>
+                                            <th scope="col">User Name</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date</th>
-                                            <th scope="col">Time</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         <%
+								IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+								List<Map<String, Object>> list = dao.getPublicIssues();
+								int i = 1;
+								for (Map<String, Object> getPublicIssues : list) {
+								    Issue is  = (Issue) getPublicIssues.get("issue");
+								    User u = (User) getPublicIssues.get("user");
+									
+								    %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td>10:12 PM</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=is.getTitle() %></td>
+                                            <td><%=u.getName() %></td>
+                                            <td><%=is.getType() %></td>
+                                            <td><%=is.getDate() %></td>
                                             <td>
                                             <a href="issue_details.jsp" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
                                             <button type="button" class="btn btn-success">Approve</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <a href="../DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=u.getUid()%>&rd=admin" type="button" class="btn btn-danger text-white">Delete</a>
                                             </td>
                                         </tr>
-                                       
+                                       <%
+                                       i++;
+							         	}
+                                       %>
                                     </tbody>
                                 </table>
                             </div>

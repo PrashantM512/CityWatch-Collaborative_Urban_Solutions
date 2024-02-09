@@ -62,7 +62,7 @@ th,td{
                                             <td><%=is.getType() %></td>
                                             <td><%=is.getDate() %></td>
                                              <td><%=is.getStatus() %></td>
-                                            <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete</a>
+                                            <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete</a>
                                             </td>
                                          </tr>
                                             <%
