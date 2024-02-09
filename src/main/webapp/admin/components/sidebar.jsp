@@ -19,7 +19,9 @@
                     </div>
                     <div class="ms-3">
            
+                       <c:if test="${not empty usr }">
                         <h6 class="mb-0"><%=usr.getName() %></h6>
+                       </c:if>
                         
                         <span>Admin</span>
                     </div>

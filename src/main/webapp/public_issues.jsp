@@ -1,3 +1,8 @@
+<%@page import="com.city.watch.entity.Issue"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -31,7 +36,7 @@ th,td{
                                             <th scope="col">Sr.No.</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">Description</th>
-                                            <th scope="col">Mobile</th>
+                                            <th scope="col">User Name</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Progress</th>
@@ -39,42 +44,28 @@ th,td{
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <%
+								IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+								List<Map<String, Object>> list = dao.getPublicIssues();
+								int i = 1;
+								for (Map<String, Object> getPublicIssues : list) {
+								    Issue is  = (Issue) getPublicIssues.get("issue");
+								    User u = (User) getPublicIssues.get("user");
+									
+								    %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>9027462837</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td class="btn-primary btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Submitted</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=is.getTitle() %></td>
+                                             <td><%=is.getDescription() %></td>
+                                             <td><%=u.getName() %></td>
+                                           <td><%=is.getType() %></td>
+                                            <td><%=is.getDate() %></td>
+                                            <td class="btn-primary btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; "><%=is.getStatus() %></td>
                                          </tr>
-                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>9027462837</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td class="btn-warning btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">In Process</td>
-                                         </tr>
-                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>9027462837</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td class="btn-success btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Solved</td>
-                                         </tr>
-                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>hi jkbc wfdwt ckj kjbc bacsk</td>
-                                            <td>9027462837</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
-                                            <td class="btn-danger btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Rejected</td>
-                                         </tr>
+                                        <%
+							         	i++; 
+							         	}
+							           	%>
                                     </tbody>
                                 </table>
                             </div>
