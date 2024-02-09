@@ -3,7 +3,6 @@ package com.city.watch.servlet;
 import java.io.IOException;
 import com.city.watch.dao.SuggestionDaoImpl;
 import com.city.watch.db.ConnectionProvider;
-import com.city.watch.entity.Suggestion;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

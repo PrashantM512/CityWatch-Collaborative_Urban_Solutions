@@ -11,4 +11,5 @@ public interface SuggestionDao {
 	public List<Suggestion> getSuggestionsById(int uid);
 	public boolean deleteSuggestionByIdandUid(int id, int uid);
 	public List<Map<String, Object>> getAllSuggestionsWithUserDetails();
+	public boolean deleteSuggestionById(int id);
 }

@@ -76,6 +76,18 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.DeleteSuggestionServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteSuggestionByAdminServlet</servlet-name>
+  	<display-name>DeleteSuggestionByAdminServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.DeleteSuggestionByAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SubmitIssueServlet</servlet-name>
+  	<display-name>SubmitIssueServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.SubmitIssueServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -123,5 +135,13 @@
   <servlet-mapping>
   	<servlet-name>DeleteSuggestionServlet</servlet-name>
   	<url-pattern>/DeleteSuggestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteSuggestionByAdminServlet</servlet-name>
+  	<url-pattern>/DeleteSuggestionByAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SubmitIssueServlet</servlet-name>
+  	<url-pattern>/SubmitIssueServlet</url-pattern>
   </servlet-mapping>
 </web-app>

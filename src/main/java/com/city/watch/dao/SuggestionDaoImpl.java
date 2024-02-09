@@ -125,4 +125,21 @@ public class SuggestionDaoImpl implements SuggestionDao{
 	}
 
 
+	@Override
+	public boolean deleteSuggestionById(int id) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM suggestions WHERE id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
+
 }
