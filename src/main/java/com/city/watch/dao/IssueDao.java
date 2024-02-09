@@ -11,5 +11,7 @@ public interface IssueDao {
 	public List<Map<String, Object>> getPublicIssues();
 	public List<Issue> getIssuesByUserId(int userId);
 	public boolean deleteIssueByIdandUserId(int id, int userId);
+	public Issue getIssueById(int id);
+	public boolean updateIssueProgrss(int id,String progress);
 	
 }

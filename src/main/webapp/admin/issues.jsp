@@ -73,8 +73,18 @@
                                             <td><%=is.getType() %></td>
                                             <td><%=is.getDate() %></td>
                                             <td>
-                                            <a href="issue_details.jsp" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
-                                            <button type="button" class="btn btn-success">Approve</button>
+                                            <a href="issue_details.jsp?id=<%=is.getId()%>&by=<%=u.getName()%>&mb=<%=u.getMobile() %>" type="button" class="btn " style="background-color:#007bff;color:white">View Details</a>
+                                            
+                                            <%
+                                            if(is.getStatus().equals("Submitted")){
+                                            %> 	
+                                           <a href="../IssueProgressServlet?id=<%=is.getId() %>&prg=Rejected" type="button" class="btn btn-danger">Reject</a>
+                                            <a href="../IssueProgressServlet?id=<%=is.getId() %>&prg=In_Progress" type="button" class="btn btn-success">Approve</a>
+                                          
+                                            <% 	
+                                            }
+                                            %>
+                                            
                                             <a href="../DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=u.getUid()%>&rd=admin" type="button" class="btn btn-danger text-white">Delete</a>
                                             </td>
                                         </tr>

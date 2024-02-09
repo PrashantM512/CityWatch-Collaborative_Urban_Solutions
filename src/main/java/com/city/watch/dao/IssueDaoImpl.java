@@ -121,4 +121,48 @@ public class IssueDaoImpl implements IssueDao{
 		}
 		return f;
 	}
+
+	@Override
+	public Issue getIssueById(int id) {
+		Issue is=null;
+		try {
+			String query="SELECT * FROM issues WHERE id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				 is=new Issue();
+				 is.setId(rs.getInt(1));
+		         is.setTitle(rs.getString(2));
+		         is.setDescription(rs.getString(3));
+		         is.setPhoto(rs.getString(4));
+		         is.setType(rs.getString(5));
+		         is.setDate(rs.getTimestamp(6));
+	             is.setStatus(rs.getString(7));
+	             is.setUserId(rs.getInt(8));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return is;
+	}
+
+	@Override
+	public boolean updateIssueProgrss(int id,String progress) {
+		boolean f=false;
+		try {
+			String query="UPDATE issues SET status=? WHERE id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1, progress);
+			stmt.setInt(2, id);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 }

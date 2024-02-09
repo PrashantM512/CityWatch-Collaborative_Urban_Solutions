@@ -60,7 +60,7 @@ th,td{
                                              <td><%=u.getName() %></td>
                                            <td><%=is.getType() %></td>
                                             <td><%=is.getDate() %></td>
-                                            <td class="btn-primary btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; "><%=is.getStatus() %></td>
+                                            <td class="btn-warning btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; "><%=is.getStatus() %></td>
                                          </tr>
                                         <%
 							         	i++; 
