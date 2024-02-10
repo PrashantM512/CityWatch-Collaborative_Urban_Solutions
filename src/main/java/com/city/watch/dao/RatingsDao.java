@@ -11,4 +11,5 @@ public interface RatingsDao {
 	public boolean checkFeedback(int pid, int uid);
 	public List<Rating> getAllRatings();
 	public List<Map<String, Object>> getFeedbackDetails();
+	public boolean deleteRatingById(int rid);
 }

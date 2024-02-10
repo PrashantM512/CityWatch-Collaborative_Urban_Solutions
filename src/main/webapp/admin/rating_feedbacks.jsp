@@ -27,21 +27,17 @@
 		String currentPage = "feedbacks";
 		request.setAttribute("currentPage", currentPage);
 		%>
-		<!-- Sidebar Start -->
 		<%@include file="components/sidebar.jsp"%>
-		<!-- Sidebar End -->
 		<%
 		request.removeAttribute("currentPage");
 		%>
 
 		<div class="content">
-			<!-- Navbar Start -->
-			<%@include file="components/navbar.jsp"%>
-			<!-- Navbar End -->
-			
-	<div class="container-fluid pt-4 px-4 mb-4">
+		  <%@include file="components/navbar.jsp"%>
+	        <div class="container-fluid pt-4 px-4 mb-4">
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
+					 <%@include file="components/alert.jsp" %>
 						<h6 class="mb-4">All Ratings and Feedbacks :</h6>
 						<div class="table-responsive">
 							<table class="table">
@@ -72,8 +68,8 @@
 										<td><%=fd.get("stars") %></td>
 										<td><%=fd.get("feedback") %></td>
 										<td>
-										    <a type="button" class="btn" style="background: #0072ff;color: white;">View Project</a>
-											<a type="button" class="btn btn-danger">Delete Feedback</a>
+										    <a href="../development_fullscreen.jsp?pid=<%=((Map<String, Object>) fd.get("development")).get("pid") %>" type="button" class="btn" style="background: #0072ff;color: white;">View Project</a>
+											<a href="../DeleteRatingServlet?rid=<%=fd.get("rid") %>" type="button" class="btn btn-danger">Delete Feedback</a>
 										</td>
 									</tr>
                                  	<%

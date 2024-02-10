@@ -138,5 +138,21 @@ public class RatingsDaoImpl implements RatingsDao {
 	        }
 	        return feedbackDetailsList;
 	    }
+
+	@Override
+	public boolean deleteRatingById(int rid) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM ratings WHERE rid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, rid);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	  }
 	}
 	
