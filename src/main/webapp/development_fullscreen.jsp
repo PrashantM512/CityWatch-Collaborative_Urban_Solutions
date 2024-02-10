@@ -1,3 +1,4 @@
+<%@page import="com.city.watch.dao.RatingsDaoImpl"%>
 <%@page import="com.city.watch.entity.Development"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
 <%@page import="com.city.watch.dao.DevelopmentDaoImpl"%>
@@ -9,7 +10,7 @@
 <html>
 <head>
 <%@include file="components/header_links.jsp"%>
-<title>Issues</title>
+<title>Development Details</title>
 </head>
 <body>
  <%@include file="components/check_session.jsp" %>
@@ -50,11 +51,28 @@ dev=dao.getDevelopmentById(pid);
             <p><b class="text-dark">Description:</b>&nbsp;<%=dev.getDescription() %></p>
         </div>
         <div class="text-center" style=" bottom: 20px; width:90%">
-             <%
+            
+            <%
+            int uid=user.getUid();
+            RatingsDaoImpl dao2=new RatingsDaoImpl(ConnectionProvider.getConnection());
+            boolean f=dao2.checkFeedback(pid, uid);
+            if(f){ %>
+            <button class="btn primary-colour text-white mb-1" style="width:100%">Thanks you for ratings...</button>	
+             <%	
+            }else{
+            %>
+            <%
             if(dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Completed")){
             %>
             <a href="ratings_feedback.jsp?pid=<%=dev.getPid() %>" class="btn btn-primary text-white mb-1" style="width:100%">Give Review & Feedback</a>	
             <% } %>
+            <%
+            }
+            %>
+            
+           
+        
+        
         
             <%
             if(dev.getNeed().equals("Yes") && dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Upcoming")){
