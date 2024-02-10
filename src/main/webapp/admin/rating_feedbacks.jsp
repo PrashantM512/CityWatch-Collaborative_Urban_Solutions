@@ -1,3 +1,8 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.city.watch.entity.Rating"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.RatingsDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -53,19 +58,28 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Street Light</td>
-										<td>9035482483</td>
-										<td>Major</td>
-										<td>12/1/2024</td>
-										<td>Major</td>
+								    <%
+								    RatingsDaoImpl dao=new RatingsDaoImpl(ConnectionProvider.getConnection());
+								    List<Map<String, Object>> list = dao.getFeedbackDetails();
+								    int i=1;
+								    for (Map<String, Object> fd : list) {
+								    %>
+								  <tr>
+										<th scope="row"><%=i %></th>
+										<td><%=((Map<String, Object>) fd.get("development")).get("title") %></td>
+										<td><%=((Map<String, Object>) fd.get("user")).get("name") %></td>
+										<td><%=fd.get("date") %></td>
+										<td><%=fd.get("stars") %></td>
+										<td><%=fd.get("feedback") %></td>
 										<td>
-											<button type="button" class="btn btn-danger">Delete
-												Feedback</button>
+										    <a type="button" class="btn" style="background: #0072ff;color: white;">View Project</a>
+											<a type="button" class="btn btn-danger">Delete Feedback</a>
 										</td>
 									</tr>
-
+                                 	<%
+								    i++;
+								    } 
+								    %>
 
 								</tbody>
 							</table>

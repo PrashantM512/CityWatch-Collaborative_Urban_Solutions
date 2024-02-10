@@ -36,7 +36,7 @@ dev=dao.getDevelopmentById(pid);
             </div>
         </div>
  <div class="col-xl-6" style="position: relative;">
-    <div class="h-100 rounded p-4 border" style=" box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;">
+    <div class="h-100 rounded p-4 border" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;display: inline-grid;width: 100%;">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Project Details</h6>
             <a href=""></a>
