@@ -56,10 +56,17 @@ th,td{
 									<td><%=d.getLocation() %></td>
 									<td><%=d.getNeed() %></td>
 									<td><%=d.getStatus() %></td>
-									<td class="btn-primary btn" scope="row"
-										style="height: 40px; padding-top: 6px; margin-top: 3px;"><a
-										class="text-white" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
-										style="text-decoration: none;">View Details</a></td>
+									<td><a class="text-white btn-primary btn" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
+										style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Details</a>
+									<%
+									if(d.getStatus().equals("Ongoing") || d.getStatus().equals("Completed")){
+									%>
+									<a class="text-white btn-info ml-2 btn" href="View_Feedbacks.jsp?pid=<%=d.getPid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Feedbacks</a>
+									<%
+									}
+									%>	
+										
+									</td>
 								</tr>
 								 <%
 								i++;	
@@ -73,8 +80,6 @@ th,td{
 			</div>
 		</div>
 	</div>
-	</div>
-
 	<div style="height: 100px"></div>
 
 	<%@include file="components/footer.jsp"%>

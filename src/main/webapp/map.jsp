@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@include file="components/header_links.jsp"%>
-<title></title>
+<title>View Map</title>
 </head>
 <style>
 .footer {
