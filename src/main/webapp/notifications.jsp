@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.city.watch.entity.Notification"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.NotificationDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -32,60 +37,31 @@
 
 	<div class="container">
 		<div class="page">
-			<div class="notification2 -active" style=" z-index: 0; ">
+			
+			<%
+			NotificationDaoImpl dao=new NotificationDaoImpl(ConnectionProvider.getConnection());
+			List<Notification> list=new ArrayList<Notification>();
+			String target=user.getZone();
+			list=dao.getNotificationByTarget(target);
+			for(Notification n:list){
+				%>
+			  <div class="notification2 -active" style=" z-index: 0; ">
 				<div class="notification__content">
-					<h2 class="notification__title">This is a notification!</h2>
-					<p class="notification__message">There's a new move in your
-						local theaters new move in your local theaters new move in your
-						local theaters !</p>
+					<h2 class="notification__title"><%=n.getTitle() %></h2>
+					<p class="notification__message"><%=n.getDescription() %></p>
 					<div class="notification__footer">
-						<a href="#" class="notification__button -primary">Checked ?</a> <a
-							href="#" class="notification__button -secondary">Delete</a>
+						<button class="notification__button -primary">By&nbsp;<%=n.getFrm() %></button> 
+						<a href="#" class="notification__button -secondary">Delete</a>
+					   <p class="notification__button -white" style=" background: white; color: #1938cf; padding-left: 0px; font-size: small; "><%=n.getDate() %></p>
 					</div>
 				</div>
 			</div>
-			<div class="notification2 -active" style=" z-index: 0; ">
-				<div class="notification__content">
-					<h2 class="notification__title">This is a notification!</h2>
-					<p class="notification__message">There's a new move in your
-						local theaters new move in your local theaters new move in your
-						local theaters !</p>
-					<div class="notification__footer">
-						<a href="#" class="notification__button -primary">Checked ?</a> <a
-							href="#" class="notification__button -secondary">Delete</a>
-					</div>
-				</div>
-			</div>
-			<div class="notification2 -active" style=" z-index: 0; ">
-				<div class="notification__content">
-					<h2 class="notification__title">This is a notification!</h2>
-					<p class="notification__message">There's a new move in your
-						local theaters new move in your local theaters new move in your
-						local theaters !</p>
-					<div class="notification__footer">
-						<a href="#" class="notification__button -primary">Checked ?</a> <a
-							href="#" class="notification__button -secondary">Delete</a>
-					</div>
-				</div>
-			</div>
-			<div class="notification2 -active">
-				<div class="notification__content">
-					<h2 class="notification__title">This is a notification!</h2>
-					<p class="notification__message">There's a new move in your
-						local theaters new move in your local theaters new move in your
-						local theaters !</p>
-					<div class="notification__footer">
-						<a href="#" class="notification__button -primary">Checked ?</a> <a
-							href="#" class="notification__button -secondary">Delete</a>
-					</div>
-				</div>
-			</div>
-
+			<%
+			}
+			%>
+		
 		</div>
 	</div>
-	<script>
-		
-	</script>
 	<%@include file="components/footer.jsp"%>
 </body>
 </html>

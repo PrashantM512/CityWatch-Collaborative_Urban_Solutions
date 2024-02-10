@@ -37,49 +37,46 @@
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
 					<div class="col-sm-12 col-md-6 col-xl-4"></div>
-					<!-- First card -->
 					<div class="col-sm-12 col-md-6 col-xl-4"></div>
-					<!-- Second card -->
 					<div class="col-12">
-						<!-- Third card -->
 						<div class="h-100 bg-secondary rounded p-4">
+						 <%@include file="components/alert.jsp" %>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Send Notifications :</h6>
 								<a href=""></a>
 							</div>
 							<div class="">
-								<form>
-
+								<form action="../SendNotificationServlet" method="post">
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputEmail4">Title</label> <input type="text"
-											class="form-control" id="inputEmail4" placeholder="">
+											class="form-control" name="title" id="inputEmail4" placeholder="">
 									</div>
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputPassword4">Description</label> <input
-											type="text" class="form-control" id="inputPassword4">
+											type="text" class="form-control" name="description" id="inputPassword4">
 									</div>
 									<div class="form-row" style="display: flex;">
 										<div class="form-group col-md-6"
 											style="margin-right: 18px; width: 49%;">
 											<label for="inputState">Zone</label> <select id="inputState"
-												class="form-control">
-												<option selected>Choose...</option>
-												<option>All</option>
-												<option>East</option>
-												<option>West</option>
-												<option>North</option>
-												<option>South</option>
+												class="form-control" name="target" required>
+												<option value="" selected>Choose...</option>
+												<option value="All">All</option>
+												<option value="East">East</option>
+												<option value="West">West</option>
+												<option value="North">North</option>
+												<option value="South">South</option>
 											</select>
 										</div>
 										<div class="form-group col-md-6"
 											style="margin-right: 18px; width: 49%;">
 											<label for="inputState">From</label> <select id="inputState"
-												class="form-control">
-												<option selected>Choose...</option>
-												<option>Nagarpanchayt</option>
-												<option>State Government</option>
-												<option>Central Government</option>
+												class="form-control" name="from" required>
+												<option value="" selected>Choose...</option>
+												<option value="Nagarpanchayt">Nagarpanchayt</option>
+												<option value="State Gov.">State Government</option>
+												<option value="Central Gov.">Central Government</option>
 											</select>
 										</div>
 									</div>

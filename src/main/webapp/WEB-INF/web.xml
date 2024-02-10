@@ -100,6 +100,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.IssueProgressServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SendNotificationServlet</servlet-name>
+  	<display-name>SendNotificationServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.SendNotificationServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -163,5 +169,9 @@
   <servlet-mapping>
   	<servlet-name>IssueProgressServlet</servlet-name>
   	<url-pattern>/IssueProgressServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SendNotificationServlet</servlet-name>
+  	<url-pattern>/SendNotificationServlet</url-pattern>
   </servlet-mapping>
 </web-app>
