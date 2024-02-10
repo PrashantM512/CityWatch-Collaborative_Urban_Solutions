@@ -118,6 +118,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.AddDevelopmentServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RatingsAndFeedbackServlet</servlet-name>
+  	<display-name>RatingsAndFeedbackServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.RatingsAndFeedbackServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -193,5 +199,9 @@
   <servlet-mapping>
   	<servlet-name>AddDevelopmentServlet</servlet-name>
   	<url-pattern>/AddDevelopmentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RatingsAndFeedbackServlet</servlet-name>
+  	<url-pattern>/RatingsAndFeedbackServlet</url-pattern>
   </servlet-mapping>
 </web-app>

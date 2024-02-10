@@ -18,26 +18,33 @@ margin-top:0px;
  <%@include file="components/check_session.jsp" %>
  <%@include file="components/navbar.jsp"%>
 <div>
+<%
+int pid=Integer.parseInt(request.getParameter("pid"));
+%>
  <div class="containerr">
       <div class="post">
         <div class="text">Thanks for rating us!</div>
         <div class="edit"></div>
       </div>
-      <div class="star-widget">
-        <input type="radio" name="rate" value="1" id="rate-5">
+        <header></header>
+        <form action="RatingsAndFeedbackServlet" method="post">
+        <div class="star-widget">
+        <input type="radio" name="rate" value="5" id="rate-5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" value="2" id="rate-4">
+        <input type="radio" name="rate" value="4" id="rate-4">
         <label for="rate-4" class="fas fa-star"></label>
         <input type="radio" name="rate" value="3" id="rate-3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" value="4" id="rate-2">
+        <input type="radio" name="rate" value="2" id="rate-2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" value="5" id="rate-1">
+        <input type="radio" name="rate" value="1" id="rate-1">
         <label for="rate-1" class="fas fa-star"></label>
-        <form action="#">
-          <header></header>
+        </div>
+          
+          <input type="hidden" name="uid" value="<%=user.getUid() %>">
+          <input type="hidden" name="pid" value="<%=pid %>">
           <div class="textarea">
-            <textarea cols="30" placeholder="Give us your valuable feedback..."></textarea>
+            <textarea cols="30" name="feedback" placeholder="Give us your valuable feedback..."></textarea>
           </div>
           <div class="btnn">
             <button type="submit">Post</button>
@@ -45,8 +52,7 @@ margin-top:0px;
         </form>
       </div>
     </div>
-</div>
-    <script>
+ <script>
       const btn = document.querySelector("button");
       const post = document.querySelector(".post");
       const widget = document.querySelector(".star-widget");

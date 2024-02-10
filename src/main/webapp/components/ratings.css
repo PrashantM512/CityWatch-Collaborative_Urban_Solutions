@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  font-family: 'Poppins', sans-serif;
-}
 .containerr{
   position: relative;
   height: 615px;
@@ -19,7 +16,7 @@
   display: none;
 }
 .containerr .text{
-  font-size: 25px;
+  font-size: 30px;
   color: #666;
   font-weight: 500;
 }
@@ -72,7 +69,7 @@ input#rate-5:checked ~ label{
   content: "I just love it ";
 }
 .containerr form{
-  display: none;
+ 
 }
 input:checked ~ form{
   display: block;
