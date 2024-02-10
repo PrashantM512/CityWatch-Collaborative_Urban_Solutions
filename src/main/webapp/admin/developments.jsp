@@ -37,6 +37,7 @@
 					<div class="col-sm-12 col-md-6 col-xl-4"></div>
 					<div class="col-12">
 						<div class="h-100 bg-secondary rounded p-4">
+						 <%@include file="components/alert.jsp" %>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Add Developments :</h6>
@@ -50,7 +51,7 @@
 									</div>
 									<div class="form-group">
 										<label for="inputAddress">Description</label> <input
-											type="text" class="form-control" name="Description" id="inputAddress" required>
+											type="text" class="form-control" name="description" id="inputAddress" required>
 									</div>
 									<div class="form-group">
 										<label for="inputAddress2">Location (Address)</label> <input
@@ -101,10 +102,7 @@
 									</div>
 								</form>
 							</div>
-
 						</div>
-
-
 					</div>
 				</div>
 			</div>
