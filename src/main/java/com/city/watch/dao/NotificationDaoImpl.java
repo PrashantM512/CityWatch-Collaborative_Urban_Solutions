@@ -40,7 +40,7 @@ public class NotificationDaoImpl implements NotificationDao {
        List<Notification> list=new ArrayList<Notification>();
        Notification noti=null;
        try {
-		 String query="SELECT * FROM notifications WHERE target=? OR target=?";
+         String query = "SELECT * FROM notifications WHERE target=? OR target=? ORDER BY id DESC";
 		 PreparedStatement stmt=conn.prepareStatement(query);
 		 stmt.setString(1, target);
 		 stmt.setString(2, "All");
@@ -62,6 +62,47 @@ public class NotificationDaoImpl implements NotificationDao {
 	   }
 
 		return list;
+	}
+
+	@Override
+	public List<Notification> getAllNotifications() {
+		List<Notification> list=new ArrayList<Notification>();
+		Notification noti=null;
+		try {
+			String query="SELECT * FROM notifications ORDER BY id DESC";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				 noti=new Notification();
+				 noti.setId(rs.getInt(1));
+				 noti.setTitle(rs.getString(2));
+				 noti.setDescription(rs.getString(3));
+				 noti.setFrm(rs.getString(4));
+				 noti.setDate(rs.getTimestamp(5));
+				 noti.setTarget(rs.getString(6));
+				 list.add(noti);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public boolean deleteNotificationById(int id) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM notifications WHERE id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+		   e.printStackTrace();
+		}
+		return f;
 	}
 
 }

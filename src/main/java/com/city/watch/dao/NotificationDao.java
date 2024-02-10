@@ -9,4 +9,6 @@ public interface NotificationDao {
       
 	public boolean sendNotification(Notification noti);
 	public List<Notification> getNotificationByTarget(String target);
+	public List<Notification> getAllNotifications();
+	public boolean deleteNotificationById(int id);
 }

@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.city.watch.entity.Notification"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.NotificationDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -106,24 +111,33 @@
                                             <th scope="col">description</th>
                                             <th scope="col">From</th>
                                             <th scope="col">Target</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <%
+			                            NotificationDaoImpl dao=new NotificationDaoImpl(ConnectionProvider.getConnection());
+		                            	List<Notification> list=new ArrayList<Notification>();
+		                             	list=dao.getAllNotifications();
+		                             	int i=1;
+		                            	for(Notification n:list){
+			                        	%>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=n.getTitle() %></td>
+                                            <td><%=n.getDescription() %></td>
+                                            <td><%=n.getFrm() %></td>
+                                            <td><%=n.getTarget() %></td>
+                                             <td><%=n.getDate() %></td>
                                             <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">Update</button>
-                                           
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            
-                                            </td>
+                                            <a href="../DeleteNotificationServlet?id=<%=n.getId()%>" type="button" class="btn btn-danger">Delete</a>
+                                           </td>
                                         </tr>
-                                       
+                                       <%
+                                       i++;
+			                             }
+		                             	%> 
                                         
                                     </tbody>
                                 </table>

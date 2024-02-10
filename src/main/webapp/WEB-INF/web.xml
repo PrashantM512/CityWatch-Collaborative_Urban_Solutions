@@ -106,6 +106,18 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.SendNotificationServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteNotificationServlet</servlet-name>
+  	<display-name>DeleteNotificationServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.DeleteNotificationServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddDevelopmentServlet</servlet-name>
+  	<display-name>AddDevelopmentServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.AddDevelopmentServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -173,5 +185,13 @@
   <servlet-mapping>
   	<servlet-name>SendNotificationServlet</servlet-name>
   	<url-pattern>/SendNotificationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteNotificationServlet</servlet-name>
+  	<url-pattern>/DeleteNotificationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddDevelopmentServlet</servlet-name>
+  	<url-pattern>/AddDevelopmentServlet</url-pattern>
   </servlet-mapping>
 </web-app>
