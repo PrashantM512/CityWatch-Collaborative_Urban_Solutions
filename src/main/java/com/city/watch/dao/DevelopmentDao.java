@@ -8,4 +8,5 @@ public interface DevelopmentDao {
         
 	public boolean uploadDevelopment(Development dev);
 	public List<Development> getAlldevelopments();
+	public Development getDevelopmentById(int pid);
 }

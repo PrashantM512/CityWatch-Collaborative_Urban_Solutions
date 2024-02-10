@@ -61,15 +61,41 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 				dev.setNeed(rs.getString(8));
 				dev.setPhoto(rs.getString(9));
 				list.add(dev);
-				
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return list;
+	}
+
+
+	@Override
+	public Development getDevelopmentById(int pid) {
+		Development dev=null;
+		try {
+			String query="SELECT * FROM developments WHERE pid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, pid);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				dev=new Development();
+				dev.setPid(rs.getInt(1));
+				dev.setTitle(rs.getString(2));
+				dev.setDescription(rs.getString(3));
+				dev.setLocation(rs.getString(4));
+				dev.setsDate(rs.getString(5));
+				dev.seteDate(rs.getString(6));
+				dev.setStatus(rs.getString(7));
+				dev.setNeed(rs.getString(8));
+				dev.setPhoto(rs.getString(9));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dev;
 	}
 
 }
