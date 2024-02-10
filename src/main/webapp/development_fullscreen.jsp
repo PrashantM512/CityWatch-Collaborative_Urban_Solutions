@@ -53,7 +53,7 @@ dev=dao.getDevelopmentById(pid);
              <%
             if(dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Completed")){
             %>
-            <a class="btn btn-primary text-white mb-1" style="width:100%">Give Review & Feedback</a>	
+            <a href="ratings_feedback.jsp?pid=<%=dev.getPid() %>" class="btn btn-primary text-white mb-1" style="width:100%">Give Review & Feedback</a>	
             <% } %>
         
             <%
