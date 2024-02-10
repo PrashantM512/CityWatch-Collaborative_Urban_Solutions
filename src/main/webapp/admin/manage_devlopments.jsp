@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Development"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.DevelopmentDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -30,14 +34,12 @@
 		%>
 
 		<div class="content">
-			<!-- Navbar Start -->
-			<%@include file="components/navbar.jsp"%>
-			<!-- Navbar End -->
-
+		<%@include file="components/navbar.jsp"%>
+			
 			<div class="container-fluid pt-4 px-4 mb-4">
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
-						<h6 class="mb-4">All Users :</h6>
+						<h6 class="mb-4">All Developments :</h6>
 						<div class="table-responsive">
 							<table class="table">
 								<thead
@@ -55,21 +57,31 @@
 									</tr>
 								</thead>
 								<tbody>
+								<%
+								DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
+								List<Development> list=dao.getAlldevelopments();
+								int i=1;
+								for(Development d:list){
+									%>
 									<tr>
-										<th scope="row">1</th>
-										<td>Street Light</td>
-										<td>9035482483</td>
-										<td>Major</td>
-										<td>12/1/2024</td>
-										<td>Major</td>
-										<td>9035482483</td>
-										<td>Major</td>
+										<th scope="row"><%=i %></th>
+										<td><%=d.getTitle() %></td>
+										<td><%=d.getDescription() %></td>
+										<td><img alt="" src="../developments_img/<%=d.getPhoto() %>" style="width: 100px; height: 115px" class="img-thumblin"></td>
+										<td><%=d.getLocation()%></td>
+										<td><%=d.getsDate() %></td>
+										<td><%=d.geteDate() %></td>
+										<td><%=d.getNeed() %></td>
 										<td>
 										   <button type="button" class="btn " style="background-color:#007bff;color:white">Update</button>
-                                           
-											<button type="button" class="btn btn-danger">Delete</button>
+                                          <button type="button" class="btn btn-danger">Delete</button>
 										</td>
 									</tr>
+									<%
+								i++;	
+								}
+								%>
+									
 								</tbody>
 							</table>
 						</div>

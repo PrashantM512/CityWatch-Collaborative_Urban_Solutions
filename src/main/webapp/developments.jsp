@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Development"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.DevelopmentDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -28,30 +32,39 @@ th,td{
 						<table class="table"
 							style="border-style: solid; border-color: #e5e5e5; width: 80%;">
 							<thead style="height: 42px; background-color: #e5e5e5;">
-								<tr>
+							   <tr>
 									<th scope="col">Sr.No.</th>
 									<th scope="col">Title</th>
-									<th scope="col">Date</th>
+									<th scope="col">Start Date</th>
 									<th scope="col">Address</th>
 									<th scope="col">Need Of Donation</th>
 									<th scope="col">Status</th>
 									<th scope="col">Action</th>
-
-								</tr>
+                               </tr>
 							</thead>
 							<tbody>
+							    <%
+								DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
+								List<Development> list=dao.getAlldevelopments();
+								int i=1;
+								for(Development d:list){
+								%>
 								<tr>
-									<th scope="row">1</th>
-									<td>Road redevelopment</td>
-									<td>12/1/2024</td>
-									<td>Mordewadi road ,left side of ganesh aqua</td>
-									<td>yes</td>
-									<td>ongoing</td>
+									<th scope="row"><%=i %></th>
+									<td><%=d.getTitle() %></td>
+									<td><%=d.getsDate() %></td>
+									<td><%=d.getLocation() %></td>
+									<td><%=d.getNeed() %></td>
+									<td><%=d.getStatus() %></td>
 									<td class="btn-primary btn" scope="row"
 										style="height: 40px; padding-top: 6px; margin-top: 3px;"><a
-										class="text-white" href="development_fullscreen.jsp"
+										class="text-white" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
 										style="text-decoration: none;">View Details</a></td>
 								</tr>
+								 <%
+								i++;	
+								}
+								%>
 
 							</tbody>
 						</table>
