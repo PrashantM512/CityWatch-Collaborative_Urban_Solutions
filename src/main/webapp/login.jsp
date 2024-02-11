@@ -20,7 +20,7 @@
 		style="background-image: linear-gradient(45deg, black, transparent);">
 
 		<main class="align-items-center login-form login-bg"
-			style="height: 70vh">
+			style="height: 76vh">
 
 			<div class="conatiner" style="color: black;">
 				<div class="row">

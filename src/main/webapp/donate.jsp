@@ -33,7 +33,7 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 							style="margin-top: 45px; font-size: larger; min-width: -webkit-fill-available;">
 							<thead class="thead-dark">
 								<tr style="background-color: #cfcfcf; height: 40px">
-									<th scope="col" style="padding-left: 25px;">Total Amount</th>
+									<th scope="col" style="padding-left: 25px;">Total Donation Till Now</th>
 									<th style="text-align: center;" scope="col"> Rs. 10,000</th>
 								</tr>
 							</thead>
@@ -82,17 +82,12 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 										placeholder="Aadhar number" required>
 								</div>
 							</div>
-
-							
-
 							<div class="form-group">
-								<label for="inputState">Donate For</label> <select
-									id="inputState" name="payment" class="form-control">
-									<option selected>--Select--</option>
-									<option value="">Project1 1</option>
-									<option value="">Project1 1</option>
-									<option value="">Project1 1</option>
-									<option value="">Project1 1</option>
+								<label for="inputState">Are you resident of Manchar ?</label> <select
+									id="inputState" name="payment" class="form-control" required>
+									<option value="" selected>--Select--</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
 								</select>
 							</div>
 

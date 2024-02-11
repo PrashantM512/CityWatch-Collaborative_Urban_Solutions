@@ -101,8 +101,7 @@
 							session.setAttribute("i",--i);
 							double averageRating = 0;
 							if (i > 1) {
-								i=i*5;
-							    averageRating = (double) stars*5 /i;
+							    averageRating = (double) (stars*5) /(i*5);
 							}
 							session.setAttribute("averageRating",averageRating);
 							%>
