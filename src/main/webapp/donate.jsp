@@ -50,15 +50,15 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 							<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="inputEmail4">Name</label> <input type="text"
-										name="username" value="" class="form-control"
-										id="inputEmail4" placeholder="Full Name">
+										name="username" value="<%=user.getName() %>" class="form-control"
+										id="inputEmail4" placeholder="Full Name" required readonly>
 								</div>
 								</div>
 								<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="inputPassword4">Email</label> <input
-										value="" name="email" type="email"
-										class="form-control" id="inputPassword4" placeholder="Email">
+										value="<%=user.getEmail() %>" name="email" type="email"
+										class="form-control" id="inputPassword4" placeholder="Email" readonly required>
 								</div>
 							</div>
                           <div class="form-row">
@@ -72,14 +72,14 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">Mobile no.</label> <input
-										type="number" name="mobile" value=""
+										type="number" name="mobile" value="<%=user.getMobile() %>"
 										class="form-control" id="inputEmail4" placeholder="Mobile"
-										required>
+										required readonly>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputPassword4">Aadhar No</label> <input type="text"
 										name="address" class="form-control" id="inputPassword4"
-										placeholder="Aadhar number" required>
+										placeholder="Aadhar number" value="<%=user.getAadhar() %>" readonly required>
 								</div>
 							</div>
 							<div class="form-group">
