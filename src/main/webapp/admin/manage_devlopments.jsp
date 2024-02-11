@@ -75,7 +75,7 @@
 										<td><%=d.getNeed() %></td>
 										<td>
 										   <a href="update_developments.jsp?id=<%=d.getPid() %>" type="button" class="btn " style="background-color:#007bff;color:white">Update</a>
-                                          <button type="button" class="btn btn-danger">Delete</button>
+                                          <a href="../DeleteDevelopmentServlet?pid=<%=d.getPid() %>" type="button" class="btn btn-danger">Delete</a>
 										</td>
 									</tr>
 									<%
@@ -91,7 +91,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<%@include file="components/allscripts.jsp"%>
 </body>

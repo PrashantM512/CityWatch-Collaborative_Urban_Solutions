@@ -10,4 +10,6 @@ public interface DevelopmentDao {
 	public List<Development> getAlldevelopments();
 	public Development getDevelopmentById(int pid);
 	public boolean updateDevelopmentById(int pid,Development dev);
+	public boolean deleteDevelopmentById(int pid);
+	
 }

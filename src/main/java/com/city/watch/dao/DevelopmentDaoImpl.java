@@ -123,4 +123,21 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 		return f;
 	}
 
+
+	@Override
+	public boolean deleteDevelopmentById(int pid) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM developments WHERE pid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, pid);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
 }
