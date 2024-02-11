@@ -1,3 +1,8 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.city.watch.entity.Rating"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.RatingsDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -36,10 +41,8 @@
 						style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 13px; margin-left: 32px; margin-right: 37px;">
 						<div>
 							<span class="heading">User Rating</span> <span
-								id="stars-container">
-
-							</span>
-							<p id="average-rating">4.1 average based on 254 reviews.</p>
+								id="stars-container"> </span>
+							<p id="average-rating"><c:if test="${not empty averageRating}">${averageRating}</c:if> average based on <c:if test="${not empty i}">${i}<c:remove var="i"/></c:if> reviews.</p>
 						</div>
 					</div>
 				</div>
@@ -64,14 +67,41 @@
 							</tr>
 						</thead>
 						<tbody>
+							<%
+							int pid=Integer.parseInt(request.getParameter("pid"));
+							
+							RatingsDaoImpl dao = new RatingsDaoImpl(ConnectionProvider.getConnection());
+							List<Map<String, Object>> list = dao.getFeedbackDetails();
+							int i = 1;
+							int stars=0;
+							for (Map<String, Object> fd : list) {
+								if(((Map<String, Object>) fd.get("development")).get("pid").equals(pid)){
+							%>
+                                   
 							<tr>
-								<th scope="row">1</th>
-								<td>Ram</td>
-								<td>12 January</td>
-								<td>5</td>
-								<td>Tomatoes make great weapons when water balloons are not
-									available weapons when water balloons</td>
+								<th scope="row"><%=i%></th>
+								<td><%=((Map<String, Object>) fd.get("user")).get("name")%></td>
+								<td><%=fd.get("date")%></td>
+								<td>
+									<%
+									int ratingLevel = (int) fd.get("stars");
+									for (int j = 0; j < ratingLevel; j++) {
+										out.println("<i class=\"fa-solid fa-star\" style=\"color: orange;\"></i>");
+									}
+									%>
+								</td>
+
+								<td><%=fd.get("feedback")%></td>
 							</tr>
+							<%
+							i++;
+							stars=stars+ratingLevel;
+							 }
+							}
+							session.setAttribute("i",--i);
+							double averageRating=stars/i;
+							session.setAttribute("averageRating",averageRating);
+							%>
 						</tbody>
 					</table>
 				</div>
@@ -79,7 +109,7 @@
 		</div>
 	</div>
 	<script>
-		const averageRating = 4.5;
+		const averageRating = ${averageRating};
 		const filledStars = Math.floor(averageRating);
 		for (let i = 0; i < filledStars; i++) {
 			document.getElementById('stars-container').innerHTML += '<span class="fa fa-star checked"></span>';
@@ -92,8 +122,7 @@
 		for (let i = 0; i < unfilledStars; i++) {
 			document.getElementById('stars-container').innerHTML += '<span class="fa fa-star"></span>';
 		}
-	</script>
-
+	</script> 
 	<div style="height: 100px"></div>
 
 	<%@include file="components/footer.jsp"%>

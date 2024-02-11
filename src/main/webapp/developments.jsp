@@ -81,6 +81,9 @@ th,td{
 		</div>
 	</div>
 	<div style="height: 100px"></div>
+	 <c:if test="${not empty averageRating}">
+    <c:remove var="averageRating" scope="session"/>
+    </c:if>
 
 	<%@include file="components/footer.jsp"%>
 	<%@include file="components/all_js.jsp"%>
