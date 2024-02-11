@@ -27,6 +27,7 @@ public class SendNotificationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession();
+        String redirect=request.getParameter("rd");
         String title=request.getParameter("title");
         String description=request.getParameter("description");
         String from=request.getParameter("from");
@@ -41,18 +42,31 @@ public class SendNotificationServlet extends HttpServlet {
 			if(f) {
 				session.setAttribute("alertMessage", "Notification Sent Successfully...");
 				session.setAttribute("alertClass","alert-success");
-				response.sendRedirect("admin/notifications.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+				    response.sendRedirect("department/notifications.jsp");
+				} else {
+				    response.sendRedirect("admin/notifications.jsp");
+				}
+				
 			}else {
 				session.setAttribute("alertMessage", "Operation failed... Please Try Agin!!!");
 				session.setAttribute("alertClass","alert-danger");
-				response.sendRedirect("admin/notifications.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+				    response.sendRedirect("department/notifications.jsp");
+				} else {
+				    response.sendRedirect("admin/notifications.jsp");
+				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("alertMessage", "Something Went Wrong...");
 			session.setAttribute("alertClass","alert-danger");
-			response.sendRedirect("admin/notifications.jsp");
+			if (redirect != null && redirect.equals("dept")) {
+			    response.sendRedirect("department/notifications.jsp");
+			} else {
+			    response.sendRedirect("admin/notifications.jsp");
+			}
 		}
 
 		doGet(request, response);

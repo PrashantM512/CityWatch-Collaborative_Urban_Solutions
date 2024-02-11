@@ -41,6 +41,7 @@ public class UpdateDevelopmentServlet extends HttpServlet {
 		String need=request.getParameter("need");
 		Part photo=request.getPart("photo");
 		String photoName=photo.getSubmittedFileName();
+		String redirect=request.getParameter("rd");
 		
 		System.out.println(pid+" "+title+" "+description+" "+location+" "+startDate+" "+endDate+" "+status+" "+need+" "+photoName);
 		Development dev=new Development(title,description,location,startDate,endDate,status,need,photoName);
@@ -49,27 +50,36 @@ public class UpdateDevelopmentServlet extends HttpServlet {
 	        boolean f=dao.updateDevelopmentById(pid, dev);
 	        
 	        if(f){
-	        	
 	        	String path = getServletContext().getRealPath("/") + "developments_img" + File.separator + photoName;
 				Helper.saveFile(photo.getInputStream(), path);
 				session.setAttribute("alertMessage","Development Updated SuccessFully...");
 				session.setAttribute("alertClass", "alert-success");
-				response.sendRedirect("admin/manage_devlopments.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/manage_devlopments.jsp");
+				} else {
+					response.sendRedirect("admin/manage_devlopments.jsp");
+				}
 				
 			} else {
 				session.setAttribute("alertMessage","Development Update Failed...");
 				session.setAttribute("alertClass", "alert-danger");
-				response.sendRedirect("admin/manage_devlopments.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/manage_devlopments.jsp");
+				} else {
+					response.sendRedirect("admin/manage_devlopments.jsp");
+				}
 			}
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass", "alert-danger");
-			response.sendRedirect("admin/manage_devlopments.jsp");
+			if (redirect != null && redirect.equals("dept")) {
+				response.sendRedirect("department/manage_devlopments.jsp");
+			} else {
+				response.sendRedirect("admin/manage_devlopments.jsp");
+			}
 		}
-
-		
 		doGet(request, response);
 	}
 

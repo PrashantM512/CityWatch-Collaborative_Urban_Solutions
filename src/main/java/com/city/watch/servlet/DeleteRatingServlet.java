@@ -22,6 +22,8 @@ public class DeleteRatingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession();
         int rid=Integer.parseInt(request.getParameter("rid"));
+        String redirect=request.getParameter("rd");
+        System.out.println(redirect);
         
         try {
 		    RatingsDaoImpl dao=new RatingsDaoImpl(ConnectionProvider.getConnection());
@@ -30,18 +32,30 @@ public class DeleteRatingServlet extends HttpServlet {
 		    if(f) {
 				session.setAttribute("alertMessage", "Rating Delete Successfully...");
 				session.setAttribute("alertClass","alert-success");
-				response.sendRedirect("admin/rating_feedbacks.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+				    response.sendRedirect("department/rating_feedbacks.jsp");
+				} else {
+					response.sendRedirect("admin/rating_feedbacks.jsp");
+				}
 			}else {
 				session.setAttribute("alertMessage", "Operation failed... Please Try Agin!!!");
 				session.setAttribute("alertClass","alert-danger");
-				response.sendRedirect("admin/rating_feedbacks.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+				    response.sendRedirect("department/rating_feedbacks.jsp");
+				} else {
+					response.sendRedirect("admin/rating_feedbacks.jsp");
+				}
 			}
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("alertMessage", "Something Went Wrong...");
 			session.setAttribute("alertClass","alert-danger");
-			response.sendRedirect("admin/rating_feedbacks.jsp");
+			if (redirect != null && redirect.equals("dept")) {
+			    response.sendRedirect("department/rating_feedbacks.jsp");
+			} else {
+				response.sendRedirect("admin/rating_feedbacks.jsp");
+			}
 		}
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());

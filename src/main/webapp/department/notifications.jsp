@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.city.watch.entity.Notification"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.NotificationDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -30,56 +35,51 @@
 		%>
 
 		<div class="content">
-			<!-- Navbar Start -->
 			<%@include file="components/navbar.jsp"%>
-			<!-- Navbar End -->
-
-			<div class="container-fluid pt-4 px-4">
+		   <div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
 					<div class="col-sm-12 col-md-6 col-xl-4"></div>
-					<!-- First card -->
 					<div class="col-sm-12 col-md-6 col-xl-4"></div>
-					<!-- Second card -->
 					<div class="col-12">
-						<!-- Third card -->
 						<div class="h-100 bg-secondary rounded p-4">
+						 <%@include file="components/alert.jsp" %>
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Send Notifications :</h6>
 								<a href=""></a>
 							</div>
 							<div class="">
-								<form>
-
+								<form action="../SendNotificationServlet" method="post">
+								    <input type="hidden" value="dept" name="rd">
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputEmail4">Title</label> <input type="text"
-											class="form-control" id="inputEmail4" placeholder="">
+											class="form-control" name="title" id="inputEmail4" placeholder="">
 									</div>
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputPassword4">Description</label> <input
-											type="text" class="form-control" id="inputPassword4">
+											type="text" class="form-control" name="description" id="inputPassword4">
 									</div>
 									<div class="form-row" style="display: flex;">
 										<div class="form-group col-md-6"
 											style="margin-right: 18px; width: 49%;">
 											<label for="inputState">Zone</label> <select id="inputState"
-												class="form-control">
-												<option selected>Choose...</option>
-												<option>All</option>
-												<option>East</option>
-												<option>West</option>
-												<option>North</option>
-												<option>South</option>
+												class="form-control" name="target" required>
+												<option value="" selected>Choose...</option>
+												<option value="All">All</option>
+												<option value="East">East</option>
+												<option value="West">West</option>
+												<option value="North">North</option>
+												<option value="South">South</option>
 											</select>
 										</div>
 										<div class="form-group col-md-6"
 											style="margin-right: 18px; width: 49%;">
-											<label for="inputState">From</label> <select
-												class="form-control">
-												<option selected>Choose...</option>
-												<option>Nagarpanchayt</option>
-												<option>State Government</option>
-												<option>Central Government</option>
+											<label for="inputState">From</label> <select id="inputState"
+												class="form-control" name="from" required>
+												<option value="" selected>Choose...</option>
+												<option value="Nagarpanchayt">Nagarpanchayt</option>
+												<option value="State Gov.">State Government</option>
+												<option value="Central Gov.">Central Government</option>
 											</select>
 										</div>
 									</div>
@@ -109,24 +109,33 @@
                                             <th scope="col">description</th>
                                             <th scope="col">From</th>
                                             <th scope="col">Target</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <%
+			                            NotificationDaoImpl dao=new NotificationDaoImpl(ConnectionProvider.getConnection());
+		                            	List<Notification> list=new ArrayList<Notification>();
+		                             	list=dao.getAllNotifications();
+		                             	int i=1;
+		                            	for(Notification n:list){
+			                        	%>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Street Light</td>
-                                            <td>9035482483</td>
-                                            <td>Major</td>
-                                            <td>12/1/2024</td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=n.getTitle() %></td>
+                                            <td><%=n.getDescription() %></td>
+                                            <td><%=n.getFrm() %></td>
+                                            <td><%=n.getTarget() %></td>
+                                             <td><%=n.getDate() %></td>
                                             <td>
-                                            <button type="button" class="btn " style="background-color:#007bff;color:white">Update</button>
-                                           
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            
-                                            </td>
+                                            <a href="../DeleteNotificationServlet?id=<%=n.getId()%>&rd=dept" type="button" class="btn btn-danger">Delete</a>
+                                           </td>
                                         </tr>
-                                       
+                                       <%
+                                       i++;
+			                             }
+		                             	%> 
                                         
                                     </tbody>
                                 </table>

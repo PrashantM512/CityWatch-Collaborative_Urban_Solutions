@@ -21,7 +21,8 @@ public class DeleteDevelopmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession();
         int pid=Integer.parseInt(request.getParameter("pid"));
-         
+        String redirect=request.getParameter("rd"); 
+        
         try {
         	DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
             boolean f=dao.deleteDevelopmentById(pid);
@@ -29,18 +30,30 @@ public class DeleteDevelopmentServlet extends HttpServlet {
             if(f){
     			session.setAttribute("alertMessage","Development Deleted SuccessFully...");
     			session.setAttribute("alertClass", "alert-success");
-    			response.sendRedirect("admin/manage_devlopments.jsp");
+    			if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/manage_devlopments.jsp");
+				} else {
+					response.sendRedirect("admin/manage_devlopments.jsp");
+				}
     			
     		} else {
     			session.setAttribute("alertMessage","Development Delete Failed...");
     			session.setAttribute("alertClass", "alert-danger");
-    			response.sendRedirect("admin/manage_devlopments.jsp");
+    			if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/manage_devlopments.jsp");
+				} else {
+					response.sendRedirect("admin/manage_devlopments.jsp");
+				}
     		}
 		} catch (Exception e) {
 			e.printStackTrace();
 			 session.setAttribute("alertMessage","Something Went Wrong...");
 			 session.setAttribute("alertClass", "alert-danger");
-			 response.sendRedirect("admin/manage_devlopments.jsp");
+			 if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/manage_devlopments.jsp");
+				} else {
+					response.sendRedirect("admin/manage_devlopments.jsp");
+			 }
 		}
        
 		response.getWriter().append("Served at: ").append(request.getContextPath());

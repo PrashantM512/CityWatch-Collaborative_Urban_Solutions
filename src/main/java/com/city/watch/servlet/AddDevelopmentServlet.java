@@ -42,6 +42,7 @@ public class AddDevelopmentServlet extends HttpServlet {
 		String need=request.getParameter("need");
 		Part photo=request.getPart("photo");
 		String photoName=photo.getSubmittedFileName();
+		String redirect=request.getParameter("rd");
 		
 		Development dev=new Development(title,description,location,startDate,endDate,status,need,photoName);
 		
@@ -54,22 +55,37 @@ public class AddDevelopmentServlet extends HttpServlet {
 				Helper.saveFile(photo.getInputStream(), path);
 				session.setAttribute("alertMessage","Development Uploaded SuccessFully...");
 				session.setAttribute("alertClass", "alert-success");
-				response.sendRedirect("admin/developments.jsp");
+				
+				if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/developments.jsp");
+				} else {
+					response.sendRedirect("admin/developments.jsp");
+				}
+				
 				System.out.println(path);
 			} else {
 				session.setAttribute("alertMessage","Development Upload Failed...");
 				session.setAttribute("alertClass", "alert-danger");
-				response.sendRedirect("admin/developments.jsp");
+				if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/developments.jsp");
+				} else {
+					response.sendRedirect("admin/developments.jsp");
+				
+				}
 			}
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass", "alert-danger");
-			response.sendRedirect("admin/developments.jsp");
+			if (redirect != null && redirect.equals("dept")) {
+				response.sendRedirect("department/developments.jsp");
+			} else {
+				response.sendRedirect("admin/developments.jsp");
+			
 		}
            
 		doGet(request, response);
 	}
-
+ }
 }

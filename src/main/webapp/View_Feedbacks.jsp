@@ -99,7 +99,11 @@
 							 }
 							}
 							session.setAttribute("i",--i);
-							double averageRating=stars/i;
+							double averageRating = 0;
+							if (i > 1) {
+								i=i*5;
+							    averageRating = (double) stars*5 /i;
+							}
 							session.setAttribute("averageRating",averageRating);
 							%>
 						</tbody>

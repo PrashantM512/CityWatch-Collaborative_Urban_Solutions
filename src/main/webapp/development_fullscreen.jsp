@@ -69,11 +69,6 @@ dev=dao.getDevelopmentById(pid);
             <%
             }
             %>
-            
-           
-        
-        
-        
             <%
             if(dev.getNeed().equals("Yes") && dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Upcoming")){
             %>
