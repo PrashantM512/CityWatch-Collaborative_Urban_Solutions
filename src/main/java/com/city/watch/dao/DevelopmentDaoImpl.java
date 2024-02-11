@@ -98,4 +98,29 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 		return dev;
 	}
 
+
+	@Override
+	public boolean updateDevelopmentById(int pid, Development dev) {
+		boolean f=false;
+		try {
+			String query="UPDATE developments SET title=?,description=?,location=?,sDate=?,eDate=?,status=?,need=?,photo=? WHERE pid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,dev.getTitle());
+			stmt.setString(2,dev.getDescription());
+			stmt.setString(3,dev.getLocation());
+			stmt.setString(4,dev.getsDate());
+			stmt.setString(5,dev.geteDate());
+			stmt.setString(6,dev.getStatus());
+			stmt.setString(7,dev.getNeed());
+			stmt.setString(8,dev.getPhoto());
+			stmt.setInt(9,dev.getPid());
+			stmt.executeUpdate();
+			f=true;
+		
+		} catch (Exception e) {
+		  e.printStackTrace();
+		}
+		return f;
+	}
+
 }

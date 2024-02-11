@@ -40,7 +40,7 @@
 					<div class="border rounded h-100 p-4"
 						style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 13px; margin-left: 32px; margin-right: 37px;">
 						<div>
-							<span class="heading">User Rating</span> <span
+							<span class="heading">Public Ratings</span> <span
 								id="stars-container"> </span>
 							<p id="average-rating"><c:if test="${not empty averageRating}">${averageRating}</c:if> average based on <c:if test="${not empty i}">${i}<c:remove var="i"/></c:if> reviews.</p>
 						</div>

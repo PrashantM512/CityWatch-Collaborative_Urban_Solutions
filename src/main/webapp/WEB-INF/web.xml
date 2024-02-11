@@ -130,6 +130,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.DeleteRatingServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateDevelopmentServlet</servlet-name>
+  	<display-name>UpdateDevelopmentServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.UpdateDevelopmentServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -213,5 +219,9 @@
   <servlet-mapping>
   	<servlet-name>DeleteRatingServlet</servlet-name>
   	<url-pattern>/DeleteRatingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateDevelopmentServlet</servlet-name>
+  	<url-pattern>/UpdateDevelopmentServlet</url-pattern>
   </servlet-mapping>
 </web-app>

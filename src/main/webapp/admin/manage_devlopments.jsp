@@ -39,6 +39,7 @@
 			<div class="container-fluid pt-4 px-4 mb-4">
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
+					<%@include file="components/alert.jsp"%>
 						<h6 class="mb-4">All Developments :</h6>
 						<div class="table-responsive">
 							<table class="table">
@@ -73,7 +74,7 @@
 										<td><%=d.geteDate() %></td>
 										<td><%=d.getNeed() %></td>
 										<td>
-										   <button type="button" class="btn " style="background-color:#007bff;color:white">Update</button>
+										   <a href="update_developments.jsp?id=<%=d.getPid() %>" type="button" class="btn " style="background-color:#007bff;color:white">Update</a>
                                           <button type="button" class="btn btn-danger">Delete</button>
 										</td>
 									</tr>

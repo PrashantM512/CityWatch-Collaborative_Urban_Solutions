@@ -17,12 +17,11 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 @MultipartConfig
-public class AddDevelopmentServlet extends HttpServlet {
+public class UpdateDevelopmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public AddDevelopmentServlet() {
+
+    public UpdateDevelopmentServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,8 +30,8 @@ public class AddDevelopmentServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
 		HttpSession session=request.getSession();
+		int pid=Integer.parseInt(request.getParameter("pid"));
 		String title=request.getParameter("title");
 		String description=request.getParameter("description");
 		String location=request.getParameter("address");
@@ -43,32 +42,34 @@ public class AddDevelopmentServlet extends HttpServlet {
 		Part photo=request.getPart("photo");
 		String photoName=photo.getSubmittedFileName();
 		
+		System.out.println(pid+" "+title+" "+description+" "+location+" "+startDate+" "+endDate+" "+status+" "+need+" "+photoName);
 		Development dev=new Development(title,description,location,startDate,endDate,status,need,photoName);
-		
-		try {
+        try {
 			DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
-	        boolean f=dao.uploadDevelopment(dev);
+	        boolean f=dao.updateDevelopmentById(pid, dev);
 	        
-	        if (f) {
-				String path = getServletContext().getRealPath("/") + "developments_img" + File.separator + photoName;
+	        if(f){
+	        	
+	        	String path = getServletContext().getRealPath("/") + "developments_img" + File.separator + photoName;
 				Helper.saveFile(photo.getInputStream(), path);
-				session.setAttribute("alertMessage","Development Uploaded SuccessFully...");
+				session.setAttribute("alertMessage","Development Updated SuccessFully...");
 				session.setAttribute("alertClass", "alert-success");
-				response.sendRedirect("admin/developments.jsp");
-				System.out.println(path);
+				response.sendRedirect("admin/manage_devlopments.jsp");
+				
 			} else {
-				session.setAttribute("alertMessage","Development Upload Failed...");
+				session.setAttribute("alertMessage","Development Update Failed...");
 				session.setAttribute("alertClass", "alert-danger");
-				response.sendRedirect("admin/developments.jsp");
+				response.sendRedirect("admin/manage_devlopments.jsp");
 			}
 			
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass", "alert-danger");
-			response.sendRedirect("admin/developments.jsp");
+			response.sendRedirect("admin/manage_devlopments.jsp");
 		}
-           
+
+		
 		doGet(request, response);
 	}
 
