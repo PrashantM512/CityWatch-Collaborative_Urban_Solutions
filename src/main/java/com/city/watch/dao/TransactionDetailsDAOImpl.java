@@ -85,6 +85,24 @@ public class TransactionDetailsDAOImpl implements TransactionDetailsDAO {
         transactionDetails.setStatus(resultSet.getString("status"));
         return transactionDetails;
     }
+
+	@Override
+	public boolean updateTransactionDetailsByOrderId(String paymentId, String status, String orderId) {
+		boolean f=false;
+		try {
+			String query="UPDATE transaction_details SET paymentId=? , status=? WHERE orderId=?";
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setString(1, paymentId);
+			stmt.setString(2, status);
+			stmt.setString(3, orderId);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+		   e.printStackTrace();
+		}
+		return f;
+	}
 }
 
 

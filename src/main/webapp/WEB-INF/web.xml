@@ -148,6 +148,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.PaymentServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateDatabaseServlet</servlet-name>
+  	<display-name>UpdateDatabaseServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.UpdateDatabaseServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -243,5 +249,9 @@
   <servlet-mapping>
   	<servlet-name>PaymentServlet</servlet-name>
   	<url-pattern>/PaymentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateDatabaseServlet</servlet-name>
+  	<url-pattern>/UpdateDatabaseServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -13,6 +13,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import org.json.JSONObject;
 import java.util.UUID;
 
@@ -31,19 +33,21 @@ public class PaymentServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("uid");
+      HttpSession session=request.getSession();
+    	String userId = request.getParameter("uid");
         String mobile = request.getParameter("mobile");
         String email = request.getParameter("email");
         String propertyTaxId = request.getParameter("ptan");
         String propertyType = request.getParameter("ptype");
         String amountStr = request.getParameter("amount");
-        System.out.println(amountStr);
+        String paymentId = request.getParameter("razorpay_payment_id");
+       
         if (amountStr == null || amountStr.isEmpty()) {
             System.err.println("Amount parameter is missing or empty");
             return; 
         }
         double amount = Double.parseDouble(amountStr);
-        System.out.println(userId + " " + mobile + " " + email + " " + propertyTaxId + " " + propertyType + " " + amount);
+        System.out.println(userId + " " + mobile + " " + email + " " + propertyTaxId + " " + propertyType + " " + amount+" "+paymentId);
 
         try {
             RazorpayClient razorpay = new RazorpayClient("rzp_test_f3AsciOhTsBdEO", "KU4m2UtM0OOeW2tqQbLPGtIP");
@@ -53,6 +57,9 @@ public class PaymentServlet extends HttpServlet {
             options.put("receipt", "txn_" + UUID.randomUUID().toString());
             Order order = razorpay.orders.create(options);
             String orderId = order.get("id");
+            String receipt=order.get("receipt");
+            
+          
 
             TransactionDetails transactionDetails = new TransactionDetails();
             transactionDetails.setUserId(userId);
@@ -62,7 +69,10 @@ public class PaymentServlet extends HttpServlet {
             transactionDetails.setPropertyType(propertyType);
             transactionDetails.setAmount(amount);
             transactionDetails.setOrderId(orderId);
+            transactionDetails.setReceiptId(receipt);
+            transactionDetails.setStatus("created");
             transactionDetailsDAO.saveTransactionDetails(transactionDetails);
+            session.setAttribute("orderId",orderId);
 
             response.sendRedirect("https://checkout.razorpay.com/v1/payment/" + orderId);
         } catch (RazorpayException e) {

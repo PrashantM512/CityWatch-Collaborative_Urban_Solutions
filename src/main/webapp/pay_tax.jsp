@@ -137,6 +137,7 @@
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
+    var paymentId = null;
     document.getElementById('paymentForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var form = this;
@@ -156,6 +157,7 @@
             console.error('Database storage request failed');
         };
         xhrDatabase.send(new URLSearchParams(formData)); 
+        
         function submitPaymentGateway(formData) {
             var xhrPaymentGateway = new XMLHttpRequest();
             xhrPaymentGateway.open('POST', form.action, true);
@@ -169,9 +171,11 @@
                              "description": "Property Tax Payment",
                              "image": "img/cityscape.png",
                              "handler": function (response){
+                            	 paymentId = response.razorpay_payment_id;
+                            	
                                  alert(response.razorpay_payment_id);
                                  alert(response.razorpay_order_id);
-                                 alert(response.razorpay_signature)
+                                 alert(response.razorpay_signature);
                              },
                              "prefill": {
                                  "name": formData.get('name'),
@@ -185,12 +189,19 @@
                                  "color": "#1938cf"
                              },
                              "handler": function(response) {
-                               
-                                 window.location.href = "payment_success.jsp";
+                            	 paymentId = response.razorpay_payment_id;
+                            	 window.location.href = "payment_success.jsp";
+                            	 updateDatabase(paymentId);
                              }
                     };
                     var rzp = new Razorpay(options);
                     rzp.open();
+                    
+                    rzp.on('payment.success', function(response) {
+                        paymentId = response.razorpay_payment_id;
+                       
+                        window.location.href = "payment_success.jsp";
+                    });
                     
                     rzp.on('payment.error', function(response) {
                         window.location.href = "payment-failed-page.jsp";
@@ -206,6 +217,25 @@
             xhrPaymentGateway.send(formData);
         }
     });
+    function updateDatabase(paymentId) {
+        var xhrUpdateDatabase = new XMLHttpRequest();
+        xhrUpdateDatabase.open('POST', 'UpdateDatabaseServlet', true); // Specify your servlet URL here
+        xhrUpdateDatabase.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        var params ='paymentId=' + encodeURIComponent(paymentId) + '&status=Success';
+
+        xhrUpdateDatabase.onload = function() {
+            if (xhrUpdateDatabase.status === 200) {
+                console.log('Database updated successfully');
+            } else {
+                console.error('Database update failed:', xhrUpdateDatabase.statusText);
+            }
+        };
+        xhrUpdateDatabase.onerror = function() {
+            console.error('Database update request failed');
+        };
+        xhrUpdateDatabase.send(params);
+    }
     </script>
     <%@include file="components/footer.jsp"%>
     <%@include file="components/all_js.jsp"%>
