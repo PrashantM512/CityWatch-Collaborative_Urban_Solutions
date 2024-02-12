@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="components/ratings.css">
 <%@include file="components/header_links.jsp"%>
-<title>Feedback Success</title>
+<title>Failed Page</title>
 </head>
 <style>
 .footer{
@@ -19,10 +19,11 @@ margin-top:0px;
  <%@include file="components/navbar.jsp"%>
  <div class="containerr">
       <div class="text-center">
-        <div class="text">Thanks for rating us!</div>
+        <div class="text">Sorry... Your Payment is failed please try again... !!!</div>
         <a href="index.jsp" class="btn btn-outline-dark text-white mt-2">Home</a>
       </div>
  </div>
+ 
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>

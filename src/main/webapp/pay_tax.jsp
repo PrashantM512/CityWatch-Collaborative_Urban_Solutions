@@ -183,10 +183,19 @@
                              },
                              "theme": {
                                  "color": "#1938cf"
+                             },
+                             "handler": function(response) {
+                               
+                                 window.location.href = "payment_success.jsp";
                              }
                     };
                     var rzp = new Razorpay(options);
                     rzp.open();
+                    
+                    rzp.on('payment.error', function(response) {
+                        window.location.href = "payment-failed-page.jsp";
+                    });
+                    
                 } else {
                     console.error('Payment gateway submission failed:', xhrPaymentGateway.statusText);
                 }
