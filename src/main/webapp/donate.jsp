@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Development"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.DevelopmentDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -86,8 +90,14 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 								<label for="inputState">Are you resident of Manchar ?</label> <select
 									id="inputState" name="payment" class="form-control" required>
 									<option value="" selected>--Select--</option>
-									<option value="Yes">Yes</option>
-									<option value="No">No</option>
+									<%
+									DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
+								    List<Development> d=dao.getAlldevelopments();
+										
+									%>
+									
+									<option value="">Yes</option>
+									
 								</select>
 							</div>
 
