@@ -50,11 +50,11 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 				<div class="card mt-2 h-100" style=" box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
 					<div class="card-body">
 						<h3 class="text-center text-success">Address and Details</h3>
-						<form action="" method="post">
+						<form action="DonateServlet" id="donateform" method="post">
 							<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="inputEmail4">Name</label> <input type="text"
-										name="username" value="<%=user.getName() %>" class="form-control"
+										name="name" value="<%=user.getName() %>" class="form-control"
 										id="inputEmail4" placeholder="Full Name" required readonly>
 								</div>
 								</div>
@@ -68,7 +68,7 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
                           <div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="inputEmail4">Amount</label> <input
-										type="number" name="mobile" value=""
+										type="number" name="amount" value=""
 										class="form-control" id="inputEmail4" placeholder="Amount"
 										required>
 								</div>
@@ -82,25 +82,27 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputPassword4">Aadhar No</label> <input type="text"
-										name="address" class="form-control" id="inputPassword4"
+										name="aadhar" class="form-control" id="inputPassword4"
 										placeholder="Aadhar number" value="<%=user.getAadhar() %>" readonly required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputState">Are you resident of Manchar ?</label> <select
-									id="inputState" name="payment" class="form-control" required>
+								<label for="inputState">Project You want to donate</label> <select
+									id="inputState" name="pid" class="form-control" required>
 									<option value="" selected>--Select--</option>
 									<%
 									DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
-								    List<Development> d=dao.getAlldevelopments();
-										
+								    List<Development> list=dao.getAlldevelopments();
+									for(Development d:list ){
+										if (!d.getStatus().equals("Completed")){
+										%>
+									<option value="<%=d.getPid()%>"><%=d.getTitle() %> (<%=d.getStatus() %>)</option>
+									 <%
+										}
+									}
 									%>
-									
-									<option value="">Yes</option>
-									
 								</select>
 							</div>
-
 							<input name="bookname" value="" type="hidden">
 							<input name="price" value="" type="hidden">
 							<div class="form-row">
@@ -122,9 +124,91 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 		</div>
 	</div>
   
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var paymentId = null;
+    document.getElementById('donateform').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var form = this;
+        var formData = new FormData(form);
+        
+        var xhrDatabase = new XMLHttpRequest();
+        xhrDatabase.open('POST', form.action, true);
+        xhrDatabase.onload = function() {
+            if (xhrDatabase.status === 200) {
+                console.log('Form data stored successfully in the database');
+                
+            } else {
+                console.error('Database storage failed:', xhrDatabase.statusText);
+                initiateRazorpay(formData);
+            }
+        };
+        xhrDatabase.onerror = function() {
+            console.error('Database storage request failed');
+        };
+        xhrDatabase.send(new URLSearchParams(formData));
+    });
 
-	<div style="height: 100px"></div>
-	
+    function initiateRazorpay(formData) {
+        var options = {
+            "key": "rzp_test_f3AsciOhTsBdEO",
+            "amount": formData.get('amount') * 100,
+            "currency": "INR",
+            "name": "City Watch",
+            "description": "Donation",
+            "image": "img/cityscape.png",
+            "handler": function(response) {
+                var paymentId = response.razorpay_payment_id;
+                window.location.href = "payment_success.jsp";
+                updateDatabase(paymentId);
+            },
+            "prefill": {
+                "name": formData.get('name'),
+                "email": formData.get('email'),
+                "contact": formData.get('mobile')
+            },
+            "notes": {
+                "address": formData.get('address')
+            },
+            "theme": {
+                "color": "#1938cf"
+            }
+        };
+        var rzp = new Razorpay(options);
+        rzp.open();
+        
+        rzp.on('payment.success', function(response) {
+            var paymentId = response.razorpay_payment_id;
+            window.location.href = "payment_success.jsp";
+            updateDatabase(paymentId);
+        });
+        
+        rzp.on('payment.error', function(response) {
+            window.location.href = "payment-failed-page.jsp";
+        });
+    }
+
+    function updateDatabase(paymentId) {
+        var xhrUpdateDatabase = new XMLHttpRequest();
+        xhrUpdateDatabase.open('POST', 'UpdateDonationDetailsServlet', true); 
+        xhrUpdateDatabase.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        var params = 'paymentId=' + encodeURIComponent(paymentId) + '&status=Success';
+
+        xhrUpdateDatabase.onload = function() {
+            if (xhrUpdateDatabase.status === 200) {
+                console.log('Database updated successfully');
+            } else {
+                console.error('Database update failed:', xhrUpdateDatabase.statusText);
+            }
+        };
+        xhrUpdateDatabase.onerror = function() {
+            console.error('Database update request failed');
+        };
+        xhrUpdateDatabase.send(params);
+    }
+
+</script>
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>
 </body>
