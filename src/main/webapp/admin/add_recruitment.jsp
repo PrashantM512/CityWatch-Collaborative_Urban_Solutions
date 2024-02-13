@@ -112,7 +112,7 @@
                                   List<Recruitment> list=dao.getAllRecruitments();
                                   int i=1;
                                   for(Recruitment r:list){
-                                	  %>
+                                   %>
                                   
                                         <tr>
                                             <th scope="row"><%=i %></th>
