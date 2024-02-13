@@ -40,6 +40,7 @@
 			<div class="container-fluid pt-4 px-4 mb-4">
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
+					 <%@include file="components/alert.jsp" %>
 						<h6 class="mb-4">Manage Applications :</h6>
 						<div class="table-responsive">
 							<table class="table">
@@ -83,7 +84,7 @@
                                             }
                                            %>
 										</td>
-										<td><a href="" type="button" class="btn btn-danger">Delete</a>
+										<td><a href="../DeleteJobApplicationServlet?id=<%=a.get("applicationId") %>" type="button" class="btn btn-danger">Delete</a>
 										</td>
 									</tr>
 									<%  i++;

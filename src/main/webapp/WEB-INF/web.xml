@@ -178,6 +178,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.ApplyJobServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteJobApplicationServlet</servlet-name>
+  	<display-name>DeleteJobApplicationServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.DeleteJobApplicationServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -293,5 +299,9 @@
   <servlet-mapping>
   	<servlet-name>ApplyJobServlet</servlet-name>
   	<url-pattern>/ApplyJobServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteJobApplicationServlet</servlet-name>
+  	<url-pattern>/DeleteJobApplicationServlet</url-pattern>
   </servlet-mapping>
 </web-app>

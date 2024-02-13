@@ -57,11 +57,12 @@ public class JobApplicationDaoImpl implements JobApplicationDao{
 	    List<Map<String, Object>> jobApplicationsDetails = new ArrayList<>();
 
 	    String query = "SELECT u.name, u.mobile, u.gender, u.address, u.cv, " +
-	                   "r.job_title, r.description, r.criteria, r.cv_need, " +
-	                   "ja.applicationDate " + 
-	                   "FROM job_applications ja " +
-	                   "INNER JOIN users u ON ja.userId = u.uid " +
-	                   "INNER JOIN recruitment r ON ja.recruitmentId = r.recruitment_id";
+	               "r.job_title, r.description, r.criteria, r.cv_need, " +
+	               "ja.applicationDate, ja.applicationId " +
+	               "FROM job_applications ja " +
+	               "INNER JOIN users u ON ja.userId = u.uid " +
+	               "INNER JOIN recruitment r ON ja.recruitmentId = r.recruitment_id";
+
 
 	    try (PreparedStatement stmt = conn.prepareStatement(query)) {
 	        ResultSet rs = stmt.executeQuery();
@@ -77,6 +78,7 @@ public class JobApplicationDaoImpl implements JobApplicationDao{
 	            applicationDetails.put("criteria", rs.getString("criteria"));
 	            applicationDetails.put("cv_need", rs.getString("cv_need"));
 	            applicationDetails.put("applicationDate", rs.getTimestamp("applicationDate")); 
+	            applicationDetails.put("applicationId",rs.getInt("applicationId"));
 	                
 	            jobApplicationsDetails.add(applicationDetails);
 	        }
@@ -84,6 +86,22 @@ public class JobApplicationDaoImpl implements JobApplicationDao{
 	        e.printStackTrace();
 	    }
 	    return jobApplicationsDetails;
+	}
+
+	@Override
+	public boolean deleteJobApplicationById(int id) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM job_applications WHERE applicationId=?";
+		    PreparedStatement stmt=conn.prepareStatement(query);
+		    stmt.setInt(1, id);
+		    stmt.executeUpdate();
+		    f=true;
+			
+		} catch (Exception e) {
+			
+		}
+		return f;
 	}
 
 }
