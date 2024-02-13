@@ -1,3 +1,7 @@
+<%@page import="com.city.watch.entity.Recruitment"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="com.city.watch.dao.RecruitmentDaoImpl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -86,17 +90,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                  <%
+                                  RecruitmentDaoImpl dao=new RecruitmentDaoImpl(ConnectionProvider.getConnection());
+                                  List<Recruitment> list=dao.getAllRecruitments();
+                                  int i=1;
+                                  for(Recruitment r:list){
+                                	  %>
                                   
                                         <tr>
-                                            <th scope="row">i</th>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <th scope="row"><%=i %></th>
+                                            <td><%=r.getJobTitle() %></td>
+                                            <td><%=r.getDescription() %></td>
+                                            <td><%=r.getApplicationEndDate() %></td>
                                             <td>
-                                            <a href="" type="button" class="btn btn-danger">Delete</a>
+                                            <a href="../DeleteRecruitmentServlet?id=<%=r.getRecruitmentId() %>" type="button" class="btn btn-danger">Delete</a>
                                            </td>
                                         </tr>
-                                    
+                                      <%
+                                  i++;
+                                  }
+                                  %>
                                     </tbody>
                                 </table>
                             </div>
