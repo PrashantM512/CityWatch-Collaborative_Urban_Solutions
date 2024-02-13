@@ -15,4 +15,5 @@ public interface UserDao {
 	public boolean deleteUserById(int uid);
 	public List<User> getAllAdmins();
 	public boolean updateUserByEmail(String Email,String usertype);
+	public boolean updateCvById(int id,String cv);
 }

@@ -250,5 +250,20 @@ public class UserDaoImpl implements UserDao{
 		return f;
 	}
 
-
+	@Override
+	public boolean updateCvById(int id, String cv) {
+		boolean f=false;
+		try {
+			String query="UPDATE users SET cv=? WHERE uid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1, cv);
+			stmt.setInt(2, id);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 }

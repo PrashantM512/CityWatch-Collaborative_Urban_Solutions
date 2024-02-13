@@ -166,6 +166,18 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.DeleteRecruitmentServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UploadCVServlet</servlet-name>
+  	<display-name>UploadCVServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.UploadCVServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ApplyJobServlet</servlet-name>
+  	<display-name>ApplyJobServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.ApplyJobServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -273,5 +285,13 @@
   <servlet-mapping>
   	<servlet-name>DeleteRecruitmentServlet</servlet-name>
   	<url-pattern>/DeleteRecruitmentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UploadCVServlet</servlet-name>
+  	<url-pattern>/UploadCVServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ApplyJobServlet</servlet-name>
+  	<url-pattern>/ApplyJobServlet</url-pattern>
   </servlet-mapping>
 </web-app>

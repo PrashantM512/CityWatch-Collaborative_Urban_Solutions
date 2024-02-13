@@ -64,9 +64,18 @@ th,td{
                                    <%
                                     if (r.getCv_need().equals("Yes") && (u.getCv() == null || u.getCv().isEmpty())) {
                                    %>
-                                     <a class="text-white btn-primary btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Upload CV</a>
+                                     <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Upload CV</a>
                                    <% } else { %>
-                                     <a class="text-white btn-info ml-2 btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  
+                                     <a class="text-white btn-info ml-2 btn" href="ApplyJobServlet?rid=<%=r.getRecruitmentId() %>&uid=<%=user.getUid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  
+                                     
+                                         <%
+                                         if(r.getCv_need().equals("Yes")){
+                                        	 %>
+                                        	  <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 14px;margin-left: 5px;">Update CV ?</a>
+                                        	 <%
+                                         }
+                                         %>
+                                     
                                    <% } %>
                                    
                                   </td>
