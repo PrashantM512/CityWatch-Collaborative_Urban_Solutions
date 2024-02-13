@@ -62,6 +62,21 @@
 										<label for="inputPassword4">Application End Date</label> <input
 											type="text" class="form-control" name="edate" id="inputPassword4">
 									</div>
+									<div class="form-row" style="display:flex;">
+									<div class="form-group col-md-6 ">
+										<label for="inputPassword4">Criteria</label> <input
+											type="text" class="form-control" name="criteria" id="inputPassword4">
+									</div>
+										<div class="form-group col-md-6"
+											style="margin-left: 18px; width: 49%;">
+											<label for="inputState">CV need</label> <select id="inputState"
+												class="form-control" name="need" required>
+												<option value="" selected disabled>Choose...</option>
+												<option value="Yes">Yes</option>
+												<option value="No">No</option>
+											</select>
+										</div>
+									</div>	
 									<div class="form-group col-md-6">
 										<button type="submit" class="btn"
 											style="background-color: #007bff; color: white; margin-top: 10px; width: 51%;">Add</button>
@@ -86,6 +101,8 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">End Date</th>
+                                            <th scope="col">Criteria</th>
+                                            <th scope="col">CV needed ?</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -102,6 +119,8 @@
                                             <td><%=r.getJobTitle() %></td>
                                             <td><%=r.getDescription() %></td>
                                             <td><%=r.getApplicationEndDate() %></td>
+                                            <td><%=r.getCriteria() %></td>
+                                            <td><%=r.getCv_need() %></td>
                                             <td>
                                             <a href="../DeleteRecruitmentServlet?id=<%=r.getRecruitmentId() %>" type="button" class="btn btn-danger">Delete</a>
                                            </td>

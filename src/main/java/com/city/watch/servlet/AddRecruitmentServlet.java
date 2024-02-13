@@ -30,8 +30,10 @@ public class AddRecruitmentServlet extends HttpServlet {
 	    String title=request.getParameter("title");
 	    String description=request.getParameter("description");
 	    String eDate=request.getParameter("edate");
+	    String criteria=request.getParameter("criteria");
+	    String cv_need=request.getParameter("need");
 	    
-	    Recruitment rc=new Recruitment(title,description,eDate);
+	    Recruitment rc=new Recruitment(title,description,eDate,criteria,cv_need);
 	    try {
 	    	RecruitmentDaoImpl dao=new RecruitmentDaoImpl(ConnectionProvider.getConnection());
 	    	boolean f=dao.addRecruitment(rc);

@@ -20,11 +20,13 @@ public class RecruitmentDaoImpl implements RecruitmentDao {
 	public boolean addRecruitment(Recruitment recruitment) {
 		boolean f=false;
 		try {
-			String query="INSERT INTO recruitment(job_title, description, application_end_date) VALUES(?,?,?)";
+			String query="INSERT INTO recruitment(job_title, description, application_end_date,criteria, cv_need) VALUES(?,?,?,?,?)";
 		    PreparedStatement stmt=conn.prepareStatement(query);
 		    stmt.setString(1,recruitment.getJobTitle());
 		    stmt.setString(2,recruitment.getDescription());
 		    stmt.setString(3,recruitment.getApplicationEndDate());
+		    stmt.setString(4,recruitment.getCriteria());
+		    stmt.setString(5,recruitment.getCv_need());
 		    stmt.executeUpdate();
 		    f=true;
 		    
@@ -49,6 +51,8 @@ public class RecruitmentDaoImpl implements RecruitmentDao {
 			rc.setDescription(rs.getString(3));
 			rc.setApplicationEndDate(rs.getString(4));
 			rc.setCreatedAt(rs.getTimestamp(5));
+			rc.setCriteria(rs.getString(6));
+			rc.setCv_need(rs.getString(7));
 			list.add(rc);
 		}
 		
