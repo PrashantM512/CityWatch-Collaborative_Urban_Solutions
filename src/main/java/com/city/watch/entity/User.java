@@ -14,12 +14,13 @@ public class User {
        private String house_id;
        private String ward_no;
        private String property_id;
+       private String cv;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public User(int uid, String name, String email, String mobile, String gender, String address, String aadhar,
-			String zone, String password, String usertype, String house_id, String ward_no, String property_id) {
+			String zone, String password, String usertype, String house_id, String ward_no, String property_id ,String cv) {
 		super();
 		this.uid = uid;
 		this.name = name;
@@ -34,6 +35,7 @@ public class User {
 		this.house_id = house_id;
 		this.ward_no = ward_no;
 		this.property_id = property_id;
+		this.cv=cv;
 	}
 	public User(String name, String email, String mobile, String gender, String address, String aadhar, String zone,
 			String password, String usertype, String house_id, String ward_no, String property_id) {
@@ -153,6 +155,11 @@ public class User {
 	public void setProperty_id(String property_id) {
 		this.property_id = property_id;
 	}
-       
-       
+	public String getCv() {
+		return cv;
+	}
+	public void setCv(String cv) {
+		this.cv = cv;
+	}
+	
 }

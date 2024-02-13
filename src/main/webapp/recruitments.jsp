@@ -1,3 +1,4 @@
+<%@page import="com.city.watch.dao.UserDaoImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.dao.RecruitmentDaoImpl"%>
 <%@page import="com.city.watch.entity.Recruitment"%>
@@ -20,10 +21,13 @@ th,td{
 <body>
     <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
-
+    <%
+    UserDaoImpl d=new UserDaoImpl(ConnectionProvider.getConnection());
+    User u=d.getUserById(user.getUid());
+    %>
 	<div class="conatiner">
 		<p class="text-center pgeheading">OUR ACTIVE RECRUITMENTS</p>
-
+      
 		<div class="container-fluid px-4" style="text-align: -webkit-center;">
 			<div class="col-12">
 				<div class="rounded h-100">
@@ -56,9 +60,16 @@ th,td{
                                  <td><%=r.getApplicationEndDate() %></td>
                                  <td><%=r.getCriteria() %></td>
                                  <td><%=r.getCv_need() %></td>
-									<td><a class="text-white btn-primary btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Upload CV</a>
-									<a class="text-white btn-info ml-2 btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>
-									</td>
+                                 <td>
+                                   <%
+                                    if (r.getCv_need().equals("Yes") && (u.getCv() == null || u.getCv().isEmpty())) {
+                                   %>
+                                     <a class="text-white btn-primary btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Upload CV</a>
+                                   <% } else { %>
+                                     <a class="text-white btn-info ml-2 btn" href="" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  
+                                   <% } %>
+                                   
+                                  </td>
 								</tr>
 								    <%
                                   i++;

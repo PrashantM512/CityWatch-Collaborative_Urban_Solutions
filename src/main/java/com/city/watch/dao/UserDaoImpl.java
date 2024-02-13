@@ -80,6 +80,7 @@ public class UserDaoImpl implements UserDao{
 				user.setHouse_id(rs.getString(11));
 				user.setWard_no(rs.getString(12));
 				user.setProperty_id(rs.getString(13));
+				user.setCv(rs.getString(14));
 				
 			}
 			
@@ -113,6 +114,7 @@ public class UserDaoImpl implements UserDao{
 				user.setHouse_id(rs.getString(11));
 				user.setWard_no(rs.getString(12));
 				user.setProperty_id(rs.getString(13));
+				user.setCv(rs.getString(14)); 
 			}
 			
 		} catch (Exception e) {
