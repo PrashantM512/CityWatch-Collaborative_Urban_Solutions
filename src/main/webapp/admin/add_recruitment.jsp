@@ -46,7 +46,7 @@
 							<div
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Add Recruitments :</h6>
-								<a href="">View Applied Applications</a>
+								<a href="applied_applications.jsp">View Applied Applications</a>
 							</div>
 							<div class="">
 								<form action="../AddRecruitmentServlet" method="post">

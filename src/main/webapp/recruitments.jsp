@@ -1,3 +1,4 @@
+<%@page import="com.city.watch.dao.JobApplicationDaoImpl"%>
 <%@page import="com.city.watch.dao.UserDaoImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.dao.RecruitmentDaoImpl"%>
@@ -66,15 +67,23 @@ th,td{
                                    %>
                                      <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Upload CV</a>
                                    <% } else { %>
-                                     <a class="text-white btn-info ml-2 btn" href="ApplyJobServlet?rid=<%=r.getRecruitmentId() %>&uid=<%=user.getUid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  
-                                     
-                                         <%
-                                         if(r.getCv_need().equals("Yes")){
+                                   
+                                       
+                                       <%
+                                       JobApplicationDaoImpl dd=new JobApplicationDaoImpl(ConnectionProvider.getConnection());
+                                       boolean f=dd.getApplicationByRidAndUid(r.getRecruitmentId(), user.getUid());
+                                       if(f){ %>
+                                    	     <button class="text-white btn-success ml-2 btn" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Applied</button>  
+                                        
+                                     <%  }else{  %>
+                                    	    <a class="text-white btn-info ml-2 btn" href="ApplyJobServlet?rid=<%=r.getRecruitmentId() %>&uid=<%=user.getUid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  
+                                      <% } %>
+                                               
+                                             <% 
+                                               if(r.getCv_need().equals("Yes")){
                                         	 %>
                                         	  <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 14px;margin-left: 5px;">Update CV ?</a>
-                                        	 <%
-                                         }
-                                         %>
+                                        	 <% } %>
                                      
                                    <% } %>
                                    
