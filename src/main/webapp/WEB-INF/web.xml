@@ -154,6 +154,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.UpdateDatabaseServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddRecruitmentServlet</servlet-name>
+  	<display-name>AddRecruitmentServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.AddRecruitmentServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -253,5 +259,9 @@
   <servlet-mapping>
   	<servlet-name>UpdateDatabaseServlet</servlet-name>
   	<url-pattern>/UpdateDatabaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddRecruitmentServlet</servlet-name>
+  	<url-pattern>/AddRecruitmentServlet</url-pattern>
   </servlet-mapping>
 </web-app>

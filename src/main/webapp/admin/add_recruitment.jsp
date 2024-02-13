@@ -45,7 +45,7 @@
 								<a href="">View Applied Applications</a>
 							</div>
 							<div class="">
-								<form action="" method="post">
+								<form action="../AddRecruitmentServlet" method="post">
 									<div class="form-group col-md-6" style="width: 100%;">
 										<label for="inputEmail4">Job Title</label> <input type="text"
 											class="form-control" name="title" id="inputEmail4" placeholder="">
@@ -60,12 +60,11 @@
 									</div>
 									<div class="form-group col-md-6">
 										<button type="submit" class="btn"
-											style="background-color: #007bff; color: white; margin-top: 10px; width: 51%;">Send</button>
+											style="background-color: #007bff; color: white; margin-top: 10px; width: 51%;">Add</button>
 									</div>
 								</form>
 							</div>
 							<div class="d-flex align-items-center">
-								
 							</div>
 						</div>
 					</div>
