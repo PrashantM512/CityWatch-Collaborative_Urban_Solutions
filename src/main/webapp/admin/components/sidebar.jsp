@@ -31,10 +31,11 @@
                     <a href="issues.jsp" class="nav-item nav-link ${currentPage eq 'issues' ? 'active' : ''}"><i class="fa fa-th me-2"></i>Issues</a>
                     <a href="notifications.jsp" class="nav-item nav-link ${currentPage eq 'notifications' ? 'active' : ''} "><i class="fa fa-bell me-2"></i>Notifications</a>
                     <a href="add_pins.jsp" class="nav-item nav-link ${currentPage eq 'pins' ? 'active' : ''} "><i class="fas fa-map-marker-alt me-2"></i>Add Pins</a>
+                    <a href="add_recruitment.jsp" class="nav-item nav-link ${currentPage eq 'recruitment' ? 'active' : ''} "><i class="fa fa-user me-2"></i>Recruitments</a>
                     <a href="users.jsp" class="nav-item nav-link ${currentPage eq 'users' ? 'active' : ''} "><i class="fa fa-user me-2"></i>Users</a>
-                   <a href="donations.jsp" class="nav-item nav-link ${currentPage eq 'donations' ? 'active' : ''}"><i class="fa fa-credit-card me-2"></i>Donations</a>
+                    <a href="donations.jsp" class="nav-item nav-link ${currentPage eq 'donations' ? 'active' : ''}"><i class="fa fa-credit-card me-2"></i>Donations</a>
                     <a href="suggestions.jsp" class="nav-item nav-link ${currentPage eq 'suggestions' ? 'active' : ''} "><i class="fa fa-comment me-2"></i>Suggestions</a>
-                   <a href="developments.jsp" class="nav-item nav-link ${currentPage eq 'developments' ? 'active' : ''}"><i class="fa fa-wrench me-2"></i>Developments</a>
+                    <a href="developments.jsp" class="nav-item nav-link ${currentPage eq 'developments' ? 'active' : ''}"><i class="fa fa-wrench me-2"></i>Developments</a>
                     <a href="tax_payments.jsp" class="nav-item nav-link ${currentPage eq 'tax_payments' ? 'active' : ''} "><i class="fa fa-credit-card me-2"></i>Tax Payments</a>
                     <a href="rating_feedbacks.jsp" class="nav-item nav-link ${currentPage eq 'feedbacks' ? 'active' : ''} "><i class="fa fa-comment me-2"></i>Feedbacks</a>
                
