@@ -321,7 +321,7 @@
 											},
 											"handler" : function(response) {
 												paymentId = response.razorpay_payment_id;
-												window.location.href = "payment_success.jsp";
+												window.location.href = "UpdateTaxBillServlet?updt=p";
 												updateDatabase(paymentId);
 											}
 										};
@@ -334,7 +334,7 @@
 														function(response) {
 															paymentId = response.razorpay_payment_id;
 
-															window.location.href = "payment_success.jsp";
+															window.location.href = "UpdateTaxBillServlet?updt=p";
 														});
 
 										rzp
@@ -445,7 +445,7 @@
 											},
 											"handler" : function(response) {
 												paymentId = response.razorpay_payment_id;
-												window.location.href = "payment_success.jsp";
+												window.location.href = "UpdateTaxBillServlet?updt=w";
 												updateDatabase(paymentId);
 											}
 										};
@@ -458,7 +458,7 @@
 														function(response) {
 															paymentId = response.razorpay_payment_id;
 
-															window.location.href = "payment_success.jsp";
+															window.location.href = "UpdateTaxBillServlet?updt=w";
 														});
 
 										rzp
