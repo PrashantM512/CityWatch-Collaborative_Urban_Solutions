@@ -196,6 +196,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.UpdateDonationDetailsServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SendTaxBillServlet</servlet-name>
+  	<display-name>SendTaxBillServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.SendTaxBillServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -323,5 +329,9 @@
   <servlet-mapping>
   	<servlet-name>UpdateDonationDetailsServlet</servlet-name>
   	<url-pattern>/UpdateDonationDetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SendTaxBillServlet</servlet-name>
+  	<url-pattern>/SendTaxBillServlet</url-pattern>
   </servlet-mapping>
 </web-app>

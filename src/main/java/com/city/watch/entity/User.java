@@ -15,12 +15,15 @@ public class User {
        private String ward_no;
        private String property_id;
        private String cv;
+       private String property_tax_bill;
+       private String water_tax_bill;
+       
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public User(int uid, String name, String email, String mobile, String gender, String address, String aadhar,
-			String zone, String password, String usertype, String house_id, String ward_no, String property_id ,String cv) {
+			String zone, String password, String usertype, String house_id, String ward_no, String property_id ,String cv ,String property_tax_bill,String water_tax_bill) {
 		super();
 		this.uid = uid;
 		this.name = name;
@@ -36,6 +39,9 @@ public class User {
 		this.ward_no = ward_no;
 		this.property_id = property_id;
 		this.cv=cv;
+		this.property_tax_bill = property_tax_bill;
+		this.water_tax_bill = water_tax_bill;
+		
 	}
 	public User(String name, String email, String mobile, String gender, String address, String aadhar, String zone,
 			String password, String usertype, String house_id, String ward_no, String property_id) {
@@ -77,6 +83,7 @@ public class User {
 		this.zone = zone;
 		this.password = password;
 	}
+
 	public int getUid() {
 		return uid;
 	}
@@ -161,5 +168,18 @@ public class User {
 	public void setCv(String cv) {
 		this.cv = cv;
 	}
+	public String getProperty_tax_bill() {
+		return property_tax_bill;
+	}
+	public void setProperty_tax_bill(String property_tax_bill) {
+		this.property_tax_bill = property_tax_bill;
+	}
+	public String getWater_tax_bill() {
+		return water_tax_bill;
+	}
+	public void setWater_tax_bill(String water_tax_bill) {
+		this.water_tax_bill = water_tax_bill;
+	}
+	
 	
 }

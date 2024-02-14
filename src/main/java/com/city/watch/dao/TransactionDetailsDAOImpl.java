@@ -125,7 +125,9 @@ public class TransactionDetailsDAOImpl implements TransactionDetailsDAO {
                     rs.getString("house_id"),
                     rs.getString("ward_no"),
                     rs.getString("property_id"),
-                    rs.getString("cv")
+                    rs.getString("cv"),
+                    rs.getString("property_tax_bill"),
+                    rs.getString("water_tax_bill")
                 );
                 TransactionDetails transactionDetails = new TransactionDetails(
                         rs.getLong("id"),

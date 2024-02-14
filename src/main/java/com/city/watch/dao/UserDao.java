@@ -16,4 +16,6 @@ public interface UserDao {
 	public List<User> getAllAdmins();
 	public boolean updateUserByEmail(String Email,String usertype);
 	public boolean updateCvById(int id,String cv);
+	public boolean updateBillByPropertyTaxId(int amount, String propertytaxid);
+	public boolean updateBillByWaterTaxId(int amount ,String watertaxid);
 }

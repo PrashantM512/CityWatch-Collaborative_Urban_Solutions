@@ -3,50 +3,54 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="components/header_links.jsp"%>
-    <title>Pay Taxes</title>
+<%@include file="components/header_links.jsp"%>
+<title>Pay Taxes</title>
 </head>
 <style>
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #ffffff;
-    background-color: #409730;
+	color: #ffffff;
+	background-color: #409730;
 }
 </style>
 <body>
-    <%@include file="components/check_session.jsp"%>
-    <%@include file="components/navbar.jsp"%>
+	<%@include file="components/check_session.jsp"%>
+	<%@include file="components/navbar.jsp"%>
+	<%
+	UserDaoImpl dao=new UserDaoImpl(ConnectionProvider.getConnection());
+	User udt=dao.getUserById(user.getUid());
+	%>
 
-    <div class="conatiner" style="text-align: -webkit-center;">
-        <p class="text-center pgeheading">PAY YOUR TAXES</p>
-        <div class="col-sm-8 col-xl-10 text-left">
-            <div class="rounded h-100 p-4">
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab"
-                            data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-                            role="tab" aria-controls="nav-home" aria-selected="true">Home
-                            Tax</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-profile" type="button" role="tab"
-                            aria-controls="nav-profile" aria-selected="false">Water
-                            Tax</button>
-                    </div>
-                </nav>
-                <div class="tab-content pt-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home"
-                        style="text-align: -webkit-center;" role="tabpanel"
-                        aria-labelledby="nav-home-tab">
+	<div class="conatiner" style="text-align: -webkit-center;">
+		<p class="text-center pgeheading">PAY YOUR TAXES</p>
+		<div class="col-sm-8 col-xl-10 text-left">
+			<div class="rounded h-100 p-4">
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<button class="nav-link active" id="nav-home-tab"
+							data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+							role="tab" aria-controls="nav-home" aria-selected="true">Home
+							Tax</button>
+						<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+							data-bs-target="#nav-profile" type="button" role="tab"
+							aria-controls="nav-profile" aria-selected="false">Water
+							Tax</button>
+					</div>
+				</nav>
+				<div class="tab-content pt-3" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-home"
+						style="text-align: -webkit-center;" role="tabpanel"
+						aria-labelledby="nav-home-tab">
 
-                        <div class="col-md-8" style="text-align: left;">
-                            <div class="card mt-2 h-100" style="border: none;">
-                                <div class="card-body">
-                                    <h3 class="text-center text-success"></h3>
-                                    <form id="homeTaxForm" action="PaymentServlet" method="post">
-                                       <input type="hidden" value="<%=user.getUid() %>" name="uid">
+						<div class="col-md-8" style="text-align: left;">
+							<div class="card mt-2 h-100" style="border: none;">
+								<div class="card-body">
+									<h3 class="text-center text-success"></h3>
+									<form id="homeTaxForm" action="PaymentServlet" method="post">
+										<input type="hidden" value="<%=user.getUid()%>" name="uid">
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label for="inputEmail4">Name</label> <input type="text"
@@ -66,16 +70,17 @@
 												<label for="inputEmail4">Property Tax Account Number
 													(PTAN)</label> <input type="number" name="ptan"
 													value="<%=user.getProperty_id()%>" class="form-control"
-													id="inputEmail4" placeholder="property id" required readonly><small
-													id="passwordHelpBlock" class="form-text text-muted">You
-													can update your PTA number from settings</small>
+													id="inputEmail4" placeholder="property id" required
+													readonly><small id="passwordHelpBlock"
+													class="form-text text-muted">You can update your
+													PTA number from settings</small>
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-12">
 												<label for="inputEmail4">Property address</label> <input
-													type="text" name="address" class="form-control" id="inputEmail4"
-													placeholder="address" required>
+													type="text" name="address" class="form-control"
+													id="inputEmail4" placeholder="address" required>
 											</div>
 										</div>
 
@@ -102,7 +107,8 @@
 											<div class="form-group col-md-12">
 												<label for="inputEmail4">Amount</label> <input type="number"
 													name="amount" class="form-control"
-													id="inputEmail4" placeholder="Amount" required>
+													value="<%=udt.getProperty_tax_bill()%>" id="inputEmail4"
+													placeholder="Amount" required readonly>
 											</div>
 										</div>
 										<div class="form-group">
@@ -116,95 +122,26 @@
 											</select>
 										</div>
 										<div class="form-row">
-											<div class="form-group col-md-7">
-												<button id="submitFormButton" style="width: inherit;" type="submit"
-													class="btn btn-success">Proceed To Pay</button>
-											</div>
-											<div class="form-group col-md-5">
-												<a href="index.jsp" style="width: inherit;" type="submit"
-													class="btn btn-warning">Cancel</a>
-											</div>
-										</div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-				aria-labelledby="nav-profile-tab" style="text-align: -webkit-center;">
-		
-			<div class="col-md-8" style="text-align: left;">
-							<div class="card h-100" style="border: none;">
-								<div class="card-body">
-									<h3 class="text-center text-success"></h3>
-									 <form id="waterTaxForm" action="PaymentServlet" method="post">
-									   <input type="hidden" value="<%=user.getUid() %>" name="uid">
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="inputEmail4">Name</label> <input type="text"
-													name="name" value="<%=user.getName()%>"
-													class="form-control" id="inputEmail4"
-													placeholder="Full Name" required>
-											</div>
-											<div class="form-group col-md-6">
-												<label for="inputPassword4">Email</label> <input
-													value="<%=user.getEmail()%>" name="email" type="email"
-													class="form-control" id="inputPassword4"
-													placeholder="Email" readonly required>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-12">
-												<label for="inputEmail4">House Id</label> 
-												  <input type="text" name="ptan" class="form-control"
-													id="inputEmail4" value="<%=user.getHouse_id() %>" required readonly><small
-													id="passwordHelpBlock" class="form-text text-muted">You
-													can update your House Id from settings</small>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-12">
-												<label for="inputEmail4">Property address</label> <input
-													type="text" name="address" class="form-control" id="inputEmail4"
-													placeholder="address" required>
-											</div>
-										</div>
+											<%
+											int propertyTaxBill = Integer.parseInt(udt.getProperty_tax_bill());
 
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="inputEmail4">Mobile no.</label> <input
-													type="number" name="mobile" value="<%=user.getMobile()%>"
-													class="form-control" id="inputEmail4" placeholder="Mobile"
-													required readonly>
-											</div>
-											<div class="form-group col-md-3">
-												<label for="inputPassword4">Aadhar No</label> <input
-													type="text" name="aadhar" class="form-control"
-													id="inputPassword4" placeholder="Aadhar number"
-													value="<%=user.getAadhar()%>" readonly required>
-											</div>
-											<div class="form-group col-md-3">
-												<label for="inputPassword4">Pan Card No</label> <input
-													type="text" name="address" class="form-control"
-													id="inputPassword4" placeholder="Pan number" required>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-12">
-												<label for="inputEmail4">Amount</label> <input type="number"
-													name="amount" class="form-control"
-													id="inputEmail4" placeholder="Amount" required>
-											</div>
-										</div>
-										<input name="bookname" value="" type="hidden"> <input
-											name="price" value="" type="hidden">
-										<div class="form-row">
+											if (propertyTaxBill <= 0) {
+											%>
 											<div class="form-group col-md-7">
-												<button id="submitFormButton" style="width: inherit;" type="submit"
-													class="btn btn-success">Proceed To Pay</button>
+												<button style="width: inherit;" class="btn btn-success">You
+													Have No Pending Bills</button>
 											</div>
+											<%
+											} else {
+											%>
+											<div class="form-group col-md-7">
+												<button id="submitFormButton" style="width: inherit;"
+													type="submit" class="btn btn-success">Proceed To
+													Pay</button>
+											</div>
+											<%
+											}
+											%>
 											<div class="form-group col-md-5">
 												<a href="index.jsp" style="width: inherit;" type="submit"
 													class="btn btn-warning">Cancel</a>
@@ -215,212 +152,360 @@
 							</div>
 						</div>
 					</div>
-			 </div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-profile" role="tabpanel"
+				aria-labelledby="nav-profile-tab"
+				style="text-align: -webkit-center;">
+
+				<div class="col-md-8" style="text-align: left;">
+					<div class="card h-100" style="border: none;">
+						<div class="card-body">
+							<h3 class="text-center text-success"></h3>
+							<form id="waterTaxForm" action="PaymentServlet" method="post">
+								<input type="hidden" value="<%=user.getUid()%>" name="uid">
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="inputEmail4">Name</label> <input type="text"
+											name="name" value="<%=user.getName()%>" class="form-control"
+											id="inputEmail4" placeholder="Full Name" required>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="inputPassword4">Email</label> <input
+											value="<%=user.getEmail()%>" name="email" type="email"
+											class="form-control" id="inputPassword4" placeholder="Email"
+											readonly required>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="inputEmail4">House Id</label> <input type="text"
+											name="ptan" class="form-control" id="inputEmail4"
+											value="<%=user.getHouse_id()%>" required readonly><small
+											id="passwordHelpBlock" class="form-text text-muted">You
+											can update your House Id from settings</small>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="inputEmail4">Property address</label> <input
+											type="text" name="address" class="form-control"
+											id="inputEmail4" placeholder="address" required>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="inputEmail4">Mobile no.</label> <input
+											type="number" name="mobile" value="<%=user.getMobile()%>"
+											class="form-control" id="inputEmail4" placeholder="Mobile"
+											required readonly>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="inputPassword4">Aadhar No</label> <input
+											type="text" name="aadhar" class="form-control"
+											id="inputPassword4" placeholder="Aadhar number"
+											value="<%=user.getAadhar()%>" readonly required>
+									</div>
+									<div class="form-group col-md-3">
+										<label for="inputPassword4">Pan Card No</label> <input
+											type="text" name="address" class="form-control"
+											id="inputPassword4" placeholder="Pan number" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="inputEmail4">Amount</label> <input type="number"
+											name="amount" class="form-control"
+											value="<%=udt.getWater_tax_bill()%>" id="inputEmail4"
+											placeholder="Amount" required readonly>
+									</div>
+								</div>
+								<input name="bookname" value="" type="hidden"> <input
+									name="price" value="" type="hidden">
+								<div class="form-row">
+									<%
+											int waterTaxBill = Integer.parseInt(udt.getWater_tax_bill());
+
+											if (waterTaxBill <= 0) {
+											%>
+											<div class="form-group col-md-7">
+												<button style="width: inherit;" class="btn btn-success">You
+													Have No Pending Bills</button>
+											</div>
+											<%
+											} else {
+											%>
+											<div class="form-group col-md-7">
+												<button id="submitFormButton" style="width: inherit;"
+													type="submit" class="btn btn-success">Proceed To
+													Pay</button>
+											</div>
+											<%
+											}
+											%>
+									<div class="form-group col-md-5">
+										<a href="index.jsp" style="width: inherit;" type="submit"
+											class="btn btn-warning">Cancel</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-    var paymentId = null;
-    document.getElementById('homeTaxForm').addEventListener('submit', function(event){
-        event.preventDefault();
-        var form = this;
-        var formData = new FormData(form);
-        var xhrDatabase = new XMLHttpRequest();
-        xhrDatabase.open('POST', form.action, true);
-        xhrDatabase.onload = function() {
-            if (xhrDatabase.status === 200) {
-                console.log('Form data stored successfully in the database');
-                
-            } else {
-                console.error('Database storage failed:', xhrDatabase.statusText);
-                submitPaymentGateway(formData);
-            }
-        };
-        xhrDatabase.onerror = function() {
-            console.error('Database storage request failed');
-        };
-        xhrDatabase.send(new URLSearchParams(formData)); 
-        
-        function submitPaymentGateway(formData) {
-            var xhrPaymentGateway = new XMLHttpRequest();
-            xhrPaymentGateway.open('POST', form.action, true);
-            xhrPaymentGateway.onload = function() {
-                if (xhrPaymentGateway.status === 200) {
-                    var options = {
-                    		 "key": "rzp_test_f3AsciOhTsBdEO",
-                             "amount": formData.get('amount') * 100,
-                             "currency": "INR",
-                             "name": "City Watch",
-                             "description": "Property Tax Payment",
-                             "image": "img/cityscape.png",
-                             "handler": function (response){
-                            	 paymentId = response.razorpay_payment_id;
-                            	
-                                 alert(response.razorpay_payment_id);
-                                 alert(response.razorpay_order_id);
-                                 alert(response.razorpay_signature);
-                             },
-                             "prefill": {
-                                 "name": formData.get('name'),
-                                 "email": formData.get('email'),
-                                 "contact": formData.get('mobile')
-                             },
-                             "notes": {
-                                 "address": formData.get('address')
-                             },
-                             "theme": {
-                                 "color": "#1938cf"
-                             },
-                             "handler": function(response) {
-                            	 paymentId = response.razorpay_payment_id;
-                            	 window.location.href = "payment_success.jsp";
-                            	 updateDatabase(paymentId);
-                             }
-                    };
-                    var rzp = new Razorpay(options);
-                    rzp.open();
-                    
-                    rzp.on('payment.success', function(response) {
-                        paymentId = response.razorpay_payment_id;
-                       
-                        window.location.href = "payment_success.jsp";
-                    });
-                    
-                    rzp.on('payment.error', function(response) {
-                        window.location.href = "payment-failed-page.jsp";
-                    });
-                    
-                } else {
-                    console.error('Payment gateway submission failed:', xhrPaymentGateway.statusText);
-                }
-            };
-            xhrPaymentGateway.onerror = function() {
-                console.error('Payment gateway request failed');
-            };
-            xhrPaymentGateway.send(formData);
-        }
-    });
-    function updateDatabase(paymentId) {
-        var xhrUpdateDatabase = new XMLHttpRequest();
-        xhrUpdateDatabase.open('POST', 'UpdateDatabaseServlet', true); // Specify your servlet URL here
-        xhrUpdateDatabase.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	</div>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		var paymentId = null;
+		document
+				.getElementById('homeTaxForm')
+				.addEventListener(
+						'submit',
+						function(event) {
+							event.preventDefault();
+							var form = this;
+							var formData = new FormData(form);
+							var xhrDatabase = new XMLHttpRequest();
+							xhrDatabase.open('POST', form.action, true);
+							xhrDatabase.onload = function() {
+								if (xhrDatabase.status === 200) {
+									console
+											.log('Form data stored successfully in the database');
 
-        var params ='paymentId=' + encodeURIComponent(paymentId) + '&status=Success';
+								} else {
+									console.error('Database storage failed:',
+											xhrDatabase.statusText);
+									submitPaymentGateway(formData);
+								}
+							};
+							xhrDatabase.onerror = function() {
+								console
+										.error('Database storage request failed');
+							};
+							xhrDatabase.send(new URLSearchParams(formData));
 
-        xhrUpdateDatabase.onload = function() {
-            if (xhrUpdateDatabase.status === 200) {
-                console.log('Database updated successfully');
-            } else {
-                console.error('Database update failed:', xhrUpdateDatabase.statusText);
-            }
-        };
-        xhrUpdateDatabase.onerror = function() {
-            console.error('Database update request failed');
-        };
-        xhrUpdateDatabase.send(params);
-    }
-    </script>
-   <script>
-    var paymentId = null;
-    document.getElementById('waterTaxForm').addEventListener('submit', function(event){
-        event.preventDefault();
-        var form = this;
-        var formData = new FormData(form);
-        var xhrDatabase = new XMLHttpRequest();
-        xhrDatabase.open('POST', form.action, true);
-        xhrDatabase.onload = function() {
-            if (xhrDatabase.status === 200) {
-                console.log('Form data stored successfully in the database');
-                
-            } else {
-                console.error('Database storage failed:', xhrDatabase.statusText);
-                submitPaymentGateway(formData);
-            }
-        };
-        xhrDatabase.onerror = function() {
-            console.error('Database storage request failed');
-        };
-        xhrDatabase.send(new URLSearchParams(formData)); 
-        
-        function submitPaymentGateway(formData) {
-            var xhrPaymentGateway = new XMLHttpRequest();
-            xhrPaymentGateway.open('POST', form.action, true);
-            xhrPaymentGateway.onload = function() {
-                if (xhrPaymentGateway.status === 200) {
-                    var options = {
-                    		 "key": "rzp_test_f3AsciOhTsBdEO",
-                             "amount": formData.get('amount') * 100,
-                             "currency": "INR",
-                             "name": "City Watch",
-                             "description": "Property Tax Payment",
-                             "image": "img/cityscape.png",
-                             "handler": function (response){
-                            	 paymentId = response.razorpay_payment_id;
-                            	
-                                 alert(response.razorpay_payment_id);
-                                 alert(response.razorpay_order_id);
-                                 alert(response.razorpay_signature);
-                             },
-                             "prefill": {
-                                 "name": formData.get('name'),
-                                 "email": formData.get('email'),
-                                 "contact": formData.get('mobile')
-                             },
-                             "notes": {
-                                 "address": formData.get('address')
-                             },
-                             "theme": {
-                                 "color": "#1938cf"
-                             },
-                             "handler": function(response) {
-                            	 paymentId = response.razorpay_payment_id;
-                            	 window.location.href = "payment_success.jsp";
-                            	 updateDatabase(paymentId);
-                             }
-                    };
-                    var rzp = new Razorpay(options);
-                    rzp.open();
-                    
-                    rzp.on('payment.success', function(response) {
-                        paymentId = response.razorpay_payment_id;
-                       
-                        window.location.href = "payment_success.jsp";
-                    });
-                    
-                    rzp.on('payment.error', function(response) {
-                        window.location.href = "payment-failed-page.jsp";
-                    });
-                    
-                } else {
-                    console.error('Payment gateway submission failed:', xhrPaymentGateway.statusText);
-                }
-            };
-            xhrPaymentGateway.onerror = function() {
-                console.error('Payment gateway request failed');
-            };
-            xhrPaymentGateway.send(formData);
-        }
-    });
-    function updateDatabase(paymentId) {
-        var xhrUpdateDatabase = new XMLHttpRequest();
-        xhrUpdateDatabase.open('POST', 'UpdateDatabaseServlet', true); // Specify your servlet URL here
-        xhrUpdateDatabase.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+							function submitPaymentGateway(formData) {
+								var xhrPaymentGateway = new XMLHttpRequest();
+								xhrPaymentGateway.open('POST', form.action,
+										true);
+								xhrPaymentGateway.onload = function() {
+									if (xhrPaymentGateway.status === 200) {
+										var options = {
+											"key" : "rzp_test_f3AsciOhTsBdEO",
+											"amount" : formData.get('amount') * 100,
+											"currency" : "INR",
+											"name" : "City Watch",
+											"description" : "Property Tax Payment",
+											"image" : "img/cityscape.png",
+											"handler" : function(response) {
+												paymentId = response.razorpay_payment_id;
 
-        var params ='paymentId=' + encodeURIComponent(paymentId) + '&status=Success';
+												alert(response.razorpay_payment_id);
+												alert(response.razorpay_order_id);
+												alert(response.razorpay_signature);
+											},
+											"prefill" : {
+												"name" : formData.get('name'),
+												"email" : formData.get('email'),
+												"contact" : formData
+														.get('mobile')
+											},
+											"notes" : {
+												"address" : formData
+														.get('address')
+											},
+											"theme" : {
+												"color" : "#1938cf"
+											},
+											"handler" : function(response) {
+												paymentId = response.razorpay_payment_id;
+												window.location.href = "payment_success.jsp";
+												updateDatabase(paymentId);
+											}
+										};
+										var rzp = new Razorpay(options);
+										rzp.open();
 
-        xhrUpdateDatabase.onload = function() {
-            if (xhrUpdateDatabase.status === 200) {
-                console.log('Database updated successfully');
-            } else {
-                console.error('Database update failed:', xhrUpdateDatabase.statusText);
-            }
-        };
-        xhrUpdateDatabase.onerror = function() {
-            console.error('Database update request failed');
-        };
-        xhrUpdateDatabase.send(params);
-    }
-    </script>
-    <%@include file="components/footer.jsp"%>
-    <%@include file="components/all_js.jsp"%>
+										rzp
+												.on(
+														'payment.success',
+														function(response) {
+															paymentId = response.razorpay_payment_id;
+
+															window.location.href = "payment_success.jsp";
+														});
+
+										rzp
+												.on(
+														'payment.error',
+														function(response) {
+															window.location.href = "payment-failed-page.jsp";
+														});
+
+									} else {
+										console
+												.error(
+														'Payment gateway submission failed:',
+														xhrPaymentGateway.statusText);
+									}
+								};
+								xhrPaymentGateway.onerror = function() {
+									console
+											.error('Payment gateway request failed');
+								};
+								xhrPaymentGateway.send(formData);
+							}
+						});
+		function updateDatabase(paymentId) {
+			var xhrUpdateDatabase = new XMLHttpRequest();
+			xhrUpdateDatabase.open('POST', 'UpdateDatabaseServlet', true); // Specify your servlet URL here
+			xhrUpdateDatabase.setRequestHeader('Content-Type',
+					'application/x-www-form-urlencoded');
+
+			var params = 'paymentId=' + encodeURIComponent(paymentId)
+					+ '&status=Success';
+
+			xhrUpdateDatabase.onload = function() {
+				if (xhrUpdateDatabase.status === 200) {
+					console.log('Database updated successfully');
+				} else {
+					console.error('Database update failed:',
+							xhrUpdateDatabase.statusText);
+				}
+			};
+			xhrUpdateDatabase.onerror = function() {
+				console.error('Database update request failed');
+			};
+			xhrUpdateDatabase.send(params);
+		}
+	</script>
+	<script>
+		var paymentId = null;
+		document
+				.getElementById('waterTaxForm')
+				.addEventListener(
+						'submit',
+						function(event) {
+							event.preventDefault();
+							var form = this;
+							var formData = new FormData(form);
+							var xhrDatabase = new XMLHttpRequest();
+							xhrDatabase.open('POST', form.action, true);
+							xhrDatabase.onload = function() {
+								if (xhrDatabase.status === 200) {
+									console
+											.log('Form data stored successfully in the database');
+
+								} else {
+									console.error('Database storage failed:',
+											xhrDatabase.statusText);
+									submitPaymentGateway(formData);
+								}
+							};
+							xhrDatabase.onerror = function() {
+								console
+										.error('Database storage request failed');
+							};
+							xhrDatabase.send(new URLSearchParams(formData));
+
+							function submitPaymentGateway(formData) {
+								var xhrPaymentGateway = new XMLHttpRequest();
+								xhrPaymentGateway.open('POST', form.action,
+										true);
+								xhrPaymentGateway.onload = function() {
+									if (xhrPaymentGateway.status === 200) {
+										var options = {
+											"key" : "rzp_test_f3AsciOhTsBdEO",
+											"amount" : formData.get('amount') * 100,
+											"currency" : "INR",
+											"name" : "City Watch",
+											"description" : "Property Tax Payment",
+											"image" : "img/cityscape.png",
+											"handler" : function(response) {
+												paymentId = response.razorpay_payment_id;
+
+												alert(response.razorpay_payment_id);
+												alert(response.razorpay_order_id);
+												alert(response.razorpay_signature);
+											},
+											"prefill" : {
+												"name" : formData.get('name'),
+												"email" : formData.get('email'),
+												"contact" : formData
+														.get('mobile')
+											},
+											"notes" : {
+												"address" : formData
+														.get('address')
+											},
+											"theme" : {
+												"color" : "#1938cf"
+											},
+											"handler" : function(response) {
+												paymentId = response.razorpay_payment_id;
+												window.location.href = "payment_success.jsp";
+												updateDatabase(paymentId);
+											}
+										};
+										var rzp = new Razorpay(options);
+										rzp.open();
+
+										rzp
+												.on(
+														'payment.success',
+														function(response) {
+															paymentId = response.razorpay_payment_id;
+
+															window.location.href = "payment_success.jsp";
+														});
+
+										rzp
+												.on(
+														'payment.error',
+														function(response) {
+															window.location.href = "payment-failed-page.jsp";
+														});
+
+									} else {
+										console
+												.error(
+														'Payment gateway submission failed:',
+														xhrPaymentGateway.statusText);
+									}
+								};
+								xhrPaymentGateway.onerror = function() {
+									console
+											.error('Payment gateway request failed');
+								};
+								xhrPaymentGateway.send(formData);
+							}
+						});
+		function updateDatabase(paymentId) {
+			var xhrUpdateDatabase = new XMLHttpRequest();
+			xhrUpdateDatabase.open('POST', 'UpdateDatabaseServlet', true); // Specify your servlet URL here
+			xhrUpdateDatabase.setRequestHeader('Content-Type',
+					'application/x-www-form-urlencoded');
+
+			var params = 'paymentId=' + encodeURIComponent(paymentId)
+					+ '&status=Success';
+
+			xhrUpdateDatabase.onload = function() {
+				if (xhrUpdateDatabase.status === 200) {
+					console.log('Database updated successfully');
+				} else {
+					console.error('Database update failed:',
+							xhrUpdateDatabase.statusText);
+				}
+			};
+			xhrUpdateDatabase.onerror = function() {
+				console.error('Database update request failed');
+			};
+			xhrUpdateDatabase.send(params);
+		}
+	</script>
+	<%@include file="components/footer.jsp"%>
+	<%@include file="components/all_js.jsp"%>
 </body>
 </html>

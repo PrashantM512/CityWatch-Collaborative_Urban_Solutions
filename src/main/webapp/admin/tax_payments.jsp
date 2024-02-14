@@ -38,7 +38,10 @@
 				<div class="col-12">
 					<div class="bg-secondary rounded h-100 p-4">
 						<%@include file="components/alert.jsp"%>
-						<h6 class="mb-4">All Tax Payments :</h6>
+						<div class="d-flex align-items-center justify-content-between mb-4">
+						<h6 class="mb-0">All Tax Payments :</h6>
+						<a href="tax_bills.jsp"><b>Send Tax Bills</b></a>
+						</div>
 						<div class="table-responsive">
 							<table class="table">
 								<thead

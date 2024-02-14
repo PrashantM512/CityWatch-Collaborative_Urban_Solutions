@@ -81,7 +81,8 @@ public class UserDaoImpl implements UserDao{
 				user.setWard_no(rs.getString(12));
 				user.setProperty_id(rs.getString(13));
 				user.setCv(rs.getString(14));
-				
+				user.setProperty_tax_bill(rs.getString(15));
+				user.setWater_tax_bill(rs.getString(16));
 			}
 			
 		} catch (Exception e) {
@@ -115,6 +116,8 @@ public class UserDaoImpl implements UserDao{
 				user.setWard_no(rs.getString(12));
 				user.setProperty_id(rs.getString(13));
 				user.setCv(rs.getString(14)); 
+				user.setProperty_tax_bill(rs.getString(15));
+				user.setWater_tax_bill(rs.getString(16));
 			}
 			
 		} catch (Exception e) {
@@ -261,6 +264,40 @@ public class UserDaoImpl implements UserDao{
 			stmt.executeUpdate();
 			f=true;
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
+	@Override
+	public boolean updateBillByPropertyTaxId(int amount,String propertytaxid) {
+		boolean f=false;
+		try {
+			String query="UPDATE users SET property_tax_bill=? WHERE property_id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1,amount );
+			stmt.setString(2, propertytaxid);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
+	@Override
+	public boolean updateBillByWaterTaxId(int amount,String watertaxid) {
+		boolean f=false;
+		try {
+			String query="UPDATE users SET water_tax_bill=? WHERE house_id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, amount);
+			stmt.setString(2, watertaxid);
+	        stmt.executeUpdate();
+	        f=true;
+	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
