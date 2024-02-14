@@ -2,7 +2,12 @@ package com.city.watch.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.city.watch.entity.Development;
 import com.city.watch.entity.Donation;
 
 public class DonationDaoImpl implements DonationDao {
@@ -58,4 +63,50 @@ public class DonationDaoImpl implements DonationDao {
 		return f;
 	
 	}
+	 @Override
+	    public List<Donation> getAllDonationsWithDevelopments() throws SQLException{
+	        List<Donation> donations = new ArrayList<>();
+	        String sql = "SELECT d.*, dev.title AS project_title FROM donations d " +
+	                     "INNER JOIN developments dev ON d.pid = dev.pid";
+
+	        try {
+				try (PreparedStatement statement = conn.prepareStatement(sql);
+				     ResultSet resultSet = statement.executeQuery()) {
+
+				    while (resultSet.next())
+						try {
+							{
+							    int id = resultSet.getInt("id");
+							    String name = resultSet.getString("name");
+							    String email = resultSet.getString("email");
+							    double amount = resultSet.getDouble("amount");
+							    String mobile = resultSet.getString("mobile");
+							    String aadhar = resultSet.getString("aadhar");
+							    int pid = resultSet.getInt("pid");
+							    String paymentId = resultSet.getString("paymentId");
+							    String status = resultSet.getString("status");
+							    String orderId = resultSet.getString("orderId");
+							    String receiptId = resultSet.getString("receiptId");
+							    String projectTitle = resultSet.getString("project_title");
+
+							    Development development = new Development();
+							    development.setPid(pid);
+							    development.setTitle(projectTitle);
+
+							    Donation donation = new Donation(id, name, email, amount, mobile, aadhar, pid, null, orderId, paymentId, receiptId, status, development);
+
+							    donations.add(donation);
+							}
+						} catch (SQLException e) {
+							
+							e.printStackTrace();
+						}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	        return donations;
+	    }
 }

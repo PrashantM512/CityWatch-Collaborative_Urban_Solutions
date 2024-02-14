@@ -15,7 +15,10 @@ public class Donation {
     private String paymentId;
     private String  receiptId;
     private String status;
+    private Development development;
+   
     
+
 	public Donation() {
 		super();
 		
@@ -82,7 +85,29 @@ public class Donation {
 		this.receiptId = receiptId;
 		this.status = status;
 	}
+	public Donation(int id, String name, String email, double amount, String mobile, String aadhar, int pid, Timestamp date, String orderId, String paymentId, String receiptId, String status, Development development) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.amount = amount;
+        this.mobile = mobile;
+        this.aadhar = aadhar;
+        this.pid = pid;
+        this.date = date;
+        this.orderId = orderId;
+        this.paymentId = paymentId;
+        this.receiptId = receiptId;
+        this.status = status;
+        this.development = development;
+    }
 
+    public Development getDevelopment() {
+        return development;
+    }
+
+    public void setDevelopment(Development development) {
+        this.development = development;
+    }
 	public int getId() {
 		return id;
 	}
@@ -178,5 +203,6 @@ public class Donation {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	
 }

@@ -10,6 +10,7 @@ public class Development {
     private String status;
     private String need;
     private String photo;
+    private int donationCount;
     
 	public Development() {
 		super();
@@ -92,6 +93,13 @@ public class Development {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public int getDonationCount() {
+		return donationCount;
+	}
+
+	public void setDonationCount(int donationCount) {
+		this.donationCount = donationCount;
 	}
     
 }

@@ -12,6 +12,7 @@
 <head>
 <meta charset="utf-8">
 <title>Ratings & Feedbacks</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <%@include file="components/header_links.jsp"%>
 </head>
 <body>
@@ -65,7 +66,14 @@
 										<td><%=((Map<String, Object>) fd.get("development")).get("title") %></td>
 										<td><%=((Map<String, Object>) fd.get("user")).get("name") %></td>
 										<td><%=fd.get("date") %></td>
-										<td><%=fd.get("stars") %></td>
+										<td>
+										<%
+									        int ratingLevel = (int) fd.get("stars");
+									        for (int j = 0; j < ratingLevel; j++) {
+									       	out.println("<i class=\"fa-solid fa-star\" style=\"color: orange;\"></i>");
+								         	}
+									     %>
+										</td>
 										<td><%=fd.get("feedback") %></td>
 										<td>
 										    <a href="../development_fullscreen.jsp?pid=<%=((Map<String, Object>) fd.get("development")).get("pid") %>" type="button" class="btn" style="background: #0072ff;color: white;">View Project</a>

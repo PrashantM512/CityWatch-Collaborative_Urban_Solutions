@@ -3,6 +3,7 @@ package com.city.watch.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,6 +139,39 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 			e.printStackTrace();
 		}
 		return f;
+	}
+	@Override
+	public List<Development> getAllDevelopmentsWithDonationCounts() {
+	    List<Development> developments = new ArrayList<>();
+	    
+	    String FETCH_DEVELOPMENTS_QUERY = 
+	        "SELECT d.pid, d.title, d.description, d.location, d.sDate, d.eDate, d.status, d.need, d.photo, COUNT(do.amount) AS donation_count " +
+	        "FROM developments d " +
+	        "LEFT JOIN donations do ON d.pid = do.pid " +
+	        "GROUP BY d.pid, d.title, d.description, d.location, d.sDate, d.eDate, d.status, d.need, d.photo";
+
+	    try (PreparedStatement stmt = conn.prepareStatement(FETCH_DEVELOPMENTS_QUERY);
+	         ResultSet rs = stmt.executeQuery()) {
+	        while (rs.next()) {
+	            Development development = new Development();
+	            development.setPid(rs.getInt("pid"));
+	            development.setTitle(rs.getString("title"));
+	            development.setDescription(rs.getString("description"));
+	            development.setLocation(rs.getString("location"));
+	            development.setsDate(rs.getString("sDate"));
+	            development.seteDate(rs.getString("sDate"));
+	            development.setStatus(rs.getString("status"));
+	            development.setNeed(rs.getString("need"));
+	            development.setPhoto(rs.getString("photo"));
+	            development.setDonationCount(rs.getInt("donation_count"));
+
+	            developments.add(development);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return developments;
 	}
 
 }

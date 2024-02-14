@@ -11,5 +11,5 @@ public interface DevelopmentDao {
 	public Development getDevelopmentById(int pid);
 	public boolean updateDevelopmentById(int pid,Development dev);
 	public boolean deleteDevelopmentById(int pid);
-	
+	public List<Development> getAllDevelopmentsWithDonationCounts();
 }
