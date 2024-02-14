@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.city.watch.entity.TransactionDetails;
+import com.city.watch.entity.User;
 
 public class TransactionDetailsDAOImpl implements TransactionDetailsDAO {
 
@@ -103,6 +104,47 @@ public class TransactionDetailsDAOImpl implements TransactionDetailsDAO {
 		}
 		return f;
 	}
+	@Override
+    public List<TransactionDetails> getAllTransactionDetailsWithUser() {
+        List<TransactionDetails> transactionDetailsList = new ArrayList<>();
+        String query = "SELECT td.*, u.* FROM transaction_details td INNER JOIN users u ON td.userId = u.uid";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                User user = new User(
+                    rs.getInt("uid"),
+                    rs.getString("name"),
+                    rs.getString("email"),
+                    rs.getString("mobile"),
+                    rs.getString("gender"),
+                    rs.getString("address"),
+                    rs.getString("aadhar"),
+                    rs.getString("zone"),
+                    rs.getString("password"),
+                    rs.getString("usertype"),
+                    rs.getString("house_id"),
+                    rs.getString("ward_no"),
+                    rs.getString("property_id"),
+                    rs.getString("cv")
+                );
+                TransactionDetails transactionDetails = new TransactionDetails(
+                    rs.getLong("id"),
+                    user, // set the user object
+                    rs.getString("propertyTaxId"),
+                    rs.getString("propertyType"),
+                    rs.getString("orderId"),
+                    rs.getDouble("amount"),
+                    rs.getString("paymentId"),
+                    rs.getString("receiptId"),
+                    rs.getString("status")
+                );
+                transactionDetailsList.add(transactionDetails);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactionDetailsList;
+    }
 }
 
 

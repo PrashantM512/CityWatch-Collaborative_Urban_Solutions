@@ -140,6 +140,7 @@
 								<div class="card-body">
 									<h3 class="text-center text-success"></h3>
 									 <form id="waterTaxForm" action="PaymentServlet" method="post">
+									   <input type="hidden" value="<%=user.getUid() %>" name="uid">
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label for="inputEmail4">Name</label> <input type="text"

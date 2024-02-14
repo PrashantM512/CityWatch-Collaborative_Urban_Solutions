@@ -9,4 +9,5 @@ public interface TransactionDetailsDAO {
     TransactionDetails getTransactionDetailsById(Long id);
     List<TransactionDetails> getAllTransactionDetails();
     public boolean updateTransactionDetailsByOrderId(String paymentId,String status,String orderId);
+    public List<TransactionDetails> getAllTransactionDetailsWithUser();
 }

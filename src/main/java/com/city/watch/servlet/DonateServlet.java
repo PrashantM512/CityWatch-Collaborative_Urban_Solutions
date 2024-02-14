@@ -34,7 +34,8 @@ public class DonateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session=request.getSession();
-	    	String name = request.getParameter("name");
+	      	
+		    String name = request.getParameter("name");
 	        String mobile = request.getParameter("mobile");
 	        String email = request.getParameter("email");
 	        String amountStr = request.getParameter("amount");
