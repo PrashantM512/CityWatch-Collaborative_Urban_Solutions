@@ -128,16 +128,17 @@ public class TransactionDetailsDAOImpl implements TransactionDetailsDAO {
                     rs.getString("cv")
                 );
                 TransactionDetails transactionDetails = new TransactionDetails(
-                    rs.getLong("id"),
-                    user, // set the user object
-                    rs.getString("propertyTaxId"),
-                    rs.getString("propertyType"),
-                    rs.getString("orderId"),
-                    rs.getDouble("amount"),
-                    rs.getString("paymentId"),
-                    rs.getString("receiptId"),
-                    rs.getString("status")
-                );
+                        rs.getLong("id"),
+                        user, // set the user object
+                        rs.getString("propertyTaxId"),
+                        rs.getString("propertyType"),
+                        rs.getString("orderId"),
+                        rs.getDouble("amount"),
+                        rs.getString("paymentId"),
+                        rs.getString("receiptId"),
+                        rs.getString("status"),
+                        rs.getTimestamp("date")
+                    );
                 transactionDetailsList.add(transactionDetails);
             }
         } catch (SQLException e) {

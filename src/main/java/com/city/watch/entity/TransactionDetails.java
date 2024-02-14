@@ -1,5 +1,7 @@
 package com.city.watch.entity;
 
+import java.sql.Timestamp;
+
 public class TransactionDetails {
 
 	private Long id;
@@ -14,13 +16,14 @@ public class TransactionDetails {
 	private String receiptId;
 	private String status;
 	private User user;
+	private Timestamp date;
 
 	public TransactionDetails() {
 		super();
 	}
 
 	public TransactionDetails(Long id, String userId, String mobile, String email, String propertyTaxId,
-			String propertyType, String orderId, double amount, String paymentId, String receiptId, String status) {
+			String propertyType, String orderId, double amount, String paymentId, String receiptId, String status , Timestamp date) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -33,6 +36,7 @@ public class TransactionDetails {
 		this.paymentId = paymentId;
 		this.receiptId = receiptId;
 		this.status = status;
+		this.date = date;
 	}
 
 	public TransactionDetails(String userId, String mobile, String email, String propertyTaxId, String propertyType,
@@ -62,6 +66,20 @@ public class TransactionDetails {
 		this.receiptId = receiptId;
 		this.status = status;
 	}
+	public TransactionDetails(long id, User user, String propertyTaxId, String propertyType, String orderId,
+			double amount, String paymentId, String receiptId, String status , Timestamp date) {
+		this.id = id;
+		this.user = user;
+		this.propertyTaxId = propertyTaxId;
+		this.propertyType = propertyType;
+		this.orderId = orderId;
+		this.amount = amount;
+		this.paymentId = paymentId;
+		this.receiptId = receiptId;
+		this.status = status;
+		this.date = date;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -157,6 +175,14 @@ public class TransactionDetails {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 	
 

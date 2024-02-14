@@ -79,13 +79,12 @@
 										<td><%=transaction.getAmount()%></td>
 										<td><%=transaction.getPaymentId()%></td>
 										<td><%=transaction.getStatus()%></td>
-										<td></td>
+										<td><%=transaction.getDate() %></td>
 										<td><%=transaction.getPropertyType()%></td>
 									</tr>
 									<%
 									}
 									%>
-
 								</tbody>
 							</table>
 						</div>
