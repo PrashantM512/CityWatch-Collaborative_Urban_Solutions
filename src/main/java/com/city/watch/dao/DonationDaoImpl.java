@@ -111,4 +111,34 @@ public class DonationDaoImpl implements DonationDao {
 
 	        return donations;
 	    }
+
+	@Override
+	public List<Donation> getAllDonations() {
+	    List<Donation> list = new ArrayList<>();
+	    try {
+	        String query = "SELECT * FROM donations";
+	        PreparedStatement stmt = conn.prepareStatement(query);
+	        ResultSet rs = stmt.executeQuery();
+	        while (rs.next()) {
+	            Donation donation = new Donation();
+	            donation.setId(rs.getInt("id"));
+	            donation.setName(rs.getString("name"));
+	            donation.setEmail(rs.getString("email"));
+	            donation.setAmount(rs.getDouble("amount"));
+	            donation.setMobile(rs.getString("mobile"));
+	            donation.setAadhar(rs.getString("aadhar"));
+	            donation.setPid(rs.getInt("pid"));
+	            donation.setDate(rs.getTimestamp("date"));
+	            donation.setOrderId(rs.getString("orderId"));
+	            donation.setPaymentId(rs.getString("paymentId"));
+	            donation.setReceiptId(rs.getString("receiptId"));
+	            donation.setStatus(rs.getString("status"));
+	            list.add(donation);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
+
 }

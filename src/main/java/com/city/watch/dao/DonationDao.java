@@ -9,4 +9,5 @@ public interface DonationDao {
        public boolean saveDonationDetails(Donation donation);
        public boolean updateDonationDetailsByOrderId(String paymentId, String status, String orderId);
        public List<Donation> getAllDonationsWithDevelopments() throws SQLException;
+       public List<Donation> getAllDonations();
 }

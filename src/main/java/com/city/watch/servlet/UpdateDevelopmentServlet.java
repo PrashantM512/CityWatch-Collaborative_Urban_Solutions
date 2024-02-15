@@ -2,6 +2,7 @@ package com.city.watch.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 
 import com.city.watch.dao.DevelopmentDaoImpl;
 import com.city.watch.db.ConnectionProvider;
@@ -30,28 +31,29 @@ public class UpdateDevelopmentServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		int pid=Integer.parseInt(request.getParameter("pid"));
-		String title=request.getParameter("title");
-		String description=request.getParameter("description");
-		String location=request.getParameter("address");
-		String startDate=request.getParameter("sdate");
-		String endDate=request.getParameter("edate");
-		String status=request.getParameter("status");
-		String need=request.getParameter("need");
-		Part photo=request.getPart("photo");
-		String photoName=photo.getSubmittedFileName();
-		String redirect=request.getParameter("rd");
+		 HttpSession session = request.getSession();
+	        int pid = Integer.parseInt(request.getParameter("pid"));
+	        String title = request.getParameter("title");
+	        String description = request.getParameter("description");
+	        String location = request.getParameter("address"); // Use consistent name
+	        String startDate = request.getParameter("sdate");
+	        String endDate = request.getParameter("edate");
+	        String status = request.getParameter("status");
+	        String need = request.getParameter("need");
+	        Part photoPart = request.getPart("photo"); // Handle null case
+	        String photoName = photoPart != null ? photoPart.getSubmittedFileName() : "";
+	        String redirect = request.getParameter("rd");
+
 		
 		System.out.println(pid+" "+title+" "+description+" "+location+" "+startDate+" "+endDate+" "+status+" "+need+" "+photoName);
-		Development dev=new Development(title,description,location,startDate,endDate,status,need,photoName);
-        try {
+	    Development dev = new Development(title, description, location, startDate, endDate, status, need, photoName);
+	        try {
 			DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
 	        boolean f=dao.updateDevelopmentById(pid, dev);
 	        
 	        if(f){
 	        	String path = getServletContext().getRealPath("/") + "developments_img" + File.separator + photoName;
-				Helper.saveFile(photo.getInputStream(), path);
+				Helper.saveFile(photoPart.getInputStream(), path);
 				session.setAttribute("alertMessage","Development Updated SuccessFully...");
 				session.setAttribute("alertClass", "alert-success");
 				if (redirect != null && redirect.equals("dept")) {

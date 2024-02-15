@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.city.watch.dao.RatingsDaoImpl"%>
 <%@page import="com.city.watch.entity.Development"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
@@ -49,7 +51,10 @@ dev=dao.getDevelopmentById(pid);
             <p><b class="text-dark">Status:</b>&nbsp;<%=dev.getStatus() %></p>
             <p><b class="text-dark">Need Of Donation:</b>&nbsp;<%=dev.getNeed() %></p>
             <p><b class="text-dark">Description:</b>&nbsp;<%=dev.getDescription() %></p>
-        </div>
+			<p><b class="text-dark">Total Donation:&nbsp;</b></p>
+							
+
+		</div>
         <div class="text-center" style=" bottom: 20px; width:90%">
             
             <%

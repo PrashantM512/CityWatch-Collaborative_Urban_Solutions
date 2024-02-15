@@ -32,6 +32,8 @@ public class Helper {
 			fos.write(b);
 			fos.flush();
 			fos.close();
+			
+			f=true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.city.watch.db.ConnectionProvider;
 import com.city.watch.entity.Development;
 
 public class DevelopmentDaoImpl implements DevelopmentDao{
@@ -102,27 +105,41 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 
 	@Override
 	public boolean updateDevelopmentById(int pid, Development dev) {
-		boolean f=false;
-		try {
-			String query="UPDATE developments SET title=?,description=?,location=?,sDate=?,eDate=?,status=?,need=?,photo=? WHERE pid=?";
-			PreparedStatement stmt=conn.prepareStatement(query);
-			stmt.setString(1,dev.getTitle());
-			stmt.setString(2,dev.getDescription());
-			stmt.setString(3,dev.getLocation());
-			stmt.setString(4,dev.getsDate());
-			stmt.setString(5,dev.geteDate());
-			stmt.setString(6,dev.getStatus());
-			stmt.setString(7,dev.getNeed());
-			stmt.setString(8,dev.getPhoto());
-			stmt.setInt(9,dev.getPid());
-			stmt.executeUpdate();
-			f=true;
-		
-		} catch (Exception e) {
-		  e.printStackTrace();
-		}
-		return f;
+	    boolean f = false;
+	    String query = "UPDATE developments " +
+	               "SET title=?, description=?, location=?, " +
+	               "sDate=?, eDate=?, status=?, need=?, photo=? " +
+	               "WHERE pid=?";
+
+	    try { 
+	    	PreparedStatement stmt = conn.prepareStatement(query);
+	    	stmt.setString(1, dev.getTitle());
+	    	stmt.setString(2, dev.getDescription());
+	    	stmt.setString(3, dev.getLocation());
+	    	stmt.setString(4, dev.getsDate());
+	    	stmt.setString(5, dev.geteDate());
+	    	stmt.setString(6, dev.getStatus());
+	    	stmt.setString(7, dev.getNeed());
+	    	stmt.setString(8, dev.getPhoto());
+	    	stmt.setInt(9, dev.getPid());
+	        
+	        int rowsUpdated = stmt.executeUpdate();
+	        System.out.println("Rows updated: " + rowsUpdated);
+	        
+	        if (rowsUpdated > 0) {
+	            f = true;
+	        } else {
+	            System.out.println("No rows updated. No matching record found or no changes made.");
+	        }
+			
+	    } catch (SQLException e) {
+	        e.printStackTrace(); 
+	    } catch (Exception e) {
+	        e.printStackTrace(); 
+	    }
+	    return f;
 	}
+
 
 
 	@Override
@@ -173,5 +190,6 @@ public class DevelopmentDaoImpl implements DevelopmentDao{
 
 	    return developments;
 	}
-
+	
+	
 }

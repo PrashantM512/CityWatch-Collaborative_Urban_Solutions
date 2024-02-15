@@ -40,6 +40,33 @@ public class Development {
 		this.need = need;
 		this.photo = photo;
 	}
+	
+	public Development(int pid, String title, String description, String location, String sDate, String eDate,
+			String status, String need, String photo, int donationCount) {
+		super();
+		this.pid = pid;
+		this.title = title;
+		this.description = description;
+		this.location = location;
+		this.sDate = sDate;
+		this.eDate = eDate;
+		this.status = status;
+		this.need = need;
+		this.photo = photo;
+		this.donationCount = donationCount;
+	}
+	
+	public Development(String title, String description, String location, String sDate, String eDate, String status,
+			String need) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.location = location;
+		this.sDate = sDate;
+		this.eDate = eDate;
+		this.status = status;
+		this.need = need;
+	}
 	public int getPid() {
 		return pid;
 	}
