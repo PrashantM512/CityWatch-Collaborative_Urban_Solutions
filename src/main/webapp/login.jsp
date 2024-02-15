@@ -27,10 +27,9 @@
 					<div class="col-md-4 offset-md-4">
 						<div class="card">
 							<div class="card-header h4  text-white primary-colour"
-								style="background-image: linear-gradient(45deg, black, transparent) !important;">
-								<p>
-									<i class="fa-solid fa-right-to-bracket fa-sm"
-										style="color: #ffffff;"></i>&nbsp; Login
+								style="background-image: linear-gradient(45deg, #060c2c, transparent) !important;">
+								<p style=" margin-bottom: 0.5rem; ">
+									<img alt="Small Image" style="width: 30px; height: 30px;" class="img img-fluid notification" src="img/login.png">&nbsp; Login
 								</p>
 
 							</div>

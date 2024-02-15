@@ -73,7 +73,7 @@ th,td{
                                        JobApplicationDaoImpl dd=new JobApplicationDaoImpl(ConnectionProvider.getConnection());
                                        boolean f=dd.getApplicationByRidAndUid(r.getRecruitmentId(), user.getUid());
                                        if(f){ %>
-                                    	     <button class="text-white btn-success ml-2 btn" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Applied</button>  
+                                    	     <button class="text-white btn-success ml-2 btn" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Applied&nbsp;<i class='fa-regular fa-circle-check'></i></button>  
                                         
                                      <%  }else{  %>
                                     	    <a class="text-white btn-info ml-2 btn" href="ApplyJobServlet?rid=<%=r.getRecruitmentId() %>&uid=<%=user.getUid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">Apply Now</a>  

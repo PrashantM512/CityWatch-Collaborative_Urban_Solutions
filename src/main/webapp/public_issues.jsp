@@ -55,18 +55,23 @@ th,td{
 									Issue is = (Issue) getPublicIssues.get("issue");
 									User u = (User) getPublicIssues.get("user");
 									String statusClass = "";
+									String icon="";
 									switch (is.getStatus()) {
 									case "Submitted":
 										statusClass = "btn-primary";
+										
 										break;
 									case "Rejected":
 										statusClass = "btn-danger";
+										icon="<i class='fa-regular fa-circle-xmark'></i>";
 										break;
 									case "In_Progress":
 										statusClass = "btn-warning";
+										icon ="<i class='fa-solid fa-spinner'></i>";
 										break;
 									case "Solved":
 										statusClass = "btn-success";
+										icon="<i class='fa-regular fa-circle-check'></i>";
 										break;
 									default:
 										statusClass = "";
@@ -81,7 +86,7 @@ th,td{
 									<td><%=is.getDate()%></td>
 									<td class="<%=statusClass%> btn" scope="row"
 										style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%;">
-										<%=is.getStatus()%>
+										<%=is.getStatus()%>&nbsp;<%=icon %>
 									</td>
 								</tr>
 								<%

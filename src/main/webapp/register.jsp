@@ -11,21 +11,21 @@
 </head>
 <style>
 .footer {
-	margin-top: -54px;
+    margin-top: -130px;
 }
 </style>
 <body>
 	<%@include file="components/navbar.jsp"%>
 
-	<div class="jumbotron primary-colour text-white banner-background"
+	<div class="jumbotron primary-colour text-white"
 		style="background-image: linear-gradient(45deg, black, transparent); padding-top: 2%;">
 		<main>
-			<div class="container" style="color: black; margin-bottom: 100px;">
+			<div class="container" style="color: black; margin-bottom: 80px;">
 				<div class="col-md-4 offset-md-4">
 					<div class="card" style="width: 120%;margin-top: 31px;">
 						<div class="card-header h4  text-white primary-colour"
-							style="background-image: linear-gradient(45deg, black, transparent) !important;">
-							<i class="fa-solid fa-circle-user fa-sm" style="color: #f5f9ff;"></i>&nbsp;Register
+							style="background-image: linear-gradient(45deg, #060c2c, transparent) !important;">
+							<img alt="Small Image" style="width: 30px; height: 30px;" class="img img-fluid notification" src="img/register.png">&nbsp;Register
 						</div>
 						<div class="card-body" style="line-height: 1 !important;">
 							<form id="forms" action="RegisterServlet" id="myForm" method="POST">

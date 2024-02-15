@@ -57,11 +57,11 @@ th,td{
 									<td><%=d.getNeed() %></td>
 									<td><%=d.getStatus() %></td>
 									<td><a class="text-white btn-primary btn" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
-										style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Details</a>
+										style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Details&nbsp;<i class="fa-solid fa-circle-info"></i></a>
 									<%
 									if(d.getStatus().equals("Ongoing") || d.getStatus().equals("Completed")){
 									%>
-									<a class="text-white btn-info ml-2 btn" href="View_Feedbacks.jsp?pid=<%=d.getPid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Feedbacks</a>
+									<a class="text-white btn-info ml-2 btn" href="View_Feedbacks.jsp?pid=<%=d.getPid() %>" style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Feedbacks&nbsp;<i class="fa-solid fa-comments"></i></a>
 									<%
 									}
 									%>	

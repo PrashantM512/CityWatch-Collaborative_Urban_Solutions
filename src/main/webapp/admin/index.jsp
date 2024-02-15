@@ -91,7 +91,7 @@
 							<i class="fa fa-building fa-3x text-dark"></i>
 
 							<div class="ms-3">
-								<p class="mb-2">Development Projects</p>
+								<p class="mb-2">Developments</p>
 								<%
 								DevelopmentDaoImpl dao2=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
 								List<Development> list2=dao2.getAlldevelopments();
@@ -129,14 +129,13 @@
 			<div class="container-fluid pt-4 px-4">
 				<div class="row g-4">
 					<div class="col-lg-12 col-xl-12">
-						<div class="bg-secondary text-center rounded p-4"
-							style="height: 330px;">
+						<div class="bg-secondary text-center rounded p-4">
 							<div
-								class="d-flex align-items-center justify-content-between mb-4">
+								class="d-flex align-items-center justify-content-between">
 								<h6 class="mb-0"></h6>
 								<a href=""></a>
 							</div>
-
+                              <img src="../img/dashboard.jpg" class="card-img-top img-fluid" alt="Responsive image">
 							<div></div>
 						</div>
 					</div>

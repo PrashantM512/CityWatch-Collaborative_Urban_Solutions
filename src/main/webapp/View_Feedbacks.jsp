@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.city.watch.entity.Rating"%>
@@ -107,7 +108,9 @@
 							if (i > 1) {
 							    averageRating = (double) (stars*5) /(i*5);
 							}
-							session.setAttribute("averageRating",averageRating);
+							DecimalFormat df = new DecimalFormat("#.#");
+					        String formattedRating = df.format(averageRating);
+							session.setAttribute("averageRating",formattedRating);
 							%>
 						</tbody>
 					</table>
