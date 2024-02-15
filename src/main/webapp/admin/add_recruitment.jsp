@@ -122,7 +122,8 @@
                                             <td><%=r.getCriteria() %></td>
                                             <td><%=r.getCv_need() %></td>
                                             <td>
-                                            <a href="../DeleteRecruitmentServlet?id=<%=r.getRecruitmentId() %>" type="button" class="btn btn-danger">Delete</a>
+                                             <a href="update_recruitment.jsp?id=<%=r.getRecruitmentId() %>" type="button" class="btn text-white" style="background-color:#007bff">Update</a>
+                                            <a href="../DeleteRecruitmentServlet?id=<%=r.getRecruitmentId() %>" type="button" class="btn btn-primary">Delete</a>
                                            </td>
                                         </tr>
                                       <%

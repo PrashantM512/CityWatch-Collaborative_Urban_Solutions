@@ -79,4 +79,49 @@ public class RecruitmentDaoImpl implements RecruitmentDao {
 		return f;
 	}
 
+	@Override
+	public boolean updateRecruitmentById(int id, Recruitment recruitment) {
+		boolean f=false;
+		try {
+			String query="UPDATE recruitment SET job_title=?, description=?, application_end_date=?,criteria=?, cv_need=? WHERE recruitment_id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			    stmt.setString(1,recruitment.getJobTitle());
+			    stmt.setString(2,recruitment.getDescription());
+			    stmt.setString(3,recruitment.getApplicationEndDate());
+			    stmt.setString(4,recruitment.getCriteria());
+			    stmt.setString(5,recruitment.getCv_need());
+			    stmt.setInt(6, id);
+			    stmt.executeUpdate();
+			    f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
+	@Override
+	public Recruitment getRecruitmentById(int id) {
+		Recruitment rc=null;
+		try {
+			String query="SELECT * FROM recruitment";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				rc=new Recruitment();
+				rc.setRecruitmentId(rs.getInt(1));
+				rc.setJobTitle(rs.getString(2));
+				rc.setDescription(rs.getString(3));
+				rc.setApplicationEndDate(rs.getString(4));
+				rc.setCreatedAt(rs.getTimestamp(5));
+				rc.setCriteria(rs.getString(6));
+				rc.setCv_need(rs.getString(7));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rc;
+	}
+
 }

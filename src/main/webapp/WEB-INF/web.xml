@@ -214,6 +214,12 @@
   	<description></description>
   	<servlet-class>com.city.watch.servlet.DeletePinServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateRecruitmentServlet</servlet-name>
+  	<display-name>UpdateRecruitmentServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.city.watch.servlet.UpdateRecruitmentServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>AddPinsServlet</servlet-name>
   	<url-pattern>/AddPinsServlet</url-pattern>
@@ -353,5 +359,9 @@
   <servlet-mapping>
   	<servlet-name>DeletePinServlet</servlet-name>
   	<url-pattern>/DeletePinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateRecruitmentServlet</servlet-name>
+  	<url-pattern>/UpdateRecruitmentServlet</url-pattern>
   </servlet-mapping>
 </web-app>
