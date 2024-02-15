@@ -8,45 +8,33 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.city.watch.entity.User"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<title>Applied Applications</title>
 <%@include file="components/header_links.jsp"%>
+<title>Job Applications</title>
 </head>
+<style>
+th,td{
+   border-right: solid 2px #e5e5e5;
+}
+</style>
 <body>
-	<div class="container-fluid position-relative d-flex p-0">
-		<div id="spinner"
-			class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-			<div class="spinner-border text-primary"
-				style="width: 3rem; height: 3rem;" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		</div>
-		<%
-		String currentPage = "recruitment";
-		request.setAttribute("currentPage", currentPage);
-		%>
-		<%@include file="components/sidebar.jsp"%>
-		<%
-		request.removeAttribute("currentPage");
-		%>
+    <%@include file="components/check_session.jsp" %>
+	<%@include file="components/navbar.jsp"%>
 
-		<div class="content">
-			<%@include file="components/navbar.jsp"%>
+	<div class="conatiner">
+		<p class="text-center pgeheading">YOUR JOB APPLICATIONS</p>
 
-			<div class="container-fluid pt-4 px-4 mb-4">
-				<div class="col-12">
-					<div class="bg-secondary rounded h-100 p-4">
-					 <%@include file="components/alert.jsp" %>
-						<h6 class="mb-4">Manage Applications :</h6>
-						<div class="table-responsive">
-							<table class="table">
-								<thead
-									style="background-image: linear-gradient(3deg, black, #3807fd) !important; color: white; height: 42px;">
-									<tr>
+		<div class="container-fluid px-4" style="text-align: -webkit-center;">
+			<div class="col-12">
+				<div class="rounded h-100">
+					<h6 class="mb-4"></h6>
+					<div class="table-responsive">
+						<table class="table"
+							style="border-style: solid; border-color: #e5e5e5; width: 80%;">
+							<thead style="height: 42px; background-color: #e5e5e5;">
+							   <tr>
 										<th scope="col">Sr.No.</th>
 										<th scope="col">Job Title</th>
 										<th scope="col">User Name</th>
@@ -65,6 +53,7 @@
                                      } else {
                                      int i=1;
                                      for (Map<String, Object> a : jobApplicationsDetails) {
+                                    	 if(a.get("userId").equals(user.getUid())){
                                      %>
 									<tr>
 										<th scope="row"><%=i %></th>
@@ -74,7 +63,7 @@
 										<td><%=a.get("applicationDate") %></td>
 										<td>                      
 				                         <% 
-                                           String cvFilePath = "../pdf_files/" + a.get("cv");
+                                           String cvFilePath = "pdf_files/" + a.get("cv");
                                            if (a.get("cv") != null && !cvFilePath.trim().isEmpty()) {
                                            %>
                                            <a href="<%= cvFilePath %>" target="_blank" class="btn btn-info text-white">Open CV</a>
@@ -84,21 +73,24 @@
                                             }
                                            %>
 										</td>
-										<td><a href="../DeleteJobApplicationServlet?id=<%=a.get("applicationId") %>&rd=ad" type="button" class="btn btn-danger">Delete</a>
+										<td><a href="DeleteJobApplicationServlet?id=<%=a.get("applicationId") %>&rd=us" type="button" class="btn btn-danger">Delete</a>
 										</td>
 									</tr>
 									<%  i++;
+                                       }
                                       }
                                      }
                                      %>
-								</tbody>
-							</table>
-						</div>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<%@include file="components/allscripts.jsp"%>
+	<div style="height: 100px"></div>
+
+	<%@include file="components/footer.jsp"%>
+	<%@include file="components/all_js.jsp"%>
 </body>
 </html>

@@ -58,7 +58,7 @@ public class JobApplicationDaoImpl implements JobApplicationDao{
 
 	    String query = "SELECT u.name, u.mobile, u.gender, u.address, u.cv, " +
 	               "r.job_title, r.description, r.criteria, r.cv_need, " +
-	               "ja.applicationDate, ja.applicationId " +
+	               "ja.applicationDate, ja.applicationId, ja.userId " +
 	               "FROM job_applications ja " +
 	               "INNER JOIN users u ON ja.userId = u.uid " +
 	               "INNER JOIN recruitment r ON ja.recruitmentId = r.recruitment_id";
@@ -79,6 +79,7 @@ public class JobApplicationDaoImpl implements JobApplicationDao{
 	            applicationDetails.put("cv_need", rs.getString("cv_need"));
 	            applicationDetails.put("applicationDate", rs.getTimestamp("applicationDate")); 
 	            applicationDetails.put("applicationId",rs.getInt("applicationId"));
+	            applicationDetails.put("userId", rs.getInt("userId"));
 	                
 	            jobApplicationsDetails.add(applicationDetails);
 	        }

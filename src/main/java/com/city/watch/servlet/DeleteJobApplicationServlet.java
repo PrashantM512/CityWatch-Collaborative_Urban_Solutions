@@ -22,6 +22,7 @@ public class DeleteJobApplicationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           HttpSession session=request.getSession();
+          String redirect=request.getParameter("rd");
           int id=Integer.parseInt(request.getParameter("id"));
           
           try {
@@ -30,19 +31,29 @@ public class DeleteJobApplicationServlet extends HttpServlet {
         	  if(f) {
    				session.setAttribute("alertMessage","Job Application Deleted Successfully...");
    				session.setAttribute("alertClass", "alert-success");
-   				response.sendRedirect("admin/applied_applications.jsp");
+   				if(redirect.equals("us")) {
+   					response.sendRedirect("user_job_applications.jsp");
+   				}else {
+   					response.sendRedirect("admin/applied_applications.jsp");
+   				}
    				
    		   }else {
    			   session.setAttribute("alertMessage","Something Went Wrong... Please try again...");
    			   session.setAttribute("alertClass","alert-danger");
-   			   response.sendRedirect("admin/applied_applications.jsp");
+   			   if(redirect.equals("us")) {
+					response.sendRedirect("user_job_applications.jsp");
+				}else {
+					response.sendRedirect("admin/applied_applications.jsp");
+				}
         	  
 		   }
           }catch (Exception e) {
 			e.printStackTrace();
-			 session.setAttribute("alertMessage","Something Went Wrong... Please try again...");
- 			 session.setAttribute("alertClass","alert-danger");
- 			 response.sendRedirect("admin/applied_applications.jsp");
+			if(redirect.equals("us")) {
+					response.sendRedirect("user_job_applications.jsp");
+				}else {
+					response.sendRedirect("admin/applied_applications.jsp");
+				}
 		}
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
