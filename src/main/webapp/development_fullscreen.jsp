@@ -1,3 +1,5 @@
+<%@page import="com.city.watch.entity.Donation"%>
+<%@page import="com.city.watch.dao.DonationDaoImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.city.watch.dao.RatingsDaoImpl"%>
@@ -51,7 +53,19 @@ dev=dao.getDevelopmentById(pid);
             <p><b class="text-dark">Status:</b>&nbsp;<%=dev.getStatus() %></p>
             <p><b class="text-dark">Need Of Donation:</b>&nbsp;<%=dev.getNeed() %></p>
             <p><b class="text-dark">Description:</b>&nbsp;<%=dev.getDescription() %></p>
-			<p><b class="text-dark">Total Donation:&nbsp;</b></p>
+            <%
+               int currentPid=Integer.parseInt(request.getParameter("pid"));
+   	           DonationDaoImpl dt=new DonationDaoImpl(ConnectionProvider.getConnection());
+				List<Donation> donations = dt.getAllDonations();
+				double totalAmount = 0;
+			    for (Donation donation : donations) {
+			    	if(donation.getPid()==currentPid){
+			         	totalAmount += donation.getAmount();
+				    }
+			    }
+			 %>
+            
+			<p><b class="text-dark">Total Donation:&nbsp;&#8377;<%=totalAmount %></b></p>
 							
 
 		</div>
