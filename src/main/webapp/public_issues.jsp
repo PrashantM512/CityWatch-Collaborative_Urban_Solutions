@@ -30,45 +30,67 @@ th,td{
                         <div class="rounded h-100">
                             <h6 class="mb-4"></h6>
                             <div class="table-responsive">
-                                <table class="table" style="border-style: solid; border-color: #e5e5e5;">
-                                    <thead style="height: 42px;background-color: #e5e5e5;">
-                                        <tr>
-                                            <th scope="col">Sr.No.</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">User Name</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Progress</th>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <%
-								IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
-								List<Map<String, Object>> list = dao.getPublicIssues();
-								int i = 1;
+						<%
+						IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+							List<Map<String, Object>> list = dao.getPublicIssues();
+							int i = 1;
+						%>
+
+						<table class="table"
+							style="border-style: solid; border-color: #e5e5e5;">
+							<thead style="height: 42px; background-color: #e5e5e5;">
+								<tr>
+									<th scope="col">Sr.No.</th>
+									<th scope="col">Title</th>
+									<th scope="col">Description</th>
+									<th scope="col">User Name</th>
+									<th scope="col">Status</th>
+									<th scope="col">Date</th>
+									<th scope="col">Progress</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
 								for (Map<String, Object> getPublicIssues : list) {
-								    Issue is  = (Issue) getPublicIssues.get("issue");
-								    User u = (User) getPublicIssues.get("user");
-									
-								    %>
-                                        <tr>
-                                            <th scope="row"><%=i %></th>
-                                            <td><%=is.getTitle() %></td>
-                                             <td><%=is.getDescription() %></td>
-                                             <td><%=u.getName() %></td>
-                                           <td><%=is.getType() %></td>
-                                            <td><%=is.getDate() %></td>
-                                            <td class="btn-warning btn" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; "><%=is.getStatus() %></td>
-                                         </tr>
-                                        <%
-							         	i++; 
-							         	}
-							           	%>
-                                    </tbody>
-                                </table>
-                            </div>
+									Issue is = (Issue) getPublicIssues.get("issue");
+									User u = (User) getPublicIssues.get("user");
+									String statusClass = "";
+									switch (is.getStatus()) {
+									case "Submitted":
+										statusClass = "btn-primary";
+										break;
+									case "Rejected":
+										statusClass = "btn-danger";
+										break;
+									case "In_Progress":
+										statusClass = "btn-warning";
+										break;
+									case "Solved":
+										statusClass = "btn-success";
+										break;
+									default:
+										statusClass = "";
+									}
+								%>
+								<tr>
+									<th scope="row"><%=i%></th>
+									<td><%=is.getTitle()%></td>
+									<td><%=is.getDescription()%></td>
+									<td><%=u.getName()%></td>
+									<td><%=is.getType()%></td>
+									<td><%=is.getDate()%></td>
+									<td class="<%=statusClass%> btn" scope="row"
+										style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%;">
+										<%=is.getStatus()%>
+									</td>
+								</tr>
+								<%
+								i++;
+								}
+								%>
+							</tbody>
+						</table>
+					</div>
                         </div>
                     </div>
                 </div>
