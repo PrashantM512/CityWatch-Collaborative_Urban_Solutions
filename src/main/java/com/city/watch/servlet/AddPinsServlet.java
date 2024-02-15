@@ -35,13 +35,22 @@ public class AddPinsServlet extends HttpServlet {
           Pins pin=new Pins(name,category,location,link);
          try {
         	 PinsDaoImpl dao=new PinsDaoImpl(ConnectionProvider.getConnection());
-	         dao.addPin(pin);
-	         session.setAttribute("success", "success");
-	         response.sendRedirect("admin/add_pins.jsp");
+	         boolean f= dao.addPin(pin);
+	         if(f) {
+					session.setAttribute("alertMessage", "Pin Added Successfully...");
+					session.setAttribute("alertClass","alert-success");
+					response.sendRedirect("admin/add_pins.jsp");
+				}else {
+					session.setAttribute("alertMessage", "Operation failed... Please Try Agin!!!");
+					session.setAttribute("alertClass","alert-danger");
+					response.sendRedirect("admin/add_pins.jsp");
+				}
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			 session.setAttribute("error", "error");
-	         response.sendRedirect("admin/add_pins.jsp");
+			session.setAttribute("alertMessage", "Something Went wrong...");
+			session.setAttribute("alertClass","alert-danger");
+			response.sendRedirect("admin/add_pins.jsp");
 		}
 
 		doGet(request, response);

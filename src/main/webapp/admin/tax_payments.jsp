@@ -80,7 +80,18 @@
 										<td><%=user.getMobile()%></td>
 										<td><%=transaction.getPropertyTaxId()%></td>
 										<td><%=transaction.getAmount()%></td>
+										<%
+										if (transaction.getPaymentId() == null) {
+										%>
+										<td>-</td>
+										<%
+										} else {
+										%>
 										<td><%=transaction.getPaymentId()%></td>
+										<%
+										}
+										%>
+
 										<td><%=transaction.getStatus()%></td>
 										<td><%=transaction.getDate() %></td>
 										<td><%=transaction.getPropertyType()%></td>

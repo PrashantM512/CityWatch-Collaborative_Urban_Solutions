@@ -8,5 +8,7 @@ public interface PinsDao {
        public boolean addPin(Pins pin);
        public List<Pins> getPinByCategory(String category);
        public List<Pins> getSearchedPins(String key);
+       public List<Pins> getAllPins();
+       public boolean deletePinById(int id);
        
 }

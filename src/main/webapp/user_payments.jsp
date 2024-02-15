@@ -97,7 +97,17 @@
 													%>
 													<td><%=transaction.getStatus()%></td>
 										            <td><%=transaction.getDate() %></td>
-										            <td><%=transaction.getPaymentId()%></td>
+													<%
+													if (transaction.getPaymentId() == null) {
+													%>
+													<td>-</td>
+													<%
+													} else {
+													%>
+													<td><%=transaction.getPaymentId()%></td>
+													<%
+													}
+													%>
 												</tr>
 												<%
 									         	   }
@@ -148,7 +158,15 @@
 										<td><%=donation.getAmount()%></td>
 										<td><%=donation.getDate() %></td>
 										<td><%=donation.getStatus()%></td>
-										<td><%=donation.getPaymentId()%></td>
+									    <td>
+									    	<%
+											if (donation.getPaymentId() == null) {
+											%> - <%
+											} else {
+											%> <%=donation.getPaymentId()%>
+											<%
+											}
+											%></td>
 									</tr>
 									<%
 									}

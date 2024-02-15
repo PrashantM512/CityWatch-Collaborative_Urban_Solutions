@@ -86,7 +86,44 @@ public class PinsDaoImpl implements PinsDao {
 		}
 		return list;
 	}
-    
-	
-	
+
+	@Override
+	public List<Pins> getAllPins() {
+		List<Pins> list=new ArrayList<Pins>();
+		Pins pn=null;
+		try {
+			String query="SELECT * FROM pins ORDER BY id DESC";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+			   pn=new Pins();
+			   pn.setId(rs.getInt(1));
+			   pn.setName(rs.getString(2));
+			   pn.setCategory(rs.getString(3));
+			   pn.setLocation(rs.getString(4));
+			   pn.setLink(rs.getString(5));
+			   list.add(pn);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public boolean deletePinById(int id) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM pins WHERE id=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 }

@@ -51,6 +51,7 @@
 										<th scope="col">Mobile</th>
 										<th scope="col">Project Name</th>
 										<th scope="col">Amount</th>
+										<th scope="col">Date</th>
 										<th scope="col">Payment Id</th>
 										<th scope="col">Status</th>
 									</tr>
@@ -68,7 +69,17 @@
 										<td><%=donation.getMobile()%></td>
 										<td><%=donation.getDevelopment().getTitle()%></td>
 										<td><%=donation.getAmount()%></td>
-										<td><%=donation.getPaymentId()%></td>
+										<td><%=donation.getDate() %></td>
+										<td>
+											<%
+											if (donation.getPaymentId() == null) {
+											%> - <%
+											} else {
+											%> <%=donation.getPaymentId()%>
+											<%
+											}
+											%>
+										</td>
 										<td><%=donation.getStatus()%></td>
 									</tr>
 									<%
