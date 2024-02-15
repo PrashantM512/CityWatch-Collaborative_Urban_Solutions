@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.city.watch.entity.Rating"%>
 <%@page import="java.util.List"%>
@@ -72,15 +73,17 @@
 							
 							RatingsDaoImpl dao = new RatingsDaoImpl(ConnectionProvider.getConnection());
 							List<Map<String, Object>> list = dao.getFeedbackDetails();
+							Random random = new Random();
 							int i = 1;
 							int stars=0;
+							int uniqueId=random.nextInt(9000) + 1000;
 							for (Map<String, Object> fd : list) {
 								if(((Map<String, Object>) fd.get("development")).get("pid").equals(pid)){
+									
 							%>
-                                   
 							<tr>
 								<th scope="row"><%=i%></th>
-								<td><%=((Map<String, Object>) fd.get("user")).get("name")%></td>
+								<td><img src="https://i.pravatar.cc/200?u=<%=uniqueId %>" class="rounded-circle shadow-1-strong" width="35" height="35" />&nbsp;&nbsp;<%=((Map<String, Object>) fd.get("user")).get("name")%></td>
 								<td><%=fd.get("date")%></td>
 								<td>
 									<%
@@ -95,6 +98,7 @@
 							</tr>
 							<%
 							i++;
+							uniqueId++;
 							stars=stars+ratingLevel;
 							 }
 							}
