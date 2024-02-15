@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +83,7 @@ public class DonationDaoImpl implements DonationDao {
 							    double amount = resultSet.getDouble("amount");
 							    String mobile = resultSet.getString("mobile");
 							    String aadhar = resultSet.getString("aadhar");
+							    Timestamp date = resultSet.getTimestamp("date");
 							    int pid = resultSet.getInt("pid");
 							    String paymentId = resultSet.getString("paymentId");
 							    String status = resultSet.getString("status");
@@ -93,7 +95,7 @@ public class DonationDaoImpl implements DonationDao {
 							    development.setPid(pid);
 							    development.setTitle(projectTitle);
 
-							    Donation donation = new Donation(id, name, email, amount, mobile, aadhar, pid, null, orderId, paymentId, receiptId, status, development);
+							    Donation donation = new Donation(id, name, email, amount, mobile, aadhar, pid,date, orderId, paymentId, receiptId, status, development);
 
 							    donations.add(donation);
 							}
