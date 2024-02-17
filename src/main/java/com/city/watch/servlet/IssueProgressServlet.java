@@ -32,18 +32,19 @@ public class IssueProgressServlet extends HttpServlet {
 			if(f) {
 				session.setAttribute("alertMessage","Operation Successful...");
 				session.setAttribute("alertClass","alert-success");
-				if(redirect.equals("dept")) {
-					response.sendRedirect("department\\issues.jsp");
-				}else {
+				
+				if (redirect != null && redirect.equals("dept")) {
+					response.sendRedirect("department/issues.jsp");
+				} else {
 					response.sendRedirect("admin/issues.jsp");
 				}
 			
 			}else {
 				session.setAttribute("alertMessage","Operation Failed... Please Try Again!!!");
 				session.setAttribute("alertClass","alert-danger");
-				if(redirect.equals("dept")) {
+				if (redirect != null && redirect.equals("dept")) {
 					response.sendRedirect("department/issues.jsp");
-				}else {
+				} else {
 					response.sendRedirect("admin/issues.jsp");
 				}
 			}
@@ -52,11 +53,12 @@ public class IssueProgressServlet extends HttpServlet {
 			e.printStackTrace();
 			session.setAttribute("alertMessage","Something Went Wrong...");
 			session.setAttribute("alertClass","alert-danger");
-			if(redirect.equals("dept")) {
+			if (redirect != null && redirect.equals("dept")) {
 				response.sendRedirect("department/issues.jsp");
-			}else {
+			} else {
 				response.sendRedirect("admin/issues.jsp");
-			}		}
+			}
+		}
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
