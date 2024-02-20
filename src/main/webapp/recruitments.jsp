@@ -61,7 +61,7 @@ th,td{
                                  <td><%=r.getApplicationEndDate() %></td>
                                  <td><%=r.getCriteria() %></td>
                                  <td><%=r.getCv_need() %></td>
-                                 <td>
+                                 <td style=" display: grid; ">
                                    <%
                                     if (r.getCv_need().equals("Yes") && (u.getCv() == null || u.getCv().isEmpty())) {
                                    %>
@@ -82,7 +82,7 @@ th,td{
                                              <% 
                                                if(r.getCv_need().equals("Yes")){
                                         	 %>
-                                        	  <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 14px;margin-left: 5px;">Update CV ?</a>
+                                        	  <a class="text-white btn-primary btn" href="upload_cv.jsp" style="text-decoration: none;padding: 6px 15px;margin-left: 9px;margin-top: 10px;">Update CV ?</a>
                                         	 <% } %>
                                      
                                    <% } %>

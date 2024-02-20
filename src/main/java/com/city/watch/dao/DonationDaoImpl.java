@@ -116,8 +116,9 @@ public class DonationDaoImpl implements DonationDao {
 	public List<Donation> getAllDonations() {
 	    List<Donation> list = new ArrayList<>();
 	    try {
-	        String query = "SELECT * FROM donations";
+	        String query = "SELECT * FROM donations WHERE status=?";
 	        PreparedStatement stmt = conn.prepareStatement(query);
+	        stmt.setString(1,"Success");
 	        ResultSet rs = stmt.executeQuery();
 	        while (rs.next()) {
 	            Donation donation = new Donation();

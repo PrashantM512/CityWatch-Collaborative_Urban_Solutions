@@ -104,8 +104,9 @@ public class RecruitmentDaoImpl implements RecruitmentDao {
 	public Recruitment getRecruitmentById(int id) {
 		Recruitment rc=null;
 		try {
-			String query="SELECT * FROM recruitment";
+			String query="SELECT * FROM recruitment WHERE recruitment_id=?";
 			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next()) {
 				rc=new Recruitment();

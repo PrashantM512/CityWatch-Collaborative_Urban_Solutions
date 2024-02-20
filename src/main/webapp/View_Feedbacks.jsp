@@ -84,9 +84,9 @@
 							%>
 							<tr>
 								<th scope="row"><%=i%></th>
-								<td><img src="https://i.pravatar.cc/200?u=<%=uniqueId %>" class="rounded-circle shadow-1-strong" width="35" height="35" />&nbsp;&nbsp;<%=((Map<String, Object>) fd.get("user")).get("name")%></td>
+								<td style="min-width: 220px;"><img src="https://i.pravatar.cc/200?u=<%=uniqueId %>" class="rounded-circle shadow-1-strong" width="35" height="35" />&nbsp;&nbsp;<%=((Map<String, Object>) fd.get("user")).get("name")%></td>
 								<td><%=fd.get("date")%></td>
-								<td>
+								<td style=" min-width: 125px; ">
 									<%
 									int ratingLevel = (int) fd.get("stars");
 									for (int j = 0; j < ratingLevel; j++) {

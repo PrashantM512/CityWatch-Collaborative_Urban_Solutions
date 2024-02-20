@@ -77,7 +77,14 @@
                                            String cvFilePath = "../pdf_files/" + a.get("cv");
                                            if (a.get("cv") != null && !cvFilePath.trim().isEmpty()) {
                                            %>
-                                           <a href="<%= cvFilePath %>" target="_blank" class="btn btn-info text-white">Open CV</a>
+                                               <%
+                                               if(a.get("cv_need").equals("Yes")){ %>
+                                                 <a href="<%= cvFilePath %>" target="_blank" class="btn btn-info text-white">Open CV</a>
+                                               <%}else{
+                                            	   out.println("No Need");
+                                               }
+                                               %>
+                                           
                                            <%
                                             } else {
                                             out.println("No CV available");

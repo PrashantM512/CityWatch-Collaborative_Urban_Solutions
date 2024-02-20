@@ -1,3 +1,5 @@
+<%@page import="com.city.watch.entity.Donation"%>
+<%@page import="com.city.watch.dao.DonationDaoImpl"%>
 <%@page import="com.city.watch.entity.Development"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
@@ -38,7 +40,19 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 							<thead class="thead-dark">
 								<tr style="background-color: #cfcfcf; height: 40px">
 									<th scope="col" style="padding-left: 25px;">Total Donation Till Now</th>
-									<th style="text-align: center;" scope="col"> Rs. 10,000</th>
+									<%
+								DonationDaoImpl dt=new DonationDaoImpl(ConnectionProvider.getConnection());
+								List<Donation> donations = dt.getAllDonations();
+							    
+							    double totalAmount = 0;
+							    for (Donation donation : donations) {
+							       if(donation.getStatus().equals("Success")){
+							    	   totalAmount += donation.getAmount();
+							       }
+							    }
+								
+								%>
+									<th style="text-align: center;" scope="col"> Rs.<%=totalAmount %></th>
 								</tr>
 							</thead>
 						</table>
@@ -94,7 +108,7 @@ Together, we can create a more vibrant, inclusive, and sustainable city/village.
 									DevelopmentDaoImpl dao=new DevelopmentDaoImpl(ConnectionProvider.getConnection());
 								    List<Development> list=dao.getAlldevelopments();
 									for(Development d:list ){
-										if (!d.getStatus().equals("Completed")){
+										if (!d.getStatus().equals("Completed")&&d.getNeed().equals("Yes")){
 										%>
 									<option value="<%=d.getPid()%>"><%=d.getTitle() %> (<%=d.getStatus() %>)</option>
 									 <%

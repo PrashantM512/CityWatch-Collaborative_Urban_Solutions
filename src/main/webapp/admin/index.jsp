@@ -77,7 +77,9 @@
 							    
 							    double totalAmount = 0;
 							    for (Donation donation : donations) {
-							        totalAmount += donation.getAmount();
+							       if(donation.getStatus().equals("Success")){
+							    	   totalAmount += donation.getAmount();
+							       }
 							    }
 								
 								%>

@@ -89,10 +89,10 @@ dev=dao.getDevelopmentById(pid);
             }
             %>
             <%
-            if(dev.getNeed().equals("Yes") && dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Upcoming")){
+            if(dev.getNeed().equals("Yes") && !dev.getNeed().equals("No") && dev.getStatus().equals("Ongoing") || dev.getStatus().equals("Upcoming")){
             %>
-            <a class="btn btn-success text-white" style="width:100%">Donate For Project</a>	
-            <% } %>
+            <a href="donate.jsp" class="btn btn-success text-white" style="width:100%">Donate For Project</a>	
+            <% }else{} %>
         </div>
     </div>
 </div>

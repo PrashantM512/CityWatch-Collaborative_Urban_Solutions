@@ -30,7 +30,7 @@ th,td{
 					<h6 class="mb-4"></h6>
 					<div class="table-responsive">
 						<table class="table"
-							style="border-style: solid; border-color: #e5e5e5; width: 80%;">
+							style="border-style: solid; border-color: #e5e5e5; width: 95%;">
 							<thead style="height: 42px; background-color: #e5e5e5;">
 							   <tr>
 									<th scope="col">Sr.No.</th>
@@ -56,7 +56,7 @@ th,td{
 									<td><%=d.getLocation() %></td>
 									<td><%=d.getNeed() %></td>
 									<td><%=d.getStatus() %></td>
-									<td><a class="text-white btn-primary btn" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
+									<td style="display:flex;"><a class="text-white btn-primary btn" href="development_fullscreen.jsp?pid=<%=d.getPid() %>"
 										style="text-decoration: none;padding: 6px 14px;margin: -6px;">View Details&nbsp;<i class="fa-solid fa-circle-info"></i></a>
 									<%
 									if(d.getStatus().equals("Ongoing") || d.getStatus().equals("Completed")){

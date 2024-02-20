@@ -85,7 +85,7 @@ th,td{
 									<td><%=is.getType()%></td>
 									<td><%=is.getDate()%></td>
 									<td class="<%=statusClass%> btn" scope="row"
-										style="height: 40px; padding-top: 6px; margin-top: 3px; width: 80%;">
+										style="height: 40px;padding-top: 6px;margin-top: 3px;min-width: 100%;">
 										<%=is.getStatus()%>&nbsp;<%=icon %>
 									</td>
 								</tr>
