@@ -1,3 +1,6 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.city.watch.entity.Issue"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
@@ -45,7 +48,7 @@ th,td{
 									<th scope="col">Description</th>
 									<th scope="col">User Name</th>
 									<th scope="col">Status</th>
-									<th scope="col">Date</th>
+									<th style="min-width: 115px;" scope="col">Date</th>
 									<th scope="col">Progress</th>
 								</tr>
 							</thead>
@@ -77,13 +80,18 @@ th,td{
 										statusClass = "";
 									}
 								%>
+								<%
+								Timestamp timestamp = is.getDate();
+								SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+								String formattedDate = outputFormat.format(timestamp);
+								%>
 								<tr>
 									<th scope="row"><%=i%></th>
 									<td><%=is.getTitle()%></td>
 									<td><%=is.getDescription()%></td>
 									<td><%=u.getName()%></td>
 									<td><%=is.getType()%></td>
-									<td><%=is.getDate()%></td>
+									<td><%=formattedDate%></td>
 									<td class="<%=statusClass%> btn" scope="row"
 										style="height: 40px;padding-top: 6px;margin-top: 3px;min-width: 100%;">
 										<%=is.getStatus()%>&nbsp;<%=icon %>

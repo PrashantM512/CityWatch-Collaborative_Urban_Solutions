@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.city.watch.dao.JobApplicationDaoImpl"%>
 <%@page import="com.city.watch.entity.Recruitment"%>
@@ -60,7 +62,13 @@ th,td{
 										<td><%= a.get("job_title") %></td>
 										<td><%=a.get("name") %></td>
 										<td><%=a.get("mobile") %></td>
-										<td><%=a.get("applicationDate") %></td>
+									<%
+									Timestamp timestamp = (Timestamp)a.get("applicationDate");
+									SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+									String formattedDate = outputFormat.format(timestamp);
+									%>
+
+									<td><%=formattedDate %></td>
 										<td>                      
 				                         <% 
                                            String cvFilePath = "pdf_files/" + a.get("cv");

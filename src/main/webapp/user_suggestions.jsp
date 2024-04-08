@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Suggestion"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
@@ -57,7 +59,12 @@ th,td{
                                             <th scope="row"><%=i %></th>
                                             <td><%=s.getTitle() %></td>
                                             <td><%=s.getDescription() %></td>
-                                            <td><%=s.getDate() %></td>
+									<%
+									Timestamp timestamp = s.getDate();
+									SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+									String formattedDate = outputFormat.format(timestamp);
+									%>
+									<td><%=formattedDate%></td>
                                             <td><%=s.getAge() %></td>
                                             <td><%=s.getEducation() %></td>
                                             <td><a class="btn-danger btn text-white" href="DeleteSuggestionServlet?id=<%=s.getId()%>&uid=<%=user.getUid() %>" scope="row" style="padding-top: 4px;margin-top: -8px;width: 100%;">Delete</a></td>

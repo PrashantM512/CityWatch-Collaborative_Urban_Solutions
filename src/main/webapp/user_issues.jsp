@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Issue"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
@@ -60,7 +62,12 @@ th,td{
                                             <td><img alt="" src="issues_img/<%=is.getPhoto() %>" style="height:70px;width:80px;"></td>
                                             <td><%=is.getDescription() %></td>
                                             <td><%=is.getType() %></td>
-                                            <td><%=is.getDate() %></td>
+									<%
+									Timestamp timestamp = is.getDate();
+									SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+									String formattedDate = outputFormat.format(timestamp);
+									%>
+									<td><%=formattedDate%></td>
                                              <td><%=is.getStatus() %></td>
                                             <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete</a>
                                             </td>

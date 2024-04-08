@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Issue"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
 <%@page import="com.city.watch.dao.IssueDaoImpl"%>
@@ -25,17 +27,13 @@
 		String currentPage = "issues";
 		request.setAttribute("currentPage", currentPage);
 		%>
-		<!-- Sidebar Start -->
 		<%@include file="components/sidebar.jsp"%>
-		<!-- Sidebar End -->
 		<%
 		request.removeAttribute("currentPage");
 		%>
 
 		<div class="content">
-			<!-- Navbar Start -->
 			<%@include file="components/navbar.jsp"%>
-			<!-- Navbar End -->
 			<div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-xl-6">
@@ -66,20 +64,21 @@
                      <p><b class="text-dark">Mobile No:&nbsp; </b><%=mobile %></p>
                      <p><b class="text-dark">Type:&nbsp; </b><%=is.getType() %></p>
                      <p><b class="text-dark">Status:&nbsp; </b><%=is.getStatus() %></p>
-                     <p><b class="text-dark">Date:&nbsp; </b><%=is.getDate() %></p>
-                     <p><b class="text-dark">Description:&nbsp; </b><%=is.getDescription() %></p>
+								<%
+								Timestamp timestamp = is.getDate();
+								SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+								String formattedDate = outputFormat.format(timestamp);
+								%>
+								<p><b class="text-dark">Date:&nbsp; </b><%=formattedDate%></p>
+								<p><b class="text-dark">Description:&nbsp; </b><%=is.getDescription() %></p>
                    
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-			
-			<!-- Footer Start -->
-			<%@include file="components/footer.jsp"%>
-			<!-- Footer End -->
-		</div>
+	<%@include file="components/footer.jsp"%>
+ 	</div>
 	</div>
 	<%@include file="components/allscripts.jsp"%>
 </body>

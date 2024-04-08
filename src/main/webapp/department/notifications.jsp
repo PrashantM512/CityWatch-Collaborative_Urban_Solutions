@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.city.watch.entity.Notification"%>
 <%@page import="java.util.List"%>
@@ -127,7 +129,12 @@
                                             <td><%=n.getDescription() %></td>
                                             <td><%=n.getFrm() %></td>
                                             <td><%=n.getTarget() %></td>
-                                             <td><%=n.getDate() %></td>
+                                             <%
+										Timestamp timestamp = n.getDate();
+										SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+										String formattedDate = outputFormat.format(timestamp);
+										%>
+										<td><%=formattedDate%></td>
                                             <td>
                                             <a href="../DeleteNotificationServlet?id=<%=n.getId()%>&rd=dept" type="button" class="btn btn-danger">Delete</a>
                                            </td>

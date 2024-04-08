@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Issue"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
 <%@page import="com.city.watch.dao.IssueDaoImpl"%>
@@ -66,7 +68,12 @@
                      <p><b class="text-white">Mobile No:&nbsp; </b><%=mobile %></p>
                      <p><b class="text-white">Type:&nbsp; </b><%=is.getType() %></p>
                      <p><b class="text-white">Status:&nbsp; </b><%=is.getStatus() %></p>
-                     <p><b class="text-white">Date:&nbsp; </b><%=is.getDate() %></p>
+								<%
+								Timestamp timestamp = is.getDate();
+								SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+								String formattedDate = outputFormat.format(timestamp);
+								%>
+								<p><b class="text-white">Date:&nbsp; </b><%=formattedDate %></p>
                      <p><b class="text-white">Description:&nbsp; </b><%=is.getDescription() %></p>
                    
                 </div>

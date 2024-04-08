@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Suggestion"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
@@ -74,7 +76,12 @@
 										<th scope="row"><%=i %></th>
 										<td><%=s.getTitle() %></td>
 										<td><%=s.getDescription() %></td>
-										<td><%=s.getDate() %></td>
+										<%
+										Timestamp timestamp = s.getDate();
+										SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+										String formattedDate = outputFormat.format(timestamp);
+										%>
+										<td><%=formattedDate %></td>
 										<td><%=u.getName() %></td>
 										<td><%=u.getMobile() %></td>
 										<td><%=s.getAge() %></td>

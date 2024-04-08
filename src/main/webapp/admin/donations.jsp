@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.entity.Donation"%>
 <%@page import="java.util.List"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
@@ -69,7 +71,12 @@
 										<td><%=donation.getMobile()%></td>
 										<td><%=donation.getDevelopment().getTitle()%></td>
 										<td><%=donation.getAmount()%></td>
-										<td><%=donation.getDate() %></td>
+										<%
+										Timestamp timestamp = donation.getDate();
+										SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+										String formattedDate = outputFormat.format(timestamp);
+										%>
+										<td><%=formattedDate %></td>
 										<td>
 											<%
 											if (donation.getPaymentId() == null) {

@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.city.watch.db.ConnectionProvider"%>
 <%@page import="com.city.watch.entity.TransactionDetails"%>
 <%@page import="java.util.List"%>
@@ -93,7 +95,12 @@
 										%>
 
 										<td><%=transaction.getStatus()%></td>
-										<td><%=transaction.getDate() %></td>
+										<%
+										Timestamp timestamp = transaction.getDate();
+										SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+										String formattedDate = outputFormat.format(timestamp);
+										%>
+										<td><%=formattedDate %></td>
 										<td><%=transaction.getPropertyType()%></td>
 									</tr>
 									<%

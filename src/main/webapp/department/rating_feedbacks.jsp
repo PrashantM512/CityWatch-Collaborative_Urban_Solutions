@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.city.watch.entity.Rating"%>
 <%@page import="java.util.List"%>
@@ -69,7 +71,12 @@
 										<th scope="row"><%=i %></th>
 										<td><%=((Map<String, Object>) fd.get("development")).get("title") %></td>
 										<td><%=((Map<String, Object>) fd.get("user")).get("name") %></td>
-										<td><%=fd.get("date") %></td>
+										<%
+										Timestamp timestamp = (Timestamp)fd.get("date");
+										SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+										String formattedDate = outputFormat.format(timestamp);
+										%>
+										<td><%=formattedDate%></td>
 										<td><%=fd.get("stars") %></td>
 										<td><%=fd.get("feedback") %></td>
 										<td>
