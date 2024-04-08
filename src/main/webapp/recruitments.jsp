@@ -20,9 +20,16 @@ th,td{
 }
 </style>
 <body>
+<%
+User usd = (User) session.getAttribute("user");
+if (usd == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
+%>
     <%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
-    <%
+    <%  
     UserDaoImpl d=new UserDaoImpl(ConnectionProvider.getConnection());
     User u=d.getUserById(user.getUid());
     %>
@@ -58,7 +65,7 @@ th,td{
 								 <th scope="row"><%=i %></th>
                                  <td><%=r.getJobTitle() %></td>
                                  <td><%=r.getDescription() %></td>
-                                 <td><%=r.getApplicationEndDate() %></td>
+                                 <td style=" min-width: 135px; "><%=r.getApplicationEndDate() %></td>
                                  <td><%=r.getCriteria() %></td>
                                  <td><%=r.getCv_need() %></td>
                                  <td style=" display: grid; ">

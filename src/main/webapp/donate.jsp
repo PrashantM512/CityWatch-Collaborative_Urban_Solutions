@@ -15,7 +15,14 @@
 <title>Donate</title>
 </head>
 <body>
-     <%@include file="components/check_session.jsp" %>
+	<%
+	User usd = (User) session.getAttribute("user");
+	if (usd == null) {
+		response.sendRedirect("login.jsp");
+		return;
+	}
+	%>
+	<%@include file="components/check_session.jsp" %>
 	<%@include file="components/navbar.jsp"%>
          
 <p class="text-center pgeheading">DONATE US</p>
