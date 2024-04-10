@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.city.watch.entity.Notification"%>
 <%@page import="java.util.List"%>
@@ -58,8 +60,13 @@ if (usd == null) {
 					<p class="notification__message"><%=n.getDescription() %></p>
 					<div class="notification__footer">
 						<button class="notification__button -primary">By&nbsp;<%=n.getFrm() %></button> 
-						<a href="#" class="notification__button -secondary">Delete</a>
-					   <p class="notification__button -white" style=" background: white; color: #1938cf; padding-left: 0px; font-size: small; "><%=n.getDate() %></p>
+						<a href="notifications.jsp" class="notification__button -secondary">Refresh</a>
+						<%
+						Timestamp timestamp = n.getDate();
+						SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+						String formattedDate = outputFormat.format(timestamp);
+						%>
+					   <p class="notification__button -white" style=" background: white; color: #1938cf; padding-left: 0px; font-size: small; "><%=formattedDate %></p>
 					</div>
 				</div>
 			</div>

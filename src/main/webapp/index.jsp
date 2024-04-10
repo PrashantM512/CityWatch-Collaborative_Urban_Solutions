@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -7,6 +9,7 @@
 <html>
 <head>
 <%@include file="components/header_links.jsp"%>
+<link rel="stylesheet" href="components/homecard.css">
 <title>Home</title>
 </head>
 <body>
@@ -36,18 +39,165 @@
 						CityWatch is the spark that ignites its potential. Join us, become
 						a changemaker, and watch your city blossom! 
 						</p>
-						<a href=""
-							class="btn btn-outline-light btn-lg">Let's
-						Start</a> 
-						 <c:if test="${empty user }">
+						<a href="#homecards" class="btn btn-outline-light btn-lg">Let's Start</a>
+                        <c:if test="${empty user }">
 						<a href="login.jsp" class="btn btn-outline-light btn-lg">Login</a>
 						</c:if>
+						<div id="homecards"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div style="height: 100px"></div>
+ 
+	<div>
+		<section class="wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center mb-5">
+						<h1 class="display-4 font-weight-bolder"></h1>
+						<h4 class="lead" style=" color: #767676; font-weight: bold; ">Help Us To Be Better And Bright Future Of Our City</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+						<div class="card text-dark card-has-bg click-col"
+							style="background-image: url('https://source.unsplash.com/600x900/?tech,street');">
+							<img class="card-img d-none"
+								src="https://source.unsplash.com/600x900/?tech,street"
+								alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+							<div class="card-img-overlay d-flex flex-column">
+								<div class="card-body">
+									<small class="card-meta mb-2">Issues</small>
+									<h4 class="card-title mt-0 ">
+										<a class="text-dark text-decoration-none" href="issues.jsp">Hey... Let Us Know Your Issues Or Complaints</a>
+									</h4>
+									<%
+									Date currentDate = new Date();
+									SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+									String formattedDate = dateFormat.format(currentDate);
+									%>
+									<small><i class="far fa-clock"></i> <%=formattedDate %></small>
+								</div>
+								<div class="card-footer">
+									<div class="media">
+										<img alt="Small Image" style="width: 40px; height: 40px;" class="img img-fluid mr-3" src="img/cityscape.png">
+										<div class="media-body">
+											<h6 class="my-0 text-dark d-block">Manchar</h6>
+											<small>Maharastra 410 503</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+						<div class="card text-dark card-has-bg click-col"
+							style="background-image: url('https://source.unsplash.com/600x900/?tree,nature');">
+							<img class="card-img d-none"
+								src="https://source.unsplash.com/600x900/?tree,nature"
+								alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+							<div class="card-img-overlay d-flex flex-column">
+								<div class="card-body">
+									<small class="card-meta mb-2">Developments</small>
+									<h4 class="card-title mt-0 ">
+										<a class="text-dark text-decoration-none" href="developments.jsp">Hey... Let's Explore Development Projects In Our City</a>
+									</h4>
+									<small><i class="far fa-clock"></i> <%=formattedDate %></small>
+								</div>
+								<div class="card-footer">
+									<div class="media">
+										<img alt="Small Image" style="width: 40px; height: 40px;" class="img img-fluid mr-3" src="img/cityscape.png">
+										<div class="media-body">
+											<h6 class="my-0 text-dark d-block">Manchar</h6>
+											<small>Maharastra 410 503</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+						<div class="card text-dark card-has-bg click-col"
+							style="background-image: url('https://source.unsplash.com/600x900/?computer,design');">
+							<img class="card-img d-none"
+								src="https://source.unsplash.com/600x900/?computer,design"
+								alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+							<div class="card-img-overlay d-flex flex-column">
+								<div class="card-body">
+									<small class="card-meta mb-2">Tax Bills</small>
+									<h4 class="card-title mt-0 ">
+										<a class="text-dark text-decoration-none" href="pay_tax.jsp" >Hey... Pay Your Pending Tax Bills Here</a>
+									</h4>
+									<small><i class="far fa-clock"></i> <%=formattedDate %></small>
+								</div>
+								<div class="card-footer">
+									<div class="media">
+										<img alt="Small Image" style="width: 40px; height: 40px;" class="img img-fluid mr-3" src="img/cityscape.png">
+										<div class="media-body">
+											<h6 class="my-0 text-dark d-block">Manchar</h6>
+											<small>Maharastra 410 503</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<hr>
+	<div id="bottomcards">
+	<div class="container">
+	<div class="row">
+					<div class="col text-center mb-5">
+						<h1 class="display-4 font-weight-bolder"></h1>
+						<h4 class="lead" style=" color: #767676; font-weight: bold; ">Our Analytics</h4>
+					</div>
+				</div>
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card2 bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Developments</h6>
+                    <h2 class="text-right"><i class="fa fa-building fa-3x f-left mt-2"></i><span>486</span></h2>
+<!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card2 bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Issues</h6>
+                    <h2 class="text-right"><i class="fa fa-exclamation-triangle fa-3x mt-2 f-left"></i><span>486</span></h2>
+<!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card2 bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Donation</h6>
+                    <h2 class="text-right"><i class="fa fa-heart fa-3x f-left mt-2"></i><span>486</span></h2>
+<!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card2 bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total Tax Payments</h6>
+                    <h2 class="text-right"><i class="fa fa-credit-card fa-3x mt-2 f-left"></i><span>486</span></h2>
+<!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+</div>
 	
 <%@include file="components/footer.jsp" %>
 <%@include file="components/all_js.jsp"%>

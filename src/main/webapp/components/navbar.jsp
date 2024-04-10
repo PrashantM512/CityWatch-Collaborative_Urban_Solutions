@@ -13,7 +13,7 @@
 			<form class="form-inline my-2 my-lg-0" action="SearchPinServlet"
 				method="post">
 				<input class="form-control mr-sm-2" type="search" name="key"
-					placeholder="Search" aria-label="Search">
+					placeholder="Search" aria-label="Search" required>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 		</div>
@@ -21,7 +21,7 @@
 			<a href="notifications.jsp"><img alt="Small Image" style="width: 25px; height: 25px;" class="img img-fluid notification" src="img/notification2.png"></a>
 				
 				<c:if test="${not empty user }">
-				<a class="btn btn-primary text-white"><i class="fas fa-user"></i>
+				<a class="btn btn-primary text-white" href="update_profile.jsp"><i class="fas fa-user"></i>
 					${user.name}</a>
 				<a href="LogoutServlet" class="btn btn-success" data-toggle="modal"
 					data-target="#exampleModal"><i class="fas fa-sign-out-alt"></i>

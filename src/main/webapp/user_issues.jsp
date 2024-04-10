@@ -42,7 +42,7 @@ th,td{
                                             <th scope="col">Photo</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Date</th>
+                                            <th scope="col" style="min-width: 115px;">Date</th>
                                             <th scope="col">Progress</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -69,7 +69,7 @@ th,td{
 									%>
 									<td><%=formattedDate%></td>
                                              <td><%=is.getStatus() %></td>
-                                            <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 80%; ">Delete</a>
+                                            <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 100%; ">Delete</a>
                                             </td>
                                          </tr>
                                             <%
