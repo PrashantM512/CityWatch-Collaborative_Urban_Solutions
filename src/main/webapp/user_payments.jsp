@@ -158,6 +158,7 @@
 									List<Donation> list = dao.getAllDonationsWithDevelopments();
 									int cnt=1;
 									for (Donation donation : list) {
+										if(user.getEmail().equals(donation.getEmail())){
 									%>
 									<tr>
 										<td scope="row"><%=cnt++ %></td>
@@ -182,6 +183,7 @@
 									</tr>
 									<%
 									}
+										}
 									%>
 
 								</tbody>

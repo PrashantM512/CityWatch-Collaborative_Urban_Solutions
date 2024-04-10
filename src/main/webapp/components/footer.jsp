@@ -4,7 +4,7 @@
 <footer class="footer ft">
 	<ul class="social-icon">
 		<li class="social-icon__item"><a class="social-icon__link"
-			href=""> <ion-icon name="logo-facebook"></ion-icon>
+			href="#"> <ion-icon name="logo-facebook"></ion-icon>
 		</a></li>
 		<li class="social-icon__item"><a class="social-icon__link"
 			href="#"> <ion-icon name="logo-twitter"></ion-icon>

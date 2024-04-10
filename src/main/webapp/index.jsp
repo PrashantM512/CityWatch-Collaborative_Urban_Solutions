@@ -1,3 +1,13 @@
+<%@page import="com.city.watch.entity.Development"%>
+<%@page import="com.city.watch.dao.DevelopmentDaoImpl"%>
+<%@page import="com.city.watch.entity.Donation"%>
+<%@page import="com.city.watch.dao.DonationDaoImpl"%>
+<%@page import="com.city.watch.entity.TransactionDetails"%>
+<%@page import="com.city.watch.dao.TransactionDetailsDAOImpl"%>
+<%@page import="com.city.watch.db.ConnectionProvider"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="com.city.watch.dao.IssueDaoImpl"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -160,7 +170,15 @@
             <div class="card2 bg-c-blue order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Developments</h6>
-                    <h2 class="text-right"><i class="fa fa-building fa-3x f-left mt-2"></i><span>486</span></h2>
+							<%
+							DevelopmentDaoImpl dao2 = new DevelopmentDaoImpl(ConnectionProvider.getConnection());
+							List<Development> list2 = dao2.getAlldevelopments();
+							int j = 0;
+							for (Development d : list2) {
+								j++;
+							}
+							%>
+							<h2 class="text-right"><i class="fa fa-building fa-3x f-left mt-2"></i><span><%=j %></span></h2>
 <!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
                 </div>
             </div>
@@ -170,7 +188,15 @@
             <div class="card2 bg-c-green order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Issues</h6>
-                    <h2 class="text-right"><i class="fa fa-exclamation-triangle fa-3x mt-2 f-left"></i><span>486</span></h2>
+							<%
+							IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+							List<Map<String, Object>> list = dao.getPublicIssues();
+							int i = 0;
+							for (Map<String, Object> getPublicIssues : list) {
+								i++;
+							}
+							%>
+							<h2 class="text-right"><i class="fa fa-exclamation-triangle fa-3x mt-2 f-left"></i><span><%=i %></span></h2>
 <!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
                 </div>
             </div>
@@ -180,7 +206,18 @@
             <div class="card2 bg-c-yellow order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Donation</h6>
-                    <h2 class="text-right"><i class="fa fa-heart fa-3x f-left mt-2"></i><span>486</span></h2>
+							<%
+							DonationDaoImpl dt = new DonationDaoImpl(ConnectionProvider.getConnection());
+							List<Donation> donations = dt.getAllDonations();
+
+							double totalAmount = 0;
+							for (Donation donation : donations) {
+								if (donation.getStatus().equals("Success")) {
+									totalAmount += donation.getAmount();
+								}
+							}
+							%>
+							<h2 class="text-right"><i class="fa fa-heart fa-3x f-left mt-2"></i><span><%=totalAmount %></span></h2>
 <!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
                 </div>
             </div>
@@ -190,7 +227,15 @@
             <div class="card2 bg-c-pink order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Total Tax Payments</h6>
-                    <h2 class="text-right"><i class="fa fa-credit-card fa-3x mt-2 f-left"></i><span>486</span></h2>
+							<%
+							TransactionDetailsDAOImpl transactionDetailsDao = new TransactionDetailsDAOImpl(ConnectionProvider.getConnection());
+							List<TransactionDetails> transactionList = transactionDetailsDao.getAllTransactionDetailsWithUser();
+							int k = 0;
+							for (TransactionDetails transaction : transactionList) {
+								k++;
+							}
+							%>
+							<h2 class="text-right"><i class="fa fa-credit-card fa-3x mt-2 f-left"></i><span><%=k %></span></h2>
 <!--                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
                 </div>
             </div>
