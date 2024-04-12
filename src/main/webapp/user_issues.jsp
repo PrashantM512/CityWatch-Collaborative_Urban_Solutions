@@ -34,52 +34,82 @@ th,td{
                         <div class="rounded h-100">
                             <h6 class="mb-4"></h6>
                             <div class="table-responsive">
-                                <table class="table" style="border-style: solid; border-color: #e5e5e5;">
-                                    <thead style="height: 42px;background-color: #e5e5e5;">
-                                        <tr>
-                                            <th scope="col">Sr.No.</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Photo</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col" style="min-width: 115px;">Date</th>
-                                            <th scope="col">Progress</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <%
-                                       IssueDaoImpl dao=new IssueDaoImpl(ConnectionProvider.getConnection());
-                                       int userId=user.getUid();
-                                       int i=1;
-                                       List<Issue> list=dao.getIssuesByUserId(userId);
-                                       for(Issue is:list){
-                                    	   %>
-                                    
-                                        <tr>
-                                            <th scope="row"><%=i %></th>
-                                            <td><%=is.getTitle() %></td>
-                                            <td><img alt="" src="issues_img/<%=is.getPhoto() %>" style="height:70px;width:80px;"></td>
-                                            <td><%=is.getDescription() %></td>
-                                            <td><%=is.getType() %></td>
+						<table class="table"
+							style="border-style: solid; border-color: #e5e5e5;">
+							<thead style="height: 42px; background-color: #e5e5e5;">
+								<tr>
+									<th scope="col">Sr.No.</th>
+									<th scope="col">Title</th>
+									<th scope="col">Photo</th>
+									<th scope="col">Description</th>
+									<th scope="col">Status</th>
+									<th scope="col" style="min-width: 115px;">Date</th>
+									<th scope="col">Progress</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+								IssueDaoImpl dao = new IssueDaoImpl(ConnectionProvider.getConnection());
+								int userId = user.getUid();
+								int i = 1;
+								List<Issue> list = dao.getIssuesByUserId(userId);
+								for (Issue is : list) {
+								%>
+								<tr>
+									<th scope="row"><%=i%></th>
+									<td><%=is.getTitle()%></td>
+									<td><img alt="" src="issues_img/<%=is.getPhoto()%>"
+										style="height: 70px; width: 80px;"></td>
+									<td><%=is.getDescription()%></td>
+									<td><%=is.getType()%></td>
 									<%
 									Timestamp timestamp = is.getDate();
 									SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
 									String formattedDate = outputFormat.format(timestamp);
 									%>
 									<td><%=formattedDate%></td>
-                                             <td><%=is.getStatus() %></td>
-                                            <td><a href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user" class="btn-danger btn text-white" scope="row" style=" height: 40px; padding-top: 6px; margin-top: 3px;width: 100%; ">Delete</a>
-                                            </td>
-                                         </tr>
-                                            <%
-                                       i++;
-                                       }
-                                       %>
-                                          
-                                    </tbody>
-                                </table>
-                            </div>
+									<%
+									String statusClass = "";
+									String icon = "";
+									switch (is.getStatus()) {
+									case "Submitted":
+										statusClass = "btn-primary";
+										break;
+									case "Rejected":
+										statusClass = "btn-danger";
+										icon = "<i class='fa-regular fa-circle-xmark'></i>";
+										break;
+									case "In_Progress":
+										statusClass = "btn-warning";
+										icon = "<i class='fa-solid fa-spinner'></i>";
+										break;
+									case "Solved":
+										statusClass = "btn-success";
+										icon = "<i class='fa-regular fa-circle-check'></i>";
+										break;
+									default:
+										statusClass = "";
+									}
+									%>
+									<td class="<%=statusClass%> btn" scope="row"
+										style="height: 40px; padding-top: 6px; margin-top: 16px; margin-left: 8px; min-width: 100%;">
+										<%=is.getStatus()%>&nbsp;<%=icon%>
+									</td>
+									<td><a
+										href="DeleteIssueServlet?id=<%=is.getId()%>&userId=<%=user.getUid()%>&rd=user"
+										class="btn-danger btn text-white" scope="row"
+										style="height: 40px; padding-top: 6px; margin-top: 3px; width: 100%;">Delete</a>
+									</td>
+								</tr>
+								<%
+								i++;
+								}
+								%>
+							</tbody>
+
+						</table>
+					</div>
                         </div>
                     </div>
                 </div>

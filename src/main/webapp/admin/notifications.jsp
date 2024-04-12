@@ -48,7 +48,7 @@
 					<div class="col-12">
 						<div class="h-100 bg-secondary rounded p-4">
 						 <%@include file="components/alert.jsp" %>
-							<div id="contentContainer"
+							<div 
 								class="d-flex align-items-center justify-content-between mb-4">
 								<h6 class="mb-0">Send Notifications :</h6>
 								<a href=""></a>
